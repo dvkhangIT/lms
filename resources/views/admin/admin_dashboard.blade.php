@@ -82,6 +82,7 @@
   <script>
     new PerfectScrollbar(".app-container");
   </script>
+  @yield("customJs")
 </body>
 
 </html>

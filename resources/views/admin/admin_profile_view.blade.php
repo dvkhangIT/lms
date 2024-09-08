@@ -38,7 +38,7 @@
                 <div class="d-flex flex-column align-items-center text-center">
                   <img
                     src="{{ !empty($profileData->photo) ? url("upload/admin_images/" . $profileData->photo) : url("upload/no_image.jpg") }}"
-                    alt="Admin" class="rounded-circle bg-primary p-1" width="110">
+                    alt="Admin" class="rounded-circle border-primary border border-4 p-1" width="110">
                   <div class="mt-3">
                     <h4>{{ $profileData->name }}</h4>
                     <p class="text-secondary mb-1">{{ $profileData->username }}</p>
@@ -126,7 +126,7 @@
                     <div class="col-sm-9 text-secondary">
                       <img id="showImage"
                         src="{{ !empty($profileData->photo) ? url("upload/admin_images/" . $profileData->photo) : url("upload/no_image.jpg") }}"
-                        alt="Admin" class="rounded-circle bg-primary p-1" width="80">
+                        alt="Admin" class="rounded-circle border-primary border border-4 p-1" width="80">
                     </div>
                   </div>
                   <div class="row">

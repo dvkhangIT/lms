@@ -1,15 +1,15 @@
-@extends("admin.admin_dashboard")
-@section("admin")
+@extends("instructor.instructor_dashboard")
+@section("instructor")
   <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-      <div class="breadcrumb-title pe-3">Change Password</div>
+      <div class="breadcrumb-title pe-3">User Profile</div>
       <div class="ps-3">
         <nav aria-label="breadcrumb">
           <ol class="p-0 mb-0 breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Change Password</li>
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
           </ol>
         </nav>
       </div>
@@ -37,7 +37,7 @@
               <div class="card-body">
                 <div class="text-center d-flex flex-column align-items-center">
                   <img
-                    src="{{ !empty($profileData->photo) ? url("upload/admin_images/" . $profileData->photo) : url("upload/no_image.jpg") }}"
+                    src="{{ !empty($profileData->photo) ? url("upload/instructor_images/" . $profileData->photo) : url("upload/no_image.jpg") }}"
                     alt="Admin" class="p-1 border border-4 rounded-circle border-primary" width="110">
                   <div class="mt-3">
                     <h4>{{ $profileData->name }}</h4>
@@ -67,46 +67,66 @@
           </div>
           <div class="col-lg-8">
             <div class="card">
-              <form action="{{ route("admin.password.update") }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ route("instructor.profile.store") }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="mb-3 row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Old Password</h6>
+                      <h6 class="mb-0">Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="password"
-                        class="form-control @error("old_password")
-                          is-invalid
-                      @enderror"
-                        id="old_password" name="old_password" value="">
-                      @error("old_password")
-                        <span class="text-danger">{{ $message }}</span>
-                      @enderror
+                      <input type="text" class="form-control" name="name" value="{{ $profileData->name }}">
                     </div>
                   </div>
                   <div class="mb-3 row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">New Password</h6>
+                      <h6 class="mb-0">User Name</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="password"
-                        class="form-control @error("new_password")
-                          is-invalid
-                      @enderror"
-                        id="new_password" name="new_password" value="">
-                      @error("new_password")
-                        <span class="text-danger">{{ $message }}</span>
-                      @enderror
+                      <input type="text" class="form-control" name="username" value="{{ $profileData->username }}">
                     </div>
                   </div>
                   <div class="mb-3 row">
                     <div class="col-sm-3">
-                      <h6 class="mb-0">Confirm Password</h6>
+                      <h6 class="mb-0">Email</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                      <input type="password" class="form-control" id="new_password_confirmation"
-                        name="new_password_confirmation" value="">
+                      <input type="text" class="form-control" name="email" value="{{ $profileData->email }}">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" name="phone" class="form-control" value="{{ $profileData->phone }}">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="text" name="address" class="form-control" value="{{ $profileData->address }}">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Profile Image</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <input type="file" name="photo" id="image" class="form-control"
+                        value="{{ $profileData->address }}">
+                    </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Profile Image</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <img id="showImage"
+                        src="{{ !empty($profileData->photo) ? url("upload/instructor_images/" . $profileData->photo) : url("upload/no_image.jpg") }}"
+                        alt="Admin" class="p-1 border border-4 rounded-circle border-primary" width="80">
                     </div>
                   </div>
                   <div class="row">
@@ -123,4 +143,18 @@
       </div>
     </div>
   </div>
+@section("customJs")
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#image').change(function(e) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#showImage').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(e.target.files['0'])
+      })
+    })
+  </script>
+@endsection
+
 @endsection

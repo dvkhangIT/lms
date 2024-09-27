@@ -1,19 +1,19 @@
-<header class="header-menu-area bg-white">
-  <div class="header-top pr-150px pl-150px border-bottom border-bottom-gray py-1">
+<header class="bg-white header-menu-area">
+  <div class="py-1 header-top pr-150px pl-150px border-bottom border-bottom-gray">
     <div class="container-fluid">
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="header-widget">
-            <ul class="generic-list-item d-flex align-items-center fs-14 flex-wrap">
-              <li class="d-flex align-items-center border-right border-right-gray mr-3 pr-3"><i
-                  class="la la-phone mr-1"></i><a href="tel:00123456789"> (00) 123 456 789</a></li>
-              <li class="d-flex align-items-center"><i class="la la-envelope-o mr-1"></i><a
+            <ul class="flex-wrap generic-list-item d-flex align-items-center fs-14">
+              <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i
+                  class="mr-1 la la-phone"></i><a href="tel:00123456789"> (00) 123 456 789</a></li>
+              <li class="d-flex align-items-center"><i class="mr-1 la la-envelope-o"></i><a
                   href="mailto:contact@aduca.com"> contact@aduca.com</a></li>
             </ul>
           </div>
         </div>
         <div class="col-lg-6">
-          <div class="header-widget d-flex align-items-center justify-content-end flex-wrap">
+          <div class="flex-wrap header-widget d-flex align-items-center justify-content-end">
             <div class="theme-picker d-flex align-items-center">
               <button class="theme-picker-btn dark-mode-btn" title="Dark mode">
                 <svg id="moon" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round"
@@ -37,17 +37,17 @@
               </button>
             </div>
             <ul
-              class="generic-list-item d-flex align-items-center fs-14 border-left border-left-gray ml-3 flex-wrap pl-3">
+              class="flex-wrap pl-3 ml-3 generic-list-item d-flex align-items-center fs-14 border-left border-left-gray">
 
               @auth
-                <li class="d-flex align-items-center border-right border-right-gray mr-3 pr-3"><i
-                    class="la la-sign-in mr-1"></i><a href="#"> Dashboard</a></li>
-                <li class="d-flex align-items-center"><i class="la la-user mr-1"></i><a href="#">
+                <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i
+                    class="mr-1 la la-sign-in"></i><a href="{{ route("dashboard") }}"> Dashboard</a></li>
+                <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a href="{{ route("user.logout") }}">
                     Logout</a></li>
               @else
-                <li class="d-flex align-items-center border-right border-right-gray mr-3 pr-3"><i
-                    class="la la-sign-in mr-1"></i><a href="{{ route("login") }}"> Login</a></li>
-                <li class="d-flex align-items-center"><i class="la la-user mr-1"></i><a href="{{ route("register") }}">
+                <li class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray"><i
+                    class="mr-1 la la-sign-in"></i><a href="{{ route("login") }}"> Login</a></li>
+                <li class="d-flex align-items-center"><i class="mr-1 la la-user"></i><a href="{{ route("register") }}">
                     Register</a></li>
 
               @endauth
@@ -61,7 +61,7 @@
       </div><!-- end row -->
     </div><!-- end container-fluid -->
   </div><!-- end header-top -->
-  <div class="header-menu-content pr-150px pl-150px bg-white">
+  <div class="bg-white header-menu-content pr-150px pl-150px">
     <div class="container-fluid">
       <div class="main-menu-content">
         <a href="#" class="down-button"><i class="la la-angle-down"></i></a>
@@ -71,15 +71,15 @@
               <a href="{{ route("index") }}" class="logo"><img src="{{ asset("frontend/images/logo.png") }}"
                   alt="logo"></a>
               <div class="user-btn-action">
-                <div class="search-menu-toggle icon-element icon-element-sm mr-2 shadow-sm" data-toggle="tooltip"
+                <div class="mr-2 shadow-sm search-menu-toggle icon-element icon-element-sm" data-toggle="tooltip"
                   data-placement="top" title="Search">
                   <i class="la la-search"></i>
                 </div>
-                <div class="off-canvas-menu-toggle cat-menu-toggle icon-element icon-element-sm mr-2 shadow-sm"
+                <div class="mr-2 shadow-sm off-canvas-menu-toggle cat-menu-toggle icon-element icon-element-sm"
                   data-toggle="tooltip" data-placement="top" title="Category menu">
                   <i class="la la-th-large"></i>
                 </div>
-                <div class="off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm shadow-sm"
+                <div class="shadow-sm off-canvas-menu-toggle main-menu-toggle icon-element icon-element-sm"
                   data-toggle="tooltip" data-placement="top" title="Main menu">
                   <i class="la la-bars"></i>
                 </div>
@@ -214,8 +214,8 @@
                 </ul>
               </div><!-- end menu-category -->
               <form method="post">
-                <div class="form-group mb-0">
-                  <input class="form-control form--control pl-3" type="text" name="search"
+                <div class="mb-0 form-group">
+                  <input class="pl-3 form-control form--control" type="text" name="search"
                     placeholder="Search for anything">
                   <span class="la la-search search-icon"></span>
                 </div>
@@ -243,7 +243,7 @@
               </nav><!-- end main-menu -->
 
 
-              <div class="shop-cart mr-4">
+              <div class="mr-4 shop-cart">
                 <ul>
                   <li>
                     <p class="shop-cart-btn d-flex align-items-center">
@@ -260,13 +260,13 @@
 
                       <li class="media media-card">
                         <div class="media-body fs-16">
-                          <p class="font-weight-semi-bold lh-18 text-black">Total: $<span class="cart-total"
+                          <p class="text-black font-weight-semi-bold lh-18">Total: $<span class="cart-total"
                               id="cartSubTotal"> </span> </p>
                         </div>
                       </li>
                       <li>
                         <a href="#" class="btn theme-btn w-100">Go to cart <i
-                            class="la la-arrow-right icon ml-1"></i></a>
+                            class="ml-1 la la-arrow-right icon"></i></a>
                       </li>
                     </ul>
                   </li>
@@ -274,7 +274,7 @@
               </div><!-- end shop-cart -->
               <div class="nav-right-button">
                 <a href="admission.html" class="btn theme-btn d-none d-lg-inline-block"><i
-                    class="la la-user-plus mr-1"></i> Admission</a>
+                    class="mr-1 la la-user-plus"></i> Admission</a>
               </div><!-- end nav-right-button -->
             </div><!-- end menu-wrapper -->
           </div><!-- end col-lg-10 -->
@@ -283,7 +283,7 @@
     </div><!-- end container-fluid -->
   </div><!-- end header-menu-content -->
   <div class="off-canvas-menu custom-scrollbar-styled main-off-canvas-menu">
-    <div class="off-canvas-menu-close main-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip"
+    <div class="shadow-sm off-canvas-menu-close main-menu-close icon-element icon-element-sm" data-toggle="tooltip"
       data-placement="left" title="Close menu">
       <i class="la la-times"></i>
     </div><!-- end off-canvas-menu-close -->
@@ -366,7 +366,7 @@
     </ul>
   </div><!-- end off-canvas-menu -->
   <div class="off-canvas-menu custom-scrollbar-styled category-off-canvas-menu">
-    <div class="off-canvas-menu-close cat-menu-close icon-element icon-element-sm shadow-sm" data-toggle="tooltip"
+    <div class="shadow-sm off-canvas-menu-close cat-menu-close icon-element icon-element-sm" data-toggle="tooltip"
       data-placement="left" title="Close menu">
       <i class="la la-times"></i>
     </div><!-- end off-canvas-menu-close -->
@@ -491,14 +491,14 @@
   </div><!-- end off-canvas-menu -->
   <div class="mobile-search-form">
     <div class="d-flex align-items-center">
-      <form method="post" class="flex-grow-1 mr-3">
-        <div class="form-group mb-0">
-          <input class="form-control form--control pl-3" type="text" name="search"
+      <form method="post" class="mr-3 flex-grow-1">
+        <div class="mb-0 form-group">
+          <input class="pl-3 form-control form--control" type="text" name="search"
             placeholder="Search for anything">
           <span class="la la-search search-icon"></span>
         </div>
       </form>
-      <div class="search-bar-close icon-element icon-element-sm shadow-sm">
+      <div class="shadow-sm search-bar-close icon-element icon-element-sm">
         <i class="la la-times"></i>
       </div><!-- end off-canvas-menu-close -->
     </div>

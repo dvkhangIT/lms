@@ -8,7 +8,7 @@
           <ol class="p-0 mb-0 breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Add Category</li>
+            <li class="breadcrumb-item active" aria-current="page">Add SubCategory</li>
           </ol>
         </nav>
       </div>
@@ -16,22 +16,22 @@
     <!--end breadcrumb-->
     <div class="card">
       <div class="p-4 card-body">
-        <h5 class="mb-4">Add Category</h5>
-        <form action="{{ route("store.category") }}" enctype="multipart/form-data" method="POST" id="myForm"
+        <h5 class="mb-4">Add subCategory</h5>
+        <form action="{{ route("store.subcategory") }}" enctype="multipart/form-data" method="POST" id="myForm"
           class="row g-3">
           @csrf
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Category Name</label>
-            <input type="text" class="form-control" id="input1" name="category_name">
+            <select class="mb-3 form-select" aria-label="Default select example" name="category_id">
+              <option selected="" disabled>Open this select category</option>
+              @foreach ($category as $cat)
+                <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
+              @endforeach
+            </select>
           </div>
-          <div class="col-md-6"></div>
           <div class="col-md-6 form-group">
-            <label for="input2" class="form-label">Category Image</label>
-            <input class="form-control" type="file" id="image" name="image">
-          </div>
-          <div class="col-md-6">
-            <img id="showImage" src="{{ url("upload/no_image.jpg") }}" alt="Admin"
-              class="p-1 border border-4 rounded-circle border-primary" width="80">
+            <label for="input1" class="form-label">SubCategory Name</label>
+            <input type="text" class="form-control" id="input1" name="subcategory_name">
           </div>
           <div class="col-md-12">
             <div class="gap-3 d-md-flex d-grid align-items-center">
@@ -58,20 +58,20 @@
     $(document).ready(function() {
       $('#myForm').validate({
         rules: {
-          category_name: {
+          subcategory_name: {
             required: true,
           },
-          image: {
+          category_id: {
             required: true,
           }
 
         },
         messages: {
-          category_name: {
-            required: 'Please Enter Category Name',
+          subcategory_name: {
+            required: 'Please Enter SubCategory Name',
           },
-          image: {
-            required: 'Please Select Category Image',
+          category_id: {
+            required: 'Please Select Category Name',
           },
 
 

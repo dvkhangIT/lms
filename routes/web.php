@@ -57,9 +57,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/all/subcategory', 'AllSubCategory')->name('all.subcategory');
     Route::get('add/subcategory', 'AddSubCategory')->name('add.subcategory');
     Route::post('/store/subcategory', 'StoreSubCategory')->name('store.subcategory');
-    Route::get('/edit/subcategory/{id}', 'EditCategory')->name('edit.category');
-    Route::post('/update/subcategory', 'UpdateCategory')->name('update.category');
-    Route::get('/delete/subcategory/{id}', 'DeleteCategory')->name('delete.category');
+    Route::get('/edit/subcategory/{id}', 'EditSubCategory')->name('edit.subcategory');
+    Route::post('/update/subcategory', 'UpdateSubCategory')->name('update.subcategory');
+    Route::get('/delete/subcategory/{id}', 'DeleteSubCategory')->name('delete.subcategory');
   });
 }); // End Admin Group Middleware
 

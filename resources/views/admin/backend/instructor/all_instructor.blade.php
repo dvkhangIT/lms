@@ -9,14 +9,13 @@
             <li class="breadcrumb-item"><a href="javascript:;"><i
                   class="bx bx-home-alt"></i></a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">All Category</li>
+            <li class="breadcrumb-item active" aria-current="page">All Instructor
+            </li>
           </ol>
         </nav>
       </div>
       <div class="ms-auto">
         <div class="btn-group">
-          <a href="{{ route('add.category') }}" class="px-5 btn btn-primary">Add
-            Category</a>
         </div>
       </div>
     </div>
@@ -29,18 +28,29 @@
             <thead>
               <tr>
                 <th>SL</th>
-                <th>Category Image</th>
-                <th>Category Name</th>
+                <th>Instructor Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
                 <th>Acction</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($category as $key => $item)
+              @foreach ($allinstructor as $key => $item)
                 <tr>
                   <td>{{ $key + 1 }}</td>
-                  <td><img src="{{ asset($item->image) }}" alt=""
-                      style="width: 70px;height: 40px;"></td>
-                  <td>{{ $item->category_name }}</td>
+                  <td>{{ $item->name }}</td>
+                  <td>{{ $item->username }}</td>
+                  <td>{{ $item->email }}</td>
+                  <td>{{ $item->phone }}</td>
+                  <td>
+                    @if ($item->status == 1)
+                      <span class="btn btn-success">Active</span>
+                    @else
+                      <span class="btn btn-danger">InActive</span>
+                    @endif
+                  </td>
                   <td>
                     <a href="{{ route('edit.category', $item->id) }}"
                       class="px-5 text-white btn btn-info">Edit</a>

@@ -52,10 +52,13 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{ route('edit.category', $item->id) }}"
-                      class="px-5 text-white btn btn-info">Edit</a>
-                    <a href="{{ route('delete.category', $item->id) }}"
-                      class="px-5 btn btn-danger" id="delete">Delete</a>
+                    <div class="form-check-danger form-check form-switch">
+                      <input class="form-check-input status-toggle"
+                        style="transform: scale(1.5)" type="checkbox"
+                        id="flexSwitchCheckCheckedDanger"
+                        data-user-id="{{ $item->id }}"
+                        {{ $item->status ? 'checked' : '' }}>
+                    </div>
                   </td>
                 </tr>
               @endforeach
@@ -68,4 +71,28 @@
 @endsection
 @section('customJs')
   <script src="{{ asset('backend/assets/js/code.js') }}"></script>
+  <script>
+    $(document).ready(function() {
+      $('.status-toggle').on('change', function() {
+        var userId = $(this).data('user-id');
+        var isChecked = $(this).is(':checked');
+        $.ajax({
+          type: "post",
+          url: "{{ route('update.user.status') }}",
+          data: {
+            user_id: userId,
+            is_checked: isChecked ? 1 : 0,
+            _token: "{{ csrf_token() }}"
+          },
+          dataType: "dataType",
+          success: function(response) {
+            toastr.success(response.message)
+          }
+          error: function() {
+
+          }
+        });
+      })
+    })
+  </script>
 @endsection

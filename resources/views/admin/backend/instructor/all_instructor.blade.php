@@ -6,8 +6,7 @@
       <div class="ps-3">
         <nav aria-label="breadcrumb">
           <ol class="p-0 mb-0 breadcrumb">
-            <li class="breadcrumb-item"><a href="javascript:;"><i
-                  class="bx bx-home-alt"></i></a>
+            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">All Instructor
             </li>
@@ -23,8 +22,7 @@
     <div class="card">
       <div class="card-body">
         <div class="table-responsive">
-          <table id="example" class="table table-striped table-bordered"
-            style="width:100%">
+          <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
               <tr>
                 <th>SL</th>
@@ -53,10 +51,8 @@
                   </td>
                   <td>
                     <div class="form-check-danger form-check form-switch">
-                      <input class="form-check-input status-toggle"
-                        style="transform: scale(1.5)" type="checkbox"
-                        id="flexSwitchCheckCheckedDanger"
-                        data-user-id="{{ $item->id }}"
+                      <input class="form-check-input status-toggle" style="transform: scale(1.5)" type="checkbox"
+                        id="flexSwitchCheckCheckedDanger" data-user-id="{{ $item->id }}"
                         {{ $item->status ? 'checked' : '' }}>
                     </div>
                   </td>
@@ -72,24 +68,21 @@
 @section('customJs')
   <script src="{{ asset('backend/assets/js/code.js') }}"></script>
   <script>
+    console.log('first')
     $(document).ready(function() {
       $('.status-toggle').on('change', function() {
         var userId = $(this).data('user-id');
         var isChecked = $(this).is(':checked');
         $.ajax({
-          type: "post",
           url: "{{ route('update.user.status') }}",
+          type: "post",
           data: {
             user_id: userId,
             is_checked: isChecked ? 1 : 0,
             _token: "{{ csrf_token() }}"
           },
-          dataType: "dataType",
           success: function(response) {
             toastr.success(response.message)
-          }
-          error: function() {
-
           }
         });
       })

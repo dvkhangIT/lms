@@ -68,7 +68,6 @@
 @section('customJs')
   <script src="{{ asset('backend/assets/js/code.js') }}"></script>
   <script>
-    console.log('first')
     $(document).ready(function() {
       $('.status-toggle').on('change', function() {
         var userId = $(this).data('user-id');

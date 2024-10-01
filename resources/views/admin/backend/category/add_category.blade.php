@@ -1,5 +1,5 @@
-@extends("admin.admin_dashboard")
-@section("admin")
+@extends('admin.admin_dashboard')
+@section('admin')
   <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -17,7 +17,7 @@
     <div class="card">
       <div class="p-4 card-body">
         <h5 class="mb-4">Add Category</h5>
-        <form action="{{ route("store.category") }}" enctype="multipart/form-data" method="POST" id="myForm"
+        <form action="{{ route('store.category') }}" enctype="multipart/form-data" method="POST" id="myForm"
           class="row g-3">
           @csrf
           <div class="col-md-6 form-group">
@@ -30,7 +30,7 @@
             <input class="form-control" type="file" id="image" name="image">
           </div>
           <div class="col-md-6">
-            <img id="showImage" src="{{ url("upload/no_image.jpg") }}" alt="Admin"
+            <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin"
               class="p-1 border border-4 rounded-circle border-primary" width="80">
           </div>
           <div class="col-md-12">
@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-@section("customJs")
+@section('customJs')
   <script type="text/javascript">
     $(document).ready(function() {
       $('#image').change(function(e) {

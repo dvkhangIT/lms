@@ -1,5 +1,5 @@
-@extends("admin.admin_dashboard")
-@section("admin")
+@extends('admin.admin_dashboard')
+@section('admin')
   <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -14,7 +14,7 @@
       </div>
       <div class="ms-auto">
         <div class="btn-group">
-          <a href="{{ route("add.subcategory") }}" class="px-5 btn btn-primary">Add SubCategory</a>
+          <a href="{{ route('add.subcategory') }}" class="px-5 btn btn-primary">Add SubCategory</a>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
           <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
               <tr>
-                <th>SL</th>
+                <th>SI</th>
                 <th>Category Name</th>
                 <th>SubCategory Name</th>
                 <th>Acction</th>
@@ -35,11 +35,11 @@
               @foreach ($subcategory as $key => $item)
                 <tr>
                   <td>{{ $key + 1 }}</td>
-                  <td>{{ $item["category"]["id"] }}</td>
+                  <td>{{ $item['category']['id'] }}</td>
                   <td>{{ $item->subcategory_name }}</td>
                   <td>
-                    <a href="{{ route("edit.subcategory", $item->id) }}" class="px-5 text-white btn btn-info">Edit</a>
-                    <a href="{{ route("delete.subcategory", $item->id) }}" class="px-5 btn btn-danger"
+                    <a href="{{ route('edit.subcategory', $item->id) }}" class="px-5 text-white btn btn-info">Edit</a>
+                    <a href="{{ route('delete.subcategory', $item->id) }}" class="px-5 btn btn-danger"
                       id="delete">Delete</a>
                   </td>
                 </tr>
@@ -51,6 +51,6 @@
     </div>
   </div>
 @endsection
-@section("customJs")
-  <script src="{{ asset("backend/assets/js/code.js") }}"></script>
+@section('customJs')
+  <script src="{{ asset('backend/assets/js/code.js') }}"></script>
 @endsection

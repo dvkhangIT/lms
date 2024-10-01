@@ -1,5 +1,5 @@
-@extends('admin.admin_dashboard')
-@section('admin')
+@extends('instructor.instructor_dashboard')
+@section('instructor')
   <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -8,14 +8,14 @@
           <ol class="p-0 mb-0 breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">All Category</li>
+            <li class="breadcrumb-item active" aria-current="page">All Course</li>
           </ol>
         </nav>
       </div>
       <div class="ms-auto">
         <div class="btn-group">
           <a href="{{ route('add.category') }}" class="px-5 btn btn-primary">Add
-            Category</a>
+            Course</a>
         </div>
       </div>
     </div>
@@ -27,17 +27,23 @@
             <thead>
               <tr>
                 <th>SI</th>
-                <th>Category Image</th>
-                <th>Category Name</th>
+                <th>Image</th>
+                <th>Course Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Discount</th>
                 <th>Acction</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($category as $key => $item)
+              @foreach ($courses as $key => $item)
                 <tr>
                   <td>{{ $key + 1 }}</td>
-                  <td><img src="{{ asset($item->image) }}" alt="" style="width: 70px;height: 40px;"></td>
-                  <td>{{ $item->category_name }}</td>
+                  <td><img src="{{ asset($item->course_image) }}" style="width: 70px;height: 40px;"></td>
+                  <td>{{ $item->course_name }}</td>
+                  <td>{{ $item->category_id }}</td>
+                  <td>{{ $item->selling_price }}</td>
+                  <td>{{ $item->discount_price }}</td>
                   <td>
                     <a href="{{ route('edit.category', $item->id) }}" class="px-5 text-white btn btn-info">Edit</a>
                     <a href="{{ route('delete.category', $item->id) }}" class="px-5 btn btn-danger"
@@ -51,7 +57,4 @@
       </div>
     </div>
   </div>
-@endsection
-@section('customJs')
-  <script src="{{ asset('backend/assets/js/code.js') }}"></script>
 @endsection

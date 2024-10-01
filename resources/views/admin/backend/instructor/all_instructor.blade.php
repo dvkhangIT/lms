@@ -25,7 +25,7 @@
           <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
               <tr>
-                <th>SL</th>
+                <th>SI</th>
                 <th>Instructor Name</th>
                 <th>Username</th>
                 <th>Email</th>

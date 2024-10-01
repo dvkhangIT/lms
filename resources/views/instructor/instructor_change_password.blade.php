@@ -1,5 +1,5 @@
-@extends("instructor.instructor_dashboard")
-@section("instructor")
+@extends('instructor.instructor_dashboard')
+@section('instructor')
   <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -37,7 +37,7 @@
               <div class="card-body">
                 <div class="text-center d-flex flex-column align-items-center">
                   <img
-                    src="{{ !empty($profileData->photo) ? url("upload/instructor_images/" . $profileData->photo) : url("upload/no_image.jpg") }}"
+                    src="{{ !empty($profileData->photo) ? url('upload/instructor_images/' . $profileData->photo) : url('upload/no_image.jpg') }}"
                     alt="Admin" class="p-1 border border-4 rounded-circle border-primary" width="110">
                   <div class="mt-3">
                     <h4>{{ $profileData->name }}</h4>
@@ -67,7 +67,7 @@
           </div>
           <div class="col-lg-8">
             <div class="card">
-              <form action="{{ route("instructor.password.update") }}" method="POST" enctype="multipart/form-data">
+              <form action="{{ route('instructor.password.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                   <div class="mb-3 row">
@@ -76,11 +76,11 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                       <input type="password"
-                        class="form-control @error("old_password")
+                        class="form-control @error('old_password')
                           is-invalid
                       @enderror"
                         id="old_password" name="old_password" value="">
-                      @error("old_password")
+                      @error('old_password')
                         <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </div>
@@ -91,11 +91,11 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                       <input type="password"
-                        class="form-control @error("new_password")
+                        class="form-control @error('new_password')
                           is-invalid
                       @enderror"
                         id="new_password" name="new_password" value="">
-                      @error("new_password")
+                      @error('new_password')
                         <span class="text-danger">{{ $message }}</span>
                       @enderror
                     </div>

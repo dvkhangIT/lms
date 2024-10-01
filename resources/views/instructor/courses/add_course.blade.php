@@ -64,25 +64,60 @@
               <option value="No">No</option>
             </select>
           </div>
-          <div class="col-md-4 form-group">
+          <div class="col-md-6 form-group">
+            <label for="input1" class="form-label">Course Label</label>
+            <select class="mb-3 form-select" aria-label="Default select example" name="label">
+              <option selected="" disabled>Open this select menu</option>
+              <option value="Begginner">Begginner</option>
+              <option value="Middle">Middle</option>
+              <option value="Advance">Advance</option>
+            </select>
+          </div>
+          <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Course Price</label>
             <input type="text" class="form-control" id="input1" name="selling_price">
           </div>
-          <div class="col-md-4 form-group">
+          <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Discount Price</label>
             <input type="text" class="form-control" id="input1" name="discount_price">
           </div>
-          <div class="col-md-4 form-group">
+          <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Duration</label>
             <input type="text" class="form-control" id="input1" name="duration">
           </div>
-          <div class="col-md-4 form-group">
+          <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Resources</label>
             <input type="text" class="form-control" id="input1" name="resources">
           </div>
           <div class="col-md-12 form-group">
             <label for="input1" class="form-label">Course Prerequisites</label>
-            <textarea name="prerequisites" class="form-control" id="input23" placeholder="" rows="3"></textarea>
+            <textarea name="prerequisites" class="form-control" id="input23" placeholder="Prerequisites..." rows="3"></textarea>
+          </div>
+          <div class="col-md-12 form-group">
+            <label for="input1" class="form-label">Course Description</label>
+            <textarea id="myeditorinstance" name="description" class="form-control" id="input23"></textarea>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" name="bestseller" type="checkbox" value="1" id="bestseller">
+                <label class="form-check-label" for="bestseller">Best Seller</label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" name="featured" id="featured">
+                <label class="form-check-label" for="featured">Featured</label>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault"
+                  name="highestrated">
+                <label class="form-check-label" for="flexCheckDefault">Highest Rated</label>
+              </div>
+            </div>
           </div>
           <div class="col-md-12">
             <div class="gap-3 d-md-flex d-grid align-items-center">

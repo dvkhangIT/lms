@@ -115,6 +115,16 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
     <script src="{{ asset('backend/assets/js/code.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/ebz6ernns0j2t2y9dec6eeqnutsorzkjrjm0q6xrh4pp2yne/tinymce/7/tinymce.min.js"
+      referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: 'textarea#myeditorinstance',
+        plugins: 'code table lists',
+        toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table'
+
+      });
+    </script>
     @yield('customJs')
   </body>
 

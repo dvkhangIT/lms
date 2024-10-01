@@ -31,6 +31,7 @@ return new class extends Migration
       $table->text('prerequisites')->nullable();
       $table->string('bestseller')->nullable();
       $table->string('featured')->nullable();
+      $table->string('highestrated')->nullable();
       $table->tinyInteger('status')->default(0);
       $table->timestamps();
     });

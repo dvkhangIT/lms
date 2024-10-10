@@ -17,7 +17,7 @@
     <div class="card">
       <div class="p-4 card-body">
         <h5 class="mb-4">Add Course</h5>
-        <form action="{{ route('store.category') }}" enctype="multipart/form-data" method="POST" id="myForm"
+        <form action="{{ route('store.course') }}" enctype="multipart/form-data" method="POST" id="myForm"
           class="row g-3">
           @csrf
           <div class="col-md-6 form-group">
@@ -164,10 +164,6 @@
           course_title: {
             required: true,
           },
-          course_image: {
-            required: true,
-          }
-
         },
         messages: {
           course_name: {
@@ -176,11 +172,6 @@
           course_title: {
             required: 'Please Enter Course Title',
           },
-          course_image: {
-            required: 'Please Select Course Image',
-          },
-
-
         },
         errorElement: 'span',
         errorPlacement: function(error, element) {

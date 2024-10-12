@@ -8,7 +8,7 @@
           <ol class="p-0 mb-0 breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Add Course</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Course</li>
           </ol>
         </nav>
       </div>
@@ -16,119 +16,105 @@
     <!--end breadcrumb-->
     <div class="card">
       <div class="p-4 card-body">
-        <h5 class="mb-4">Add Course</h5>
+        <h5 class="mb-4">Edit Course</h5>
         <form action="{{ route('store.course') }}" enctype="multipart/form-data" method="POST" id="myForm"
           class="row g-3">
           @csrf
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Course Name</label>
-            <input type="text" class="form-control" id="input1" name="course_name">
+            <input type="text" class="form-control" id="input1" name="course_name"
+              value="{{ $course->course_name }}">
           </div>
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Course Title</label>
-            <input type="text" class="form-control" id="input1" name="course_title">
+            <input type="text" class="form-control" id="input1" name="course_title"
+              value="{{ $course->course_title }}">
           </div>
-          <div class="col-md-6 form-group">
-            <label for="input2" class="form-label">Course Image</label>
-            <input class="form-control" type="file" id="image" name="course_image">
-          </div>
-          <div class="col-md-6">
-            <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin"
-              class="p-1 border border-4 rounded-circle border-primary" width="80">
-          </div>
-          <div class="col-md-6 form-group">
-            <label for="input1" class="form-label">Course Intro Video</label>
-            <input type="file" accept="video/mp4,video/webm" class="form-control" name="video">
-          </div>
-          <div class="col-md-6 form-group"></div>
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Course Category</label>
             <select class="mb-3 form-select" aria-label="Default select example" name="category_id">
               <option selected="" disabled>Open this select menu</option>
               @foreach ($categories as $cat)
-                <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
+                <option {{ $cat->id == $course->category_id ? 'selected' : '' }} value="{{ $cat->id }}">
+                  {{ $cat->category_name }}</option>
               @endforeach
             </select>
           </div>
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Course Subcategory</label>
             <select class="mb-3 form-select" aria-label="Default select example" name="subcategory_id">
-              <option></option>
+              <option selected="" disabled>Open this select menu</option>
+              @foreach ($subcategories as $subcat)
+                <option {{ $subcat->id == $course->subcategory_id ? 'selected' : '' }} value="{{ $subcat->id }}">
+                  {{ $subcat->subcategory_name }}</option>
+              @endforeach
             </select>
           </div>
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Certificate Avalible</label>
             <select class="mb-3 form-select" aria-label="Default select example" name="certificate">
               <option selected="" disabled>Open this select menu</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
+              <option {{ $course->certificate == 'Yes' ? 'selected' : '' }} value="Yes">Yes</option>
+              <option {{ $course->certificate == 'No' ? 'selected' : '' }} value="No">No</option>
             </select>
           </div>
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Course Label</label>
             <select class="mb-3 form-select" aria-label="Default select example" name="label">
               <option selected="" disabled>Open this select menu</option>
-              <option value="Begginner">Begginner</option>
-              <option value="Middle">Middle</option>
-              <option value="Advance">Advance</option>
+              <option {{ $course->label == 'Begginner' ? 'selected' : '' }} value="Begginner">Begginner</option>
+              <option {{ $course->label == 'Middle' ? 'selected' : '' }} value="Middle">Middle</option>
+              <option {{ $course->label == 'Advance' ? 'selected' : '' }} value="Advance">Advance</option>
             </select>
           </div>
           <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Course Price</label>
-            <input type="text" class="form-control" id="input1" name="selling_price">
+            <input type="text" class="form-control" id="input1" name="selling_price"
+              value="{{ $course->selling_price }}">
           </div>
           <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Discount Price</label>
-            <input type="text" class="form-control" id="input1" name="discount_price">
+            <input type="text" class="form-control" id="input1" name="discount_price"
+              value="{{ $course->discount_price }}">
           </div>
           <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Duration</label>
-            <input type="text" class="form-control" id="input1" name="duration">
+            <input type="text" class="form-control" id="input1" name="duration" value="{{ $course->duration }}">
           </div>
           <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Resources</label>
-            <input type="text" class="form-control" id="input1" name="resources">
+            <input type="text" class="form-control" id="input1" name="resources" value="{{ $course->resources }}">
           </div>
           <div class="col-md-12 form-group">
             <label for="input1" class="form-label">Course Prerequisites</label>
-            <textarea name="prerequisites" class="form-control" id="input23" placeholder="Prerequisites..." rows="3"></textarea>
+            <textarea name="prerequisites" class="form-control" id="input23" placeholder="Prerequisites..." rows="3">{{ $course->prerequisites }}</textarea>
           </div>
           <div class="col-md-12 form-group">
             <label for="input1" class="form-label">Course Description</label>
-            <textarea id="myeditorinstance" name="description" class="form-control" id="input23"></textarea>
+            <textarea id="myeditorinstance" name="description" class="form-control" id="input23">{!! $course->description !!}</textarea>
           </div>
-          <p>Course Goals</p>
           <!--   //////////// Goal Option /////////////// -->
-          <div class="row add_item">
-            <div class="col-md-6">
-              <div class="mb-3">
-                <label for="goals" class="form-label"> Goals </label>
-                <input type="text" name="course_goals[]" id="goals" class="form-control" placeholder="Goals ">
-              </div>
-            </div>
-            <div class="form-group col-md-6" style="padding-top: 30px;">
-              <a class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i> Add More..</a>
-            </div>
-          </div> <!---end row-->
           <!--   //////////// End Goal Option /////////////// -->
           <hr>
           <div class="row">
             <div class="col-md-4">
               <div class="form-check">
-                <input class="form-check-input" name="bestseller" type="checkbox" value="1" id="bestseller">
+                <input {{ $course->bestseller == 1 ? 'checked' : '' }} class="form-check-input" name="bestseller"
+                  type="checkbox" value="1" id="bestseller">
                 <label class="form-check-label" for="bestseller">Best Seller</label>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" name="featured" id="featured">
+                <input {{ $course->featured == 1 ? 'checked' : '' }} class="form-check-input" type="checkbox"
+                  value="1" name="featured" id="featured">
                 <label class="form-check-label" for="featured">Featured</label>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault"
-                  name="highestrated">
+                <input {{ $course->highestrated == 1 ? 'checked' : '' }} class="form-check-input" type="checkbox"
+                  value="1" id="flexCheckDefault" name="highestrated">
                 <label class="form-check-label" for="flexCheckDefault">Highest Rated</label>
               </div>
             </div>

@@ -130,6 +130,33 @@
       </div>
     </div>
   </div>
+  <div class="page-content">
+    <div class="card">
+      <div class="card-body">
+        <form action="{{ route('update.course.image') }}" enctype="multipart/form-data" method="POST">
+          @csrf
+          <input type="hidden" name="id" value="{{ $course->id }}">
+          <input type="hidden" name="old_img" value="{{ $course->course_image }}">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label for="input2" class="form-label">Course Image</label>
+              <input class="form-control" type="file" id="image" name="course_image">
+            </div>
+            <div class="col-md-6">
+              <img id="showImage"
+                src="{{ $course->course_image ? asset($course->course_image) : url('upload/no_image.jpg') }}"
+                alt="Admin" class="p-1 border border-4 rounded-circle border-primary" width="100">
+            </div>
+          </div>
+          <div class="mt-3 col-md-12">
+            <div class="gap-3 d-md-flex d-grid align-items-center">
+              <button type="submit" class="px-4 btn btn-primary">Save Changes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @section('customJs')
   <script type="text/javascript">
     $(document).ready(function() {

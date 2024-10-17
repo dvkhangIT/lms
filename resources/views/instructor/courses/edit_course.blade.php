@@ -17,9 +17,10 @@
     <div class="card">
       <div class="p-4 card-body">
         <h5 class="mb-4">Edit Course</h5>
-        <form action="{{ route('store.course') }}" enctype="multipart/form-data" method="POST" id="myForm"
+        <form action="{{ route('update.course') }}" enctype="multipart/form-data" method="POST" id="myForm"
           class="row g-3">
           @csrf
+          <input type="hidden" name="course_id" value="{{ $course->id }}">
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Course Name</label>
             <input type="text" class="form-control" id="input1" name="course_name"
@@ -83,7 +84,8 @@
           </div>
           <div class="col-md-3 form-group">
             <label for="input1" class="form-label">Resources</label>
-            <input type="text" class="form-control" id="input1" name="resources" value="{{ $course->resources }}">
+            <input type="text" class="form-control" id="input1" name="resources"
+              value="{{ $course->resources }}">
           </div>
           <div class="col-md-12 form-group">
             <label for="input1" class="form-label">Course Prerequisites</label>

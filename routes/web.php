@@ -88,5 +88,6 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('/subcategory/ajax/{category_id}', 'GetSubCategory');
     Route::post('/store/course', 'StoreCourse')->name('store.course');
     Route::get('/edit/course/{id}', 'EditCourse')->name('edit.course');
+    Route::post('update/course', 'UpdateCourse')->name('update.course');
   });
 }); // End Instructor Group Middleware

@@ -187,8 +187,9 @@
   <div class="page-content">
     <div class="card">
       <div class="card-body">
-        <form action="{{ route('update.course.video') }}" enctype="multipart/form-data" method="POST">
+        <form action="{{ route('update.course.goal') }}" enctype="multipart/form-data" method="POST">
           @csrf
+          <input type="hidden" name="id" value="{{ $course->id }}">
           <!--   //////////// Goal Option /////////////// -->
           @foreach ($goals as $item)
             <div class="row add_item">

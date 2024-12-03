@@ -9,6 +9,7 @@ use App\Models\Course_goal;
 use App\Models\SubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use PHPUnit\Framework\Constraint\Count;
@@ -135,6 +136,27 @@ class CourseController extends Controller
     ]);
     $notification = array(
       'message' => 'Course Image Updated Successfully',
+      'alert-type' => 'success'
+    );
+    return redirect()->back()->with($notification);
+  }
+  public function UpdateCourseVideo(Request $request)
+  {
+    $course_id = $request->vid;
+    $oldVideo = $request->old_vid;
+    $video = $request->file('video');
+    $videoName = time() . '.' . $video->getClientOriginalExtension();
+    $video->move(public_path('upload/course/video/'), $videoName);
+    $save_video = 'upload/course/video/' . $videoName;
+    if (file_exists($oldVideo)) {
+      unlink($oldVideo);
+    }
+    Course::find($course_id)->update([
+      'video' => $save_video,
+      'updated_at' => Carbon::now(),
+    ]);
+    $notification = array(
+      'message' => 'Course Video Updated Successfully',
       'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);

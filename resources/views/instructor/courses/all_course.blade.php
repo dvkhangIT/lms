@@ -49,7 +49,7 @@
                         class="lni lni-eraser" title="Edit"></i></a>
                     <a href="{{ route('delete.course', $item->id) }}" class="btn btn-danger" title="Delete"
                       id="delete"><i class="lni lni-trash"></i></a>
-                    <a href="{{ route('delete.course', $item->id) }}" class="text-white btn btn-warning"><i
+                    <a href="{{ route('add.course.lecture', $item->id) }}" class="text-white btn btn-warning"><i
                         class="lni lni-list" title="Lecture"></i></a>
                   </td>
                 </tr>

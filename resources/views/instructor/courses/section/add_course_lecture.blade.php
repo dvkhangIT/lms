@@ -12,9 +12,35 @@
                 <h5 class="mt-0">{{ $course->course_name }}</h5>
                 <p class="mb-0">{{ $course->course_title }}</p>
               </div>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
+                Section</button>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Section</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="{{ route('add.course.section') }}" method="POST">
+            @csrf
+            <input type="hidden" name="id" value="{{ $course->id }}">
+            <div class="mb-3 form-group">
+              <label for="input1" class="form-label">Course Section</label>
+              <input type="text" class="form-control" id="input1" name="section_title">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+        </form>
       </div>
     </div>
   </div>

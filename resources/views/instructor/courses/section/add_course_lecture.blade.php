@@ -27,9 +27,26 @@
               <div class="card">
                 <div class="p-4 card-body d-flex justify-content-between">
                   <h6>{{ $item->section_title }}</h6>
-                  <div class="d-flex align-item-center justify-content-between">
+                  <div class="d-flex align-items-center justify-content-between">
                     <button type="submit" class="px-2 btn btn-danger ms-auto">Delete Section</button> &nbsp;
-                    <a class="btn btn-primary"> Add Lecture</a>
+                    <a class="btn btn-primary"
+                      onclick="deleteLectureDiv({{ $course->id }},{{ $item->id }}),'lectureContainer{{ $key }}"
+                      id="addLectureBtn($key)">
+                      Add
+                      Lecture</a>
+                  </div>
+                </div>
+                <div class="courseHide" id="lectureContainer{{ $key }}">
+                  <div class="container">
+                    <div class="mb-3 lectureDiv d-flex align-items-center justify-content-between">
+                      <div>
+                        <strong>lecture title</strong>
+                      </div>
+                      <div class="btn-group">
+                        <a href="" class="btn btn-sm btn-primary">Edit</a>&nbsp;
+                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -39,7 +56,6 @@
       </div>
     @endforeach
   </div>
-
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
     style="display: none;">
     <div class="modal-dialog">
@@ -64,4 +80,12 @@
       </div>
     </div>
   </div>
+  <script>
+    function deleteLectureDiv(courseId, sectionId, containerId) {
+      const lectureContainer = document.getElementById(containerId);
+      const newLectureDiv = document.createElement('div');
+      newLectureDiv.classList.add('lectureDiv,"mb-3');
+      newLectureDiv.innerHTML = ``
+    };
+  </script>
 @endsection

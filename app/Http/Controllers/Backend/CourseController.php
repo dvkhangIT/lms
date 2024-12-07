@@ -204,7 +204,8 @@ class CourseController extends Controller
   public function AddCourseLecture($id)
   {
     $course = Course::find($id);
-    return view('instructor.courses.section.add_course_lecture', compact('course'));
+    $section = CourseSection::where('course_id', $id)->latest()->get();
+    return view('instructor.courses.section.add_course_lecture', compact('course', 'section'));
   }
   public function AddCourseSection(Request $request)
   {

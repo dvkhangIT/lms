@@ -19,7 +19,27 @@
         </div>
       </div>
     </div>
+    @foreach ($section as $key => $item)
+      <div class="container">
+        <div class="main-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="p-4 card-body d-flex justify-content-between">
+                  <h6>{{ $item->section_title }}</h6>
+                  <div class="d-flex align-item-center justify-content-between">
+                    <button type="submit" class="px-2 btn btn-danger ms-auto">Delete Section</button> &nbsp;
+                    <a class="btn btn-primary"> Add Lecture</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endforeach
   </div>
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
     style="display: none;">
     <div class="modal-dialog">

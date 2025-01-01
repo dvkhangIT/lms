@@ -38,15 +38,17 @@
                 </div>
                 <div class="courseHide" id="lectureContainer{{ $key }}">
                   <div class="container">
-                    <div class="mb-3 lectureDiv d-flex align-items-center justify-content-between">
-                      <div>
-                        <strong>lecture title </strong>
+                    @foreach ($item->lectures as $lecture)
+                      <div class="mb-3 lectureDiv d-flex align-items-center justify-content-between">
+                        <div>
+                          <strong>{{ $loop->iteration }}. {{ $lecture->lecture_title }}</strong>
+                        </div>
+                        <div class="btn-group">
+                          <a href="" class="btn btn-sm btn-primary">Edit</a>&nbsp;
+                          <a href="" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
                       </div>
-                      <div class="btn-group">
-                        <a href="" class="btn btn-sm btn-primary">Edit</a>&nbsp;
-                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>
@@ -88,11 +90,11 @@
       newLectureDiv.innerHTML = `<div class="container">
     <h6>Lecture Title</h6>
     <input type="text" class="form-control" placeholder="Enter Lecture Title">
-    <textarea name="" class="form-control mt-2" placeholder="Enter Lecture Content"></textarea>
+    <textarea name="" class="mt-2 form-control" placeholder="Enter Lecture Content"></textarea>
     <h6 class="mt-3">Add Video Url</h6>
     <input type="text" name="url" class="form-control" placeholder="Add URL">
-    <button class="btn btn-primary mt-3" onclick="saveLecture('${courseId}','${sectionId}','${containerId}')">Save Lecture</button>
-    <button class="btn btn-secondary mt-3" onclick="hideLectureContainer('${containerId}')">Cancel</button>
+    <button class="mt-3 btn btn-primary" onclick="saveLecture('${courseId}','${sectionId}','${containerId}')">Save Lecture</button>
+    <button class="mt-3 btn btn-secondary" onclick="hideLectureContainer('${containerId}')">Cancel</button>
   </div>`
       lectureContainer.appendChild(newLectureDiv);
     };

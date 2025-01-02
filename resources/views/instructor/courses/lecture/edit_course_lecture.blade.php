@@ -8,18 +8,25 @@
           <ol class="p-0 mb-0 breadcrumb">
             <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">Edit Lecture</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Lecture Course</li>
           </ol>
         </nav>
+      </div>
+      <div class="ms-auto">
+        <div class="btn-group">
+          <a href="{{ route("add.course.lecture", ["id" => $clecture->course_id]) }}" class="px-5 btn btn-primary">
+            Back</a>
+        </div>
       </div>
     </div>
     <!--end breadcrumb-->
     <div class="card">
       <div class="p-4 card-body">
         <h5 class="mb-4">Edit Lecture</h5>
-        <form action="{{ route("store.category") }}" enctype="multipart/form-data" method="POST" id="myForm"
+        <form action="{{ route("update.course.lecture") }}" enctype="multipart/form-data" method="POST" id="myForm"
           class="row g-3">
           @csrf
+          <input type="hidden" name="id" value="{{ $clecture->id }}">
           <div class="col-md-6 form-group">
             <label for="input1" class="form-label">Lecture Title</label>
             <input type="text" class="form-control" id="input1" name="lecture_title"

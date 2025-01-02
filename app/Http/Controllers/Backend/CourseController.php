@@ -237,4 +237,18 @@ class CourseController extends Controller
     $clecture = CourseLecture::find($id);
     return view('instructor.courses.lecture.edit_course_lecture', compact('clecture'));
   }
+  public function UpdateCourseLecture(Request $request)
+  {
+    $id = $request->id;
+    CourseLecture::find($id)->update([
+      'lecture_title' => $request->lecture_title,
+      'url' => $request->url,
+      'content' => $request->content,
+    ]);
+    $notification = array(
+      'message' => 'Course Lecture Updated Successfully',
+      'alert-type' => 'success'
+    );
+    return redirect()->back()->with($notification);
+  }
 }

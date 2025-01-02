@@ -232,4 +232,9 @@ class CourseController extends Controller
     $lecture->save();
     return response()->json(['success' => 'Lecture Save Successfully']);
   }
+  public function EditLecture($id)
+  {
+    $clecture = CourseLecture::find($id);
+    return view('instructor.courses.lecture.edit_course_lecture', compact('clecture'));
+  }
 }

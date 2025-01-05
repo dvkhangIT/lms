@@ -30,7 +30,7 @@
           <div class="row">
             @foreach ($courses as $course)
               <div class="col-lg-4 responsive-column-half">
-                <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1">
+                <div class="card card-item card-preview" data-tooltip-content="#tooltip_content_1{{ $course->id }}">
                   <div class="card-image">
                     <a href="course-details.html" class="d-block">
                       <img class="card-img-top lazy" src="{{ asset($course->course_image) }}"
@@ -148,3 +148,51 @@
         @endforeach
       </div><!-- end card-content-wrapper -->
 </section>
+@php
+  $courseData = App\Models\Course::get();
+@endphp
+<!-- toltip templates -->
+@foreach ($courseData as $item)
+  <div class="tooltip_templates">
+    <div id="tooltip_content_1{{ $item->id }}">
+      <div class="card card-item">
+        <div class="card-body">
+          <p class="pb-2 card-text">By <a href="teacher-detail.html">{{ $item["user"]["name"] }}</a></p>
+          <h5 class="pb-1 card-title"><a href="course-details.html">{{ $item->course_name }}</a></h5>
+          <div class="pb-1 d-flex align-items-center">
+            @if ($item->bestseller == 1)
+              <h6 class="mr-2 ribbon fs-14">Bestseller</h6>
+            @else
+              <h6 class="mr-2 ribbon fs-14">New</h6>
+            @endif
+            <p class="text-success fs-14 font-weight-medium">Updated<span
+                class="pl-1 font-weight-bold">{{ $item->created_at->format("M d Y") }}</span></p>
+          </div>
+          <ul
+            class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
+            <li>{{ $item->duration }} total hours</li>
+            <li>{{ $item->label }}</li>
+          </ul>
+          <p class="pt-1 card-text fs-14 lh-22">{{ $item->prerequisites }}</p>
+          @php
+            $goals = App\Models\Course_goal::where("course_id", $item->id)
+                ->orderBy("id", "DESC")
+                ->get();
+          @endphp
+          <ul class="py-3 generic-list-item fs-14">
+            @foreach ($goals as $goal)
+              <li><i class="mr-1 text-black la la-check"></i> {{ $goal->goal_name }}</li>
+            @endforeach
+          </ul>
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="#" class="mr-3 btn theme-btn flex-grow-1"><i class="mr-1 la la-shopping-cart fs-18"></i>
+              Add
+              to Cart</a>
+            <div class="shadow-sm cursor-pointer icon-element icon-element-sm" title="Add to Wishlist"><i
+                class="la la-heart-o"></i></div>
+          </div>
+        </div>
+      </div><!-- end card -->
+    </div>
+  </div><!-- end tooltip_templates -->
+@endforeach

@@ -13,10 +13,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap"
       rel="stylesheet">
-
     <!-- Favicon -->
     <link rel="icon" sizes="16x16" href="{{ asset("frontend/images/favicon.png") }}">
-
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset("frontend/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("frontend/css/line-awesome.css") }}">
@@ -27,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset("frontend/css/tooltipster.bundle.css") }}">
     <link rel="stylesheet" href="{{ asset("frontend/css/style.css") }}">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" href="{{ asset("frontend/css/plyr.css") }}">
 
     <!-- end inject -->
   </head>
@@ -88,6 +87,10 @@
     <script src="{{ asset("frontend/js/jquery.lazy.min.js") }}"></script>
     <script src="{{ asset("frontend/js/main.js") }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="{{ asset("frontend/js/plyr.js") }}"></script>
+    <script>
+      var player = new Plyr('#player');
+    </script>
     <script>
       @if (Session::has("message"))
         var type = "{{ Session::get("alert-type", "info") }}"
@@ -110,9 +113,6 @@
         }
       @endif
     </script>
-
-
-
   </body>
 
 </html>

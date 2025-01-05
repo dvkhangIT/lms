@@ -223,8 +223,7 @@
               <nav class="main-menu">
                 <ul>
                   <li>
-                    <a href="#">Home </a>
-
+                    <a href="{{ url("/") }}">Home </a>
                   </li>
                   <li>
                     <a href="#">courses <i class="la la-angle-down fs-12"></i></a>
@@ -234,15 +233,12 @@
 
                     </ul>
                   </li>
-
                   <li>
                     <a href="#">blog </a>
 
                   </li>
                 </ul><!-- end ul -->
               </nav><!-- end main-menu -->
-
-
               <div class="mr-4 shop-cart">
                 <ul>
                   <li>

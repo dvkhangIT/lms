@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -103,3 +104,6 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('delete/lecture/{id}', 'DeleteLecture')->name('delete.lecture');
   });
 }); // End Instructor Group Middleware
+// Route acessable for all
+Route::get('course/details/{id}/{slug}', [IndexController::class, 'CourseDetails'])->name('');
+// End route acessable for all

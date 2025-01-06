@@ -231,190 +231,16 @@
               </div><!-- end curriculum-content -->
             </div><!-- end course-overview-card -->
             <div class="pt-4 course-overview-card">
-              <h3 class="pb-4 fs-24 font-weight-semi-bold">Students also bought
-              </h3>
-              <div class="view-more-carousel owl-action-styled">
-                <div
-                  class="border shadow-none card card-item card-item-list-layout border-gray">
-                  <div class="card-image">
-                    <a href="course-details.html" class="d-block">
-                      <img class="card-img-top" src="images/img8.jpg"
-                        alt="Card image cap">
-                    </a>
-                    <div class="course-badge-labels">
-                      <div class="course-badge">Bestseller</div>
-                      <div class="course-badge blue">-39%</div>
-                    </div>
-                  </div><!-- end card-image -->
-                  <div class="card-body">
-                    <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-                    <h5 class="card-title"><a href="course-details.html">The
-                        Business Intelligence
-                        Analyst Course
-                        2021</a></h5>
-                    <p class="card-text"><a href="teacher-detail.html">Jose
-                        Portilla</a></p>
-                    <div class="py-2 rating-wrap d-flex align-items-center">
-                      <div class="review-stars">
-                        <span class="rating-number">4.4</span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star-o"></span>
-                      </div>
-                      <span class="pl-1 rating-total">(20,230)</span>
-                    </div><!-- end rating-wrap -->
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <p class="text-black card-price font-weight-bold">12.99
-                        <span
-                          class="before-price font-weight-medium">129.99</span>
-                      </p>
-                      <div
-                        class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                        title="Add to Wishlist"><i class="la la-heart-o"></i>
-                      </div>
-                    </div>
-                  </div><!-- end card-body -->
-                </div><!-- end card -->
-                <div
-                  class="border shadow-none card card-item card-item-list-layout border-gray">
-                  <div class="card-image">
-                    <a href="course-details.html" class="d-block">
-                      <img class="card-img-top" src="images/img9.jpg"
-                        alt="Card image cap">
-                    </a>
-                    <div class="course-badge-labels">
-                      <div class="course-badge red">Featured</div>
-                    </div>
-                  </div><!-- end card-image -->
-                  <div class="card-body">
-                    <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-                    <h5 class="card-title"><a href="course-details.html">The
-                        Business Intelligence
-                        Analyst Course
-                        2021</a></h5>
-                    <p class="card-text"><a href="teacher-detail.html">Jose
-                        Portilla</a></p>
-                    <div class="py-2 rating-wrap d-flex align-items-center">
-                      <div class="review-stars">
-                        <span class="rating-number">4.4</span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star-o"></span>
-                      </div>
-                      <span class="pl-1 rating-total">(20,230)</span>
-                    </div><!-- end rating-wrap -->
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <p class="text-black card-price font-weight-bold">129.99
-                      </p>
-                      <div
-                        class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                        title="Add to Wishlist"><i class="la la-heart-o"></i>
-                      </div>
-                    </div>
-                  </div><!-- end card-body -->
-                </div><!-- end card -->
-                <div
-                  class="border shadow-none card card-item card-item-list-layout border-gray">
-                  <div class="card-image">
-                    <a href="course-details.html" class="d-block">
-                      <img class="card-img-top" src="images/img8.jpg"
-                        alt="Card image cap">
-                    </a>
-                    <div class="course-badge-labels">
-                      <div class="course-badge">Bestseller</div>
-                      <div class="course-badge blue">-39%</div>
-                    </div>
-                  </div><!-- end card-image -->
-                  <div class="card-body">
-                    <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-                    <h5 class="card-title"><a href="course-details.html">The
-                        Business Intelligence
-                        Analyst Course
-                        2021</a></h5>
-                    <p class="card-text"><a href="teacher-detail.html">Jose
-                        Portilla</a></p>
-                    <div class="py-2 rating-wrap d-flex align-items-center">
-                      <div class="review-stars">
-                        <span class="rating-number">4.4</span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star-o"></span>
-                      </div>
-                      <span class="pl-1 rating-total">(20,230)</span>
-                    </div><!-- end rating-wrap -->
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <p class="text-black card-price font-weight-bold">12.99
-                        <span
-                          class="before-price font-weight-medium">129.99</span>
-                      </p>
-                      <div
-                        class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                        title="Add to Wishlist"><i class="la la-heart-o"></i>
-                      </div>
-                    </div>
-                  </div><!-- end card-body -->
-                </div><!-- end card -->
-                <div
-                  class="border shadow-none card card-item card-item-list-layout border-gray">
-                  <div class="card-image">
-                    <a href="course-details.html" class="d-block">
-                      <img class="card-img-top" src="images/img9.jpg"
-                        alt="Card image cap">
-                    </a>
-                    <div class="course-badge-labels">
-                      <div class="course-badge red">Featured</div>
-                    </div>
-                  </div><!-- end card-image -->
-                  <div class="card-body">
-                    <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-                    <h5 class="card-title"><a href="course-details.html">The
-                        Business Intelligence
-                        Analyst Course
-                        2021</a></h5>
-                    <p class="card-text"><a href="teacher-detail.html">Jose
-                        Portilla</a></p>
-                    <div class="py-2 rating-wrap d-flex align-items-center">
-                      <div class="review-stars">
-                        <span class="rating-number">4.4</span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star-o"></span>
-                      </div>
-                      <span class="pl-1 rating-total">(20,230)</span>
-                    </div><!-- end rating-wrap -->
-                    <div
-                      class="d-flex justify-content-between align-items-center">
-                      <p class="text-black card-price font-weight-bold">129.99
-                      </p>
-                      <div
-                        class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                        title="Add to Wishlist"><i class="la la-heart-o"></i>
-                      </div>
-                    </div>
-                  </div><!-- end card-body -->
-                </div><!-- end card -->
-              </div><!-- end view-more-carousel -->
-            </div><!-- end course-overview-card -->
-            <div class="pt-4 course-overview-card">
               <h3 class="pb-4 fs-24 font-weight-semi-bold">About the instructor
               </h3>
               <div class="instructor-wrap">
                 <div class="media media-card">
                   <div class="instructor-img">
                     <a href="teacher-detail.html" class="media-img d-block">
-                      <img class="lazy" src="images/img-loading.png"
-                        data-src="images/small-avatar-1.jpg" alt="Avatar image">
+                      <img class="lazy"
+                        src="{{ !empty($course->user->photo) ? url("upload/instructor_images/" . $course->user->photo) : url("upload/no_image.jpg") }}"
+                        data-src="{{ !empty($course->user->photo) ? url("upload/instructor_images/" . $course->user->photo) : url("upload/no_image.jpg") }}"
+                        alt="Avatar image">
                     </a>
                     <ul class="pt-3 generic-list-item">
                       <li><i class="mr-2 la la-star text-color-3"></i> 4.6
@@ -429,12 +255,13 @@
                     </ul>
                   </div><!-- end instructor-img -->
                   <div class="media-body">
-                    <h5><a href="teacher-detail.html">Tim Buchalka</a></h5>
-                    <span class="pt-2 pb-3 d-block lh-18">Joined 4 years
-                      ago</span>
-                    <p class="pb-3 text-black lh-18">Java Python Android and C#
-                      Expert Developer -
-                      878K+ students</p>
+                    <h5><a
+                        href="teacher-detail.html">{{ $course["user"]["name"] }}</a>
+                    </h5>
+                    <span class="pt-2 pb-3 d-block lh-18">Joined
+                      {{ Carbon\Carbon::parse($course->user->created_at)->diffForHumans() }}</span>
+                    <p class="pb-3 text-black lh-18">
+                      {{ $course["user"]["email"] }}</p>
                     <p class="pb-3">Lorem Ipsum is simply dummy text of the
                       printing and typesetting
                       industry. Lorem

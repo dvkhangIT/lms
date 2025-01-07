@@ -581,9 +581,9 @@
                 <div class="preview-course-video">
                   <a href="javascript:void(0)" data-toggle="modal"
                     data-target="#previewModal">
-                    <img src="images/img-loading.png"
-                      data-src="images/preview-img.jpg" alt="course-img"
-                      class="rounded w-100 lazy">
+                    <img src="{{ asset($course->course_image) }}"
+                      data-src="{{ asset($course->course_image) }}"
+                      alt="course-img" class="rounded w-100 lazy">
                     <div class="preview-course-video-content">
                       <div class="overlay"></div>
                       <div class="play-button">
@@ -615,12 +615,23 @@
                     </div>
                   </a>
                 </div><!-- end preview-course-video -->
+                @php
+                  $amount = $course->selling_price - $course->discount_price;
+                  $discount = ($amount / $course->selling_price) * 100;
+                @endphp
                 <div class="preview-course-feature-content pt-40px">
                   <p class="pb-2 d-flex align-items-center">
-                    <span
-                      class="text-black fs-35 font-weight-semi-bold">$76.99</span>
-                    <span class="mx-1 before-price">$104.99</span>
-                    <span class="price-discount">24% off</span>
+                    @if ($course->discount_price == null)
+                      <span
+                        class="text-black fs-35 font-weight-semi-bold">${{ $course->selling_price }}</span>
+                    @else
+                      <span
+                        class="text-black fs-35 font-weight-semi-bold">${{ $course->discount_price }}</span>
+                      <span
+                        class="mx-1 before-price">${{ $course->selling_price }}</span>
+                      <span class="price-discount">{{ round($discount) }}%
+                        off</span>
+                    @endif
                   </p>
                   <p class="preview-price-discount-text pb-35px">
                     <span class="text-color-3">4 days</span> left at this price!
@@ -639,10 +650,13 @@
                   <div class="preview-course-incentives">
                     <h3 class="pb-2 card-title fs-18">This course includes</h3>
                     <ul class="pb-3 generic-list-item">
-                      <li><i class="mr-2 la la-play-circle-o text-color"></i>2.5
+                      <li><i
+                          class="mr-2 la la-play-circle-o text-color"></i>{{ $course->duration }}
                         hours on-demand video
                       </li>
-                      <li><i class="mr-2 la la-file text-color"></i>34 articles
+                      <li><i
+                          class="mr-2 la la-file text-color"></i>{{ $course->resources }}
+                        articles
                       </li>
                       <li><i class="mr-2 la la-file-text text-color"></i>12
                         downloadable resources
@@ -682,17 +696,17 @@
                   <li class="d-flex align-items-center justify-content-between">
                     <span><i
                         class="mr-2 la la-clock text-color"></i>Duration</span>
-                    2.5 hours
+                    {{ $course->duration }} hours
                   </li>
                   <li class="d-flex align-items-center justify-content-between">
                     <span><i
                         class="mr-2 la la-play-circle-o text-color"></i>Lectures</span>
-                    17
+                    {{ $course->duration }}
                   </li>
                   <li class="d-flex align-items-center justify-content-between">
                     <span><i
                         class="mr-2 la la-file-text-o text-color"></i>Resources</span>
-                    12
+                    {{ $course->resources }}
                   </li>
                   <li class="d-flex align-items-center justify-content-between">
                     <span><i
@@ -709,7 +723,7 @@
                   </li>
                   <li class="d-flex align-items-center justify-content-between">
                     <span><i class="mr-2 la la-lightbulb text-color"></i>Skill
-                      level</span> All levels
+                      {{ $course->label }}</span> All levels
                   </li>
                   <li class="d-flex align-items-center justify-content-between">
                     <span><i
@@ -719,7 +733,7 @@
                   <li class="d-flex align-items-center justify-content-between">
                     <span><i
                         class="mr-2 la la-certificate text-color"></i>Certificate</span>
-                    Yes
+                    {{ $course->certificate }}
                   </li>
                 </ul>
               </div>
@@ -994,9 +1008,7 @@
           <div class="pr-2">
             <p class="pb-2 font-weight-semi-bold">Course Preview</p>
             <h5 class="modal-title fs-19 font-weight-semi-bold lh-24"
-              id="previewModalTitle">Java
-              Programming
-              Masterclass for Software Developers</h5>
+              id="previewModalTitle">{{ $course->course_name }}</h5>
           </div>
           <button type="button" class="close" data-dismiss="modal"
             aria-label="Close">
@@ -1005,18 +1017,9 @@
         </div><!-- end modal-header -->
         <div class="modal-body">
           <video controls crossorigin playsinline
-            poster="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg"
-            id="player">
+            poster="{{ asset($course->course_image) }}" id="player">
             <!-- Video files -->
-            <source
-              src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4"
-              type="video/mp4" />
-            <source
-              src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4"
-              type="video/mp4" />
-            <source
-              src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4"
-              type="video/mp4" />
+            <source src="{{ asset($course->video) }}" type="video/mp4" />
           </video>
         </div><!-- end modal-body -->
       </div><!-- end modal-content -->

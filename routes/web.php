@@ -105,5 +105,6 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
   });
 }); // End Instructor Group Middleware
 // Route acessable for all
-Route::get('course/details/{id}/{slug}', [IndexController::class, 'CourseDetails'])->name('');
+Route::get('course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);
+Route::get('category/{id}/{slug}', [IndexController::class, 'CategoryCourse']);
 // End route acessable for all

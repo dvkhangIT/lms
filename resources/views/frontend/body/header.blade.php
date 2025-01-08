@@ -140,7 +140,8 @@
                               ->get();
                         @endphp
                         <li>
-                          <a href="course-grid.html">{{ $cat->category_name }}
+                          <a
+                            href="{{ url("category/" . $cat->id . "/" . $cat->category_slug) }}">{{ $cat->category_name }}
                             <i class="la la-angle-right"></i></a>
                           <ul class="sub-menu">
                             @foreach ($subCategories as $subcat)

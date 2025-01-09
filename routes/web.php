@@ -108,4 +108,5 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
 Route::get('course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);
 Route::get('category/{id}/{slug}', [IndexController::class, 'CategoryCourse']);
 Route::get('subcategory/{id}/{slug}', [IndexController::class, 'SubCategoryCourse']);
+Route::get('instructor/details/{id}', [IndexController::class, 'InStructorDetails'])->name('instructor.details');
 // End route acessable for all

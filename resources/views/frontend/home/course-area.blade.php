@@ -77,7 +77,7 @@
                         href="{{ url("course/details/" . $course->id . "/" . $course->course_name_slug) }}">{{ $course->course_name }}</a>
                     </h5>
                     <p class="card-text"><a
-                        href="teacher-detail.html">{{ $course["user"]["name"] }}</a>
+                        href="{{ route("instructor.details", $course->instructor_id) }}">{{ $course["user"]["name"] }}</a>
                     </p>
                     <div class="py-2 rating-wrap d-flex align-items-center">
                       <div class="review-stars">
@@ -146,7 +146,7 @@
                           href="course-details.html">{{ $course->course_name }}</a>
                       </h5>
                       <p class="card-text"><a
-                          href="teacher-detail.html">{{ $course["user"]["name"] }}</a>
+                          href="{{ route("instructor.details", $course->instructor_id) }}">{{ $course["user"]["name"] }}</a>
                       </p>
                       <div class="py-2 rating-wrap d-flex align-items-center">
                         <div class="review-stars">
@@ -201,7 +201,8 @@
       <div class="card card-item">
         <div class="card-body">
           <p class="pb-2 card-text">By <a
-              href="teacher-detail.html">{{ $item["user"]["name"] }}</a></p>
+              href="{{ route("instructor.details", $course->instructor_id) }}">{{ $item["user"]["name"] }}</a>
+          </p>
           <h5 class="pb-1 card-title"><a
               href="{{ url("course/details/" . $item->id . "/" . $item->course_name_slug) }}">{{ $item->course_name }}</a>
           </h5>

@@ -5,13 +5,15 @@
       <div class="breadcrumb-content">
         <div class="pb-4 media media-card align-items-center">
           <div class="rounded-full media-img media--img media-img-md">
-            <img class="rounded-full" src="images/small-avatar-1.jpg"
+            <img class="rounded-full"
+              src="{{ !empty($instructor->photo) ? url("upload/instructor_images/" . $instructor->photo) : url("upload/no_image.jpg") }}"
               alt="Student thumbnail image">
           </div>
           <div class="media-body">
-            <h2 class="section__title fs-30">Tim Buchalka</h2>
-            <span class="pt-1 pb-2 d-block lh-18">Joined 4 years ago</span>
-            <p class="lh-18">Web Developer, Designer, and Teacher</p>
+            <h2 class="section__title fs-30">{{ $instructor->name }}</h2>
+            <span
+              class="pt-1 pb-2 d-block lh-18">{{ Carbon\Carbon::parse($instructor->created_at)->diffForHumans() }}</span>
+            <p class="lh-18">{{ $instructor->email }}</p>
           </div>
         </div><!-- end media -->
         <ul class="social-icons social-icons-styled social--icons-styled">
@@ -70,7 +72,8 @@
                     d="M160 170.667c-17.646 0-32 14.354-32 32s14.354 32 32 32 32-14.354 32-32-14.354-32-32-32m0 42.666c-5.875 0-10.667-4.781-10.667-10.667 0-5.885 4.792-10.667 10.667-10.667s10.667 4.781 10.667 10.667-4.792 10.667-10.667 10.667m0 64c-17.646 0-32 14.354-32 32s14.354 32 32 32 32-14.354 32-32c0-17.645-14.354-32-32-32M160 320c-5.875 0-10.667-4.781-10.667-10.667 0-5.885 4.792-10.667 10.667-10.667s10.667 4.781 10.667 10.667S165.875 320 160 320m0 64c-17.646 0-32 14.354-32 32s14.354 32 32 32 32-14.354 32-32-14.354-32-32-32m0 42.667c-5.875 0-10.667-4.781-10.667-10.667 0-5.885 4.792-10.667 10.667-10.667s10.667 4.781 10.667 10.667c0 5.885-4.792 10.667-10.667 10.667M373.333 192h-128a10.66 10.66 0 0 0-10.667 10.667 10.66 10.66 0 0 0 10.667 10.667h128A10.66 10.66 0 0 0 384 202.667 10.66 10.66 0 0 0 373.333 192m0 106.667h-128a10.66 10.66 0 0 0-10.667 10.667 10.66 10.66 0 0 0 10.667 10.667h128A10.66 10.66 0 0 0 384 309.334a10.66 10.66 0 0 0-10.667-10.667m0 106.666h-128A10.66 10.66 0 0 0 234.666 416a10.66 10.66 0 0 0 10.667 10.667h128A10.66 10.66 0 0 0 384 416a10.66 10.66 0 0 0-10.667-10.667" />
                 </svg>
               </div>
-              <h4 class="counter__title counter text-color-4 fs-35">24</h4>
+              <h4 class="counter__title counter text-color-4 fs-35">
+                {{ count($courses) }}</h4>
               <p class="counter__meta">Courses</p>
             </div><!-- end counter-item -->
           </div><!-- end col-lg-4 -->
@@ -195,234 +198,82 @@
     <div class="container">
       <div class="pb-3 d-flex align-items-center justify-content-between">
         <h3 class="fs-24 font-weight-semi-bold">My courses</h3>
-        <span class="ribbon ribbon-lg">24</span>
+        <span class="ribbon ribbon-lg">{{ count($courses) }}</span>
       </div>
       <div class="divider"><span></span></div>
       <div class="row pt-30px">
-        <div class="col-lg-4 responsive-column-half">
-          <div class="card card-item card-preview"
-            data-tooltip-content="#tooltip_content_1">
-            <div class="card-image">
-              <a href="course-details.html" class="d-block">
-                <img class="card-img-top lazy" src="images/img-loading.png"
-                  data-src="images/img8.jpg" alt="Card image cap">
-              </a>
-              <div class="course-badge-labels">
-                <div class="course-badge">Bestseller</div>
-                <div class="course-badge blue">-39%</div>
-              </div>
-            </div><!-- end card-image -->
-            <div class="card-body">
-              <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-              <h5 class="card-title"><a href="course-details.html">The Business
-                  Intelligence Analyst Course 2021</a></h5>
-              <p class="card-text"><a href="teacher-detail.html">Jose
-                  Portilla</a></p>
-              <div class="py-2 rating-wrap d-flex align-items-center">
-                <div class="review-stars">
-                  <span class="rating-number">4.4</span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star-o"></span>
+        @foreach ($courses as $course)
+          <div class="col-lg-4 responsive-column-half">
+            <div class="card card-item card-preview"
+              data-tooltip-content="#tooltip_content_1{{ $course->id }}">
+              <div class="card-image">
+                <a href="{{ url("course/details/" . $course->id . "/" . $course->course_name_slug) }}"
+                  class="d-block">
+                  <img class="card-img-top lazy"
+                    src="{{ asset($course->course_image) }}"
+                    data-src="{{ asset($course->course_image) }}"
+                    alt="Card image cap">
+                </a>
+                @php
+                  $amount = $course->selling_price - $course->discount_price;
+                  $discount = ($amount / $course->selling_price) * 100;
+                @endphp
+                <div class="course-badge-labels">
+                  @if ($course->bestseller == 1)
+                    <div class="course-badge">Bestseller</div>
+                  @else
+                  @endif
+                  @if ($course->highestrated == 1)
+                    <div class="course-badge sky-blue">Highest Rated</div>
+                  @else
+                  @endif
+                  @if ($course->discount_price == null)
+                    <div class="course-badge blue">New</div>
+                  @else
+                    <div class="course-badge blue">{{ round($discount) }}%
+                    </div>
+                  @endif
                 </div>
-                <span class="pl-1 rating-total">(20,230)</span>
-              </div><!-- end rating-wrap -->
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="text-black card-price font-weight-bold">12.99 <span
-                    class="before-price font-weight-medium">129.99</span></p>
-                <div
-                  class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                  title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-              </div>
-            </div><!-- end card-body -->
-          </div><!-- end card -->
-        </div><!-- end col-lg-4 -->
-        <div class="col-lg-4 responsive-column-half">
-          <div class="card card-item card-preview"
-            data-tooltip-content="#tooltip_content_1">
-            <div class="card-image">
-              <a href="course-details.html" class="d-block">
-                <img class="card-img-top lazy" src="images/img-loading.png"
-                  data-src="images/img9.jpg" alt="Card image cap">
-              </a>
-              <div class="course-badge-labels">
-                <div class="course-badge red">Featured</div>
-              </div>
-            </div><!-- end card-image -->
-            <div class="card-body">
-              <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-              <h5 class="card-title"><a href="course-details.html">The Business
-                  Intelligence Analyst Course 2021</a></h5>
-              <p class="card-text"><a href="teacher-detail.html">Jose
-                  Portilla</a></p>
-              <div class="py-2 rating-wrap d-flex align-items-center">
-                <div class="review-stars">
-                  <span class="rating-number">4.4</span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star-o"></span>
+              </div><!-- end card-image -->
+              <div class="card-body">
+                <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">
+                  {{ $course->label }}</h6>
+                <h5 class="card-title"><a
+                    href="{{ url("course/details/" . $course->id . "/" . $course->course_name_slug) }}">{{ $course->course_name }}</a>
+                </h5>
+                <p class="card-text"><a
+                    href="{{ route("instructor.details", $course->instructor_id) }}">{{ $course["user"]["name"] }}</a>
+                </p>
+                <div class="py-2 rating-wrap d-flex align-items-center">
+                  <div class="review-stars">
+                    <span class="rating-number">4.4</span>
+                    <span class="la la-star"></span>
+                    <span class="la la-star"></span>
+                    <span class="la la-star"></span>
+                    <span class="la la-star"></span>
+                    <span class="la la-star-o"></span>
+                  </div>
+                  <span class="pl-1 rating-total">(20,230)</span>
+                </div><!-- end rating-wrap -->
+                <div class="d-flex justify-content-between align-items-center">
+                  @if ($course->discount_price == null)
+                    <p class="text-black card-price font-weight-bold">
+                      ${{ $course->selling_price }}</p>
+                  @else
+                    <p class="text-black card-price font-weight-bold">
+                      ${{ $course->discount_price }} <span
+                        class="before-price font-weight-medium">${{ $course->selling_price }}</span>
+                    </p>
+                  @endif
+                  <div
+                    class="shadow-sm cursor-pointer icon-element icon-element-sm"
+                    title="Add to Wishlist"><i class="la la-heart-o"></i>
+                  </div>
                 </div>
-                <span class="pl-1 rating-total">(20,230)</span>
-              </div><!-- end rating-wrap -->
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="text-black card-price font-weight-bold">129.99</p>
-                <div
-                  class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                  title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-              </div>
-            </div><!-- end card-body -->
-          </div><!-- end card -->
-        </div><!-- end col-lg-4 -->
-        <div class="col-lg-4 responsive-column-half">
-          <div class="card card-item card-preview"
-            data-tooltip-content="#tooltip_content_1">
-            <div class="card-image">
-              <a href="course-details.html" class="d-block">
-                <img class="card-img-top lazy" src="images/img-loading.png"
-                  data-src="images/img10.jpg" alt="Card image cap">
-              </a>
-            </div><!-- end card-image -->
-            <div class="card-body">
-              <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-              <h5 class="card-title"><a href="course-details.html">The Business
-                  Intelligence Analyst Course 2021</a></h5>
-              <p class="card-text"><a href="teacher-detail.html">Jose
-                  Portilla</a></p>
-              <div class="py-2 rating-wrap d-flex align-items-center">
-                <div class="review-stars">
-                  <span class="rating-number">4.4</span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star-o"></span>
-                </div>
-                <span class="pl-1 rating-total">(20,230)</span>
-              </div><!-- end rating-wrap -->
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="text-black card-price font-weight-bold">129.99</p>
-                <div
-                  class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                  title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-              </div>
-            </div><!-- end card-body -->
-          </div><!-- end card -->
-        </div><!-- end col-lg-4 -->
-        <div class="col-lg-4 responsive-column-half">
-          <div class="card card-item card-preview"
-            data-tooltip-content="#tooltip_content_1">
-            <div class="card-image">
-              <a href="course-details.html" class="d-block">
-                <img class="card-img-top lazy" src="images/img-loading.png"
-                  data-src="images/img11.jpg" alt="Card image cap">
-              </a>
-            </div><!-- end card-image -->
-            <div class="card-body">
-              <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-              <h5 class="card-title"><a href="course-details.html">The Business
-                  Intelligence Analyst Course 2021</a></h5>
-              <p class="card-text"><a href="teacher-detail.html">Jose
-                  Portilla</a></p>
-              <div class="py-2 rating-wrap d-flex align-items-center">
-                <div class="review-stars">
-                  <span class="rating-number">4.4</span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star-o"></span>
-                </div>
-                <span class="pl-1 rating-total">(20,230)</span>
-              </div><!-- end rating-wrap -->
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="text-black card-price font-weight-bold">129.99</p>
-                <div
-                  class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                  title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-              </div>
-            </div><!-- end card-body -->
-          </div><!-- end card -->
-        </div><!-- end col-lg-4 -->
-        <div class="col-lg-4 responsive-column-half">
-          <div class="card card-item card-preview"
-            data-tooltip-content="#tooltip_content_1">
-            <div class="card-image">
-              <a href="course-details.html" class="d-block">
-                <img class="card-img-top lazy" src="images/img-loading.png"
-                  data-src="images/img12.jpg" alt="Card image cap">
-              </a>
-              <div class="course-badge-labels">
-                <div class="course-badge green">Free</div>
-              </div>
-            </div><!-- end card-image -->
-            <div class="card-body">
-              <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-              <h5 class="card-title"><a href="course-details.html">The Business
-                  Intelligence Analyst Course 2021</a></h5>
-              <p class="card-text"><a href="teacher-detail.html">Jose
-                  Portilla</a></p>
-              <div class="py-2 rating-wrap d-flex align-items-center">
-                <div class="review-stars">
-                  <span class="rating-number">4.4</span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star-o"></span>
-                </div>
-                <span class="pl-1 rating-total">(20,230)</span>
-              </div><!-- end rating-wrap -->
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="text-black card-price font-weight-bold">Free</p>
-                <div
-                  class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                  title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-              </div>
-            </div><!-- end card-body -->
-          </div><!-- end card -->
-        </div><!-- end col-lg-4 -->
-        <div class="col-lg-4 responsive-column-half">
-          <div class="card card-item card-preview"
-            data-tooltip-content="#tooltip_content_1">
-            <div class="card-image">
-              <a href="course-details.html" class="d-block">
-                <img class="card-img-top lazy" src="images/img-loading.png"
-                  data-src="images/img13.jpg" alt="Card image cap">
-              </a>
-              <div class="course-badge-labels">
-                <div class="course-badge sky-blue">Highest rated</div>
-              </div>
-            </div><!-- end card-image -->
-            <div class="card-body">
-              <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">All Levels</h6>
-              <h5 class="card-title"><a href="course-details.html">The Business
-                  Intelligence Analyst Course 2021</a></h5>
-              <p class="card-text"><a href="teacher-detail.html">Jose
-                  Portilla</a></p>
-              <div class="py-2 rating-wrap d-flex align-items-center">
-                <div class="review-stars">
-                  <span class="rating-number">4.4</span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star"></span>
-                  <span class="la la-star-o"></span>
-                </div>
-                <span class="pl-1 rating-total">(20,230)</span>
-              </div><!-- end rating-wrap -->
-              <div class="d-flex justify-content-between align-items-center">
-                <p class="text-black card-price font-weight-bold">129.99</p>
-                <div
-                  class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                  title="Add to Wishlist"><i class="la la-heart-o"></i></div>
-              </div>
-            </div><!-- end card-body -->
-          </div><!-- end card -->
-        </div><!-- end col-lg-4 -->
+              </div><!-- end card-body -->
+            </div><!-- end card -->
+          </div><!-- end col-lg-4 -->
+        @endforeach
       </div><!-- end row -->
       <div class="pt-3 text-center">
         <nav aria-label="Page navigation example" class="pagination-box">
@@ -452,4 +303,59 @@
       </div>
     </div><!-- end container -->
   </section><!-- end courses-area -->
+  @php
+    $courseData = App\Models\Course::get();
+  @endphp
+  <!-- toltip templates -->
+  @foreach ($courseData as $item)
+    <div class="tooltip_templates">
+      <div id="tooltip_content_1{{ $item->id }}">
+        <div class="card card-item">
+          <div class="card-body">
+            <p class="pb-2 card-text">By <a
+                href="{{ route("instructor.details", $course->instructor_id) }}">{{ $item["user"]["name"] }}</a>
+            </p>
+            <h5 class="pb-1 card-title"><a
+                href="{{ url("course/details/" . $item->id . "/" . $item->course_name_slug) }}">{{ $item->course_name }}</a>
+            </h5>
+            <div class="pb-1 d-flex align-items-center">
+              @if ($item->bestseller == 1)
+                <h6 class="mr-2 ribbon fs-14">Bestseller</h6>
+              @else
+                <h6 class="mr-2 ribbon fs-14">New</h6>
+              @endif
+              <p class="text-success fs-14 font-weight-medium">Updated<span
+                  class="pl-1 font-weight-bold">{{ $item->created_at->format("M d Y") }}</span>
+              </p>
+            </div>
+            <ul
+              class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14">
+              <li>{{ $item->duration }} total hours</li>
+              <li>{{ $item->label }}</li>
+            </ul>
+            <p class="pt-1 card-text fs-14 lh-22">{{ $item->prerequisites }}</p>
+            @php
+              $goals = App\Models\Course_goal::where("course_id", $item->id)
+                  ->orderBy("id", "DESC")
+                  ->get();
+            @endphp
+            <ul class="py-3 generic-list-item fs-14">
+              @foreach ($goals as $goal)
+                <li><i class="mr-1 text-black la la-check"></i>
+                  {{ $goal->goal_name }}</li>
+              @endforeach
+            </ul>
+            <div class="d-flex justify-content-between align-items-center">
+              <a href="#" class="mr-3 btn theme-btn flex-grow-1"><i
+                  class="mr-1 la la-shopping-cart fs-18"></i>
+                Add
+                to Cart</a>
+              <div class="shadow-sm cursor-pointer icon-element icon-element-sm"
+                title="Add to Wishlist"><i class="la la-heart-o"></i></div>
+            </div>
+          </div>
+        </div><!-- end card -->
+      </div>
+    </div><!-- end tooltip_templates -->
+  @endforeach
 @endsection

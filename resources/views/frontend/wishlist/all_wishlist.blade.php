@@ -6,7 +6,6 @@
       <h3 class="fs-22 font-weight-semi-bold">My Bookmarks</h3>
     </div>
     <div class="row">
-
       <div class="col-lg-4 responsive-column-half">
         <div class="card card-item">
           <div class="card-image">
@@ -46,7 +45,6 @@
           </div><!-- end card-body -->
         </div><!-- end card -->
       </div><!-- end col-lg-4 -->
-
     </div><!-- end row -->
     <div class="text-center py-3">
       <nav aria-label="Page navigation example" class="pagination-box">

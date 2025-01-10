@@ -39,3 +39,18 @@
   }
 </script>
 {{-- end wishlist add option --}}
+
+{{-- start load wishlist data --}}
+<script>
+  function wishlist() {
+    $.ajax({
+      type: "get",
+      url: "/get-wishlist-course/",
+      dataType: "json",
+      success: function(response) {
+
+      }
+    });
+  }
+</script>
+{{-- end load wishlist data --}}

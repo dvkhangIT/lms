@@ -240,7 +240,8 @@
                 class="mr-1 la la-shopping-cart fs-18"></i>
               Add
               to Cart</a>
-            <div class="shadow-sm cursor-pointer icon-element icon-element-sm"
+            <div id="{{ $item->id }}" onclick="addToWishList(this.id)"
+              class="shadow-sm cursor-pointer icon-element icon-element-sm"
               title="Add to Wishlist"><i class="la la-heart-o"></i></div>
           </div>
         </div>

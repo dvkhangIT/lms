@@ -37,14 +37,14 @@
 
   <body>
     <!-- start cssload-loader -->
-    <div class="preloader">
+    {{-- <div class="preloader">
       <div class="loader">
         <svg class="spinner" viewBox="0 0 50 50">
           <circle class="path" cx="25" cy="25" r="20"
             fill="none" stroke-width="5"></circle>
         </svg>
       </div>
-    </div>
+    </div> --}}
     @include("frontend.body.header")
     @yield("home")
     @include("frontend.body.footer")
@@ -93,6 +93,7 @@
         }
       @endif
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     @include("frontend.body.script")
   </body>
 

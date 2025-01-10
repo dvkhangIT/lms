@@ -11,7 +11,8 @@
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap"
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap"
       rel="stylesheet">
 
     <!-- Favicon -->
@@ -20,12 +21,16 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset("frontend/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("frontend/css/line-awesome.css") }}">
-    <link rel="stylesheet" href="{{ asset("frontend/css/owl.carousel.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("frontend/css/owl.theme.default.mi") }}n.css">
-    <link rel="stylesheet" href="{{ asset("frontend/css/bootstrap-select.min.css") }}">
+    <link rel="stylesheet"
+      href="{{ asset("frontend/css/owl.carousel.min.css") }}">
+    <link rel="stylesheet"
+      href="{{ asset("frontend/css/owl.theme.default.mi") }}n.css">
+    <link rel="stylesheet"
+      href="{{ asset("frontend/css/bootstrap-select.min.css") }}">
     <link rel="stylesheet" href="{{ asset("frontend/css/fancybox.css") }}">
     <link rel="stylesheet" href="{{ asset("frontend/css/style.css") }}">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <!-- end inject -->
   </head>
@@ -33,13 +38,13 @@
   <body>
 
     <!-- start cssload-loader -->
-    <div class="preloader">
+    {{-- <div class="preloader">
       <div class="loader">
         <svg class="spinner" viewBox="0 0 50 50">
           <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
         </svg>
       </div>
-    </div>
+    </div> --}}
     <!-- end cssload-loader -->
 
     <!--======================================
@@ -68,18 +73,21 @@
     <!-- end scroll top -->
 
     <!-- Modal -->
-    <div class="modal fade modal-container" id="deleteModal" tabindex="-1" role="dialog"
-      aria-labelledby="deleteModalTitle" aria-hidden="true">
+    <div class="modal fade modal-container" id="deleteModal" tabindex="-1"
+      role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="text-center modal-body">
             <span class="la la-exclamation-circle fs-60 text-warning"></span>
-            <h4 class="pt-2 pb-1 modal-title fs-19 font-weight-semi-bold" id="deleteModalTitle">Your account will be
+            <h4 class="pt-2 pb-1 modal-title fs-19 font-weight-semi-bold"
+              id="deleteModalTitle">Your account will be
               deleted permanently!</h4>
             <p>Are you sure you want to delete your account?</p>
             <div class="pt-4 btn-box">
-              <button type="button" class="mr-3 btn font-weight-medium" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn theme-btn theme-btn-sm lh-30">Ok, Delete</button>
+              <button type="button" class="mr-3 btn font-weight-medium"
+                data-dismiss="modal">Cancel</button>
+              <button type="submit"
+                class="btn theme-btn theme-btn-sm lh-30">Ok, Delete</button>
             </div>
           </div><!-- end modal-body -->
         </div><!-- end modal-content -->
@@ -103,7 +111,9 @@
     <script src="{{ asset("frontend/js/animated-skills.js") }}"></script>
     <script src="{{ asset("frontend/js/jquery.MultiFile.min.js") }}"></script>
     <script src="{{ asset("frontend/js/main.js") }}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+    </script>
 
     <script>
       @if (Session::has("message"))

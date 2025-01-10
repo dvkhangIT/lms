@@ -101,9 +101,11 @@
                             class="before-price font-weight-medium">${{ $course->selling_price }}</span>
                         </p>
                       @endif
-                      <div
+                      <div id="{{ $course->id }}"
                         class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                        title="Add to Wishlist"><i class="la la-heart-o"></i>
+                        title="Add to Wishlist"
+                        onclick="addToWishList(this.id)"><i
+                          class="la la-heart-o"></i>
                       </div>
                     </div>
                   </div><!-- end card-body -->
@@ -170,10 +172,9 @@
                               class="before-price font-weight-medium">${{ $course->selling_price }}</span>
                           </p>
                         @endif
-                        <div id="{{ $course->id }}"
+                        <div
                           class="shadow-sm cursor-pointer icon-element icon-element-sm"
-                          title="Add to Wishlist"
-                          onclick="addToWishList(this.id)"><i
+                          title="Add to Wishlist"><i
                             class="la la-heart-o"></i></div>
                       </div>
                     </div><!-- end card-body -->

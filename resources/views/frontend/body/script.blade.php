@@ -118,3 +118,11 @@
   }
 </script>
 {{-- end wishlist remove --}}
+
+{{-- start add to cart --}}
+<script>
+  function addToCart(courseId, courseName, instructorId, slug) {
+
+  }
+</script>
+{{-- end add to cart --}}

@@ -38,40 +38,23 @@
   <body>
 
     <!-- start cssload-loader -->
-    {{-- <div class="preloader">
+    <div class="preloader">
       <div class="loader">
         <svg class="spinner" viewBox="0 0 50 50">
-          <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+          <circle class="path" cx="25" cy="25" r="20"
+            fill="none" stroke-width="5"></circle>
         </svg>
       </div>
-    </div> --}}
-    <!-- end cssload-loader -->
-
-    <!--======================================
-        START HEADER AREA
-    ======================================-->
+    </div>
     @include("frontend.dashboard.body.header")
-    <!--======================================
-        END HEADER AREA
-======================================-->
-
-    <!-- ================================
-    START DASHBOARD AREA
-================================= -->
     <section class="dashboard-area">
       @include("frontend.dashboard.body.sidebar")
-      <!-- end dashboard-content-wrap -->
-    </section><!-- end dashboard-area -->
-    <!-- ================================
-    END DASHBOARD AREA
-================================= -->
-
+    </section>
     <!-- start scroll top -->
     <div id="scroll-top">
       <i class="la la-arrow-up" title="Go top"></i>
     </div>
     <!-- end scroll top -->
-
     <!-- Modal -->
     <div class="modal fade modal-container" id="deleteModal" tabindex="-1"
       role="dialog" aria-labelledby="deleteModalTitle" aria-hidden="true">
@@ -93,7 +76,6 @@
         </div><!-- end modal-content -->
       </div><!-- end modal-dialog -->
     </div><!-- end modal -->
-
     <!-- template js files -->
     <script src="{{ asset("frontend/js/jquery-3.4.1.min.js") }}"></script>
     <script src="{{ asset("frontend/js/bootstrap.bundle.min.js") }}"></script>
@@ -114,7 +96,6 @@
     <script type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
     </script>
-
     <script>
       @if (Session::has("message"))
         var type = "{{ Session::get("alert-type", "info") }}"

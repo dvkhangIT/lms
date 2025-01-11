@@ -238,9 +238,8 @@
           <div class="d-flex justify-content-between align-items-center">
             {{-- <a href="#" class="mr-3 btn theme-btn flex-grow-1">
               Add to Cart</a> --}}
-            <button
-              onclick="addToCart({{ $item->id }},'{{ $item->course_name }}','{{ $item->instructor_id }}','{{ $item->course_name_slug }}','')"
-              class="mr-3 btn theme-btn flex-grow-1" type="submit"><i
+            <button class="mr-3 btn theme-btn flex-grow-1"
+              onclick="addToCart({{ $item->id }},'{{ $item->course_name }}','{{ $item->instructor_id }}','{{ $item->course_name_slug }}')"><i
                 class="mr-1 la la-shopping-cart fs-18"></i>Add
               to Cart</button>
             <div id="{{ $item->id }}" onclick="addToWishList(this.id)"

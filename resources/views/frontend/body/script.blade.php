@@ -68,12 +68,10 @@
               : `<p class="card-price text-black font-weight-bold">$${value.course.discount_price} <span
                   class="before-price font-weight-medium">$${value.course.selling_price}</span></p>`}
               <div class="icon-element icon-element-sm shadow-sm cursor-pointer"
-                data-toggle="tooltip" data-placement="top" title=""
-                data-original-title="Remove from Wishlist"><i
-                  class="la la-heart"></i></div>
+                data-toggle="tooltip" data-placement="top" title=""data-original-title="Remove from Wishlist" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="la la-heart"></i></div>
             </div>
-          </div><!-- end card-body -->
-        </div><!-- end card -->
+          </div>
+        </div>
       </div>
       `
         });
@@ -84,3 +82,39 @@
   wishlist()
 </script>
 {{-- end load wishlist data --}}
+
+{{-- start wishlist remove --}}
+<script>
+  function wishlistRemove(id) {
+    $.ajax({
+      type: "GET",
+      url: "/wishlist-remove/" + id,
+      dataType: "json",
+      success: function(data) {
+        wishlist()
+        // Start Message 
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 6000
+        })
+        if ($.isEmptyObject(data.error)) {
+          Toast.fire({
+            icon: 'success',
+            type: 'success',
+            title: data.success,
+          })
+        } else {
+          Toast.fire({
+            icon: 'error',
+            type: 'error',
+            title: data.error,
+          })
+        }
+        // End Message   
+      }
+    });
+  }
+</script>
+{{-- end wishlist remove --}}

@@ -159,3 +159,35 @@
   }
 </script>
 {{-- end add to cart --}}
+
+{{-- start add mini cart --}}
+<script>
+  function miniCart() {
+    $.ajax({
+      type: 'GET',
+      url: '/course/mini/cart',
+      dataType: 'json',
+      success: function(response) {
+        var miniCart = ''
+        $.each(response.carts, function(key, value) {
+          miniCart += `
+            <li class="media media-card">
+              <a href="shopping-cart.html" class="media-img">
+                <img src="/${value.options.image}" alt="Cart image">
+              </a>
+              <div class="media-body">
+                <h5><a href="course-details.html">${value.name}</a>
+                </h5>
+                <span class="d-block lh-18 py-1">Kamran Ahmed</span>
+                <p class="text-black font-weight-semi-bold lh-18">$${value.price}</p>
+              </div>
+            </li>
+          `
+        });
+        $('#miniCart').html(miniCart)
+      }
+    })
+  }
+  miniCart()
+</script>
+{{-- end add mini cart --}}

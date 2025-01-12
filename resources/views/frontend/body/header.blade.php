@@ -184,36 +184,32 @@
                   </li>
                 </ul><!-- end ul -->
               </nav><!-- end main-menu -->
-              <div class="mr-4 shop-cart">
+              <div class="shop-cart mr-4">
                 <ul>
                   <li>
                     <p class="shop-cart-btn d-flex align-items-center">
                       <i class="la la-shopping-cart"></i>
-                      <span class="product-count" id="cartQty">0</span>
+                      <span class="product-count">2</span>
                     </p>
-
                     <ul class="cart-dropdown-menu">
-
-                      <div id="miniCart">
-
-                      </div>
-                      <br><br>
+                      <div id="miniCart"></div>
 
                       <li class="media media-card">
                         <div class="media-body fs-16">
                           <p class="text-black font-weight-semi-bold lh-18">
-                            Total: $<span class="cart-total"
-                              id="cartSubTotal"> </span> </p>
+                            Total: <span class="cart-total">$12.99</span> <span
+                              class="before-price fs-14">$129.99</span></p>
                         </div>
                       </li>
                       <li>
-                        <a href="#" class="btn theme-btn w-100">Go to
-                          cart <i class="ml-1 la la-arrow-right icon"></i></a>
+                        <a href="shopping-cart.html"
+                          class="btn theme-btn w-100">Got to cart <i
+                            class="la la-arrow-right icon ml-1"></i></a>
                       </li>
                     </ul>
                   </li>
                 </ul>
-              </div><!-- end shop-cart -->
+              </div>
               <div class="nav-right-button">
                 <a href="admission.html"
                   class="btn theme-btn d-none d-lg-inline-block"><i

@@ -126,5 +126,6 @@ Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMin
 // Cart all route
 Route::controller(CartController::class)->group(function () {
   Route::get('mycart', 'Mycart')->name('mycart');
+  Route::get('/get-cart-course', 'GetCartCourse');
 });
 // End cart all route

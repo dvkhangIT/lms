@@ -90,4 +90,9 @@ class CartController extends Controller
       'cartQty' => $cartQty
     ));
   }
+  public function CartRemove($rowId)
+  {
+    Cart::remove($rowId);
+    return response()->json(['success' => 'Coures Remove From Cart']);
+  }
 }

@@ -261,7 +261,7 @@
               <td>
                 <button type="button"
                   class="icon-element icon-element-xs shadow-sm border-0"
-                  data-toggle="tooltip" data-placement="top" title="Remove">
+                  data-toggle="tooltip" data-placement="top" id="${value.rowId}" onclick="cartRemove(this.id)">
                   <i class="la la-times"></i>
                 </button>
               </td>
@@ -273,5 +273,39 @@
     });
   }
   cart()
+  // my cart remove
+  function cartRemove(rowId) {
+    $.ajax({
+      type: 'GET',
+      url: '/cart-remove/' + rowId,
+      dataType: 'json',
+      success: function(data) {
+        miniCart()
+        cart()
+        // Start Message 
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000
+        })
+        if ($.isEmptyObject(data.error)) {
+          Toast.fire({
+            icon: 'success',
+            type: 'success',
+            title: data.success,
+          })
+        } else {
+          Toast.fire({
+            icon: 'error',
+            type: 'error',
+            title: data.error,
+          })
+        }
+        // End Message   
+      }
+    })
+  }
+  // end my cart remove
 </script>
 {{-- end mycart --}}

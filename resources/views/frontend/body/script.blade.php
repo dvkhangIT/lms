@@ -168,6 +168,8 @@
       url: '/course/mini/cart',
       dataType: 'json',
       success: function(response) {
+        $('span[id="cartSubTotal"]').text(response.cartTotal)
+        $('span[id="cartQty"]').text(response.cartQty)
         var miniCart = ''
         $.each(response.carts, function(key, value) {
           miniCart += `
@@ -176,7 +178,7 @@
                 <img src="/${value.options.image}" alt="Cart image">
               </a>
               <div class="media-body">
-                <h5><a href="course-details.html">${value.name}</a>
+                <h5><a href="course/details/${value.id}/${value.options.slug}">${value.name}</a>
                 </h5>
                 <span class="d-block lh-18 py-1">Kamran Ahmed</span>
                 <p class="text-black font-weight-semi-bold lh-18">$${value.price}</p>

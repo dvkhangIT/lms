@@ -123,3 +123,8 @@ Route::get('cart/data', [CartController::class, 'CartData']);
 Route::get('course/mini/cart', [CartController::class, 'AddMiniCart']);
 Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
 // End route acessable for all
+// Cart all route
+Route::controller(CartController::class)->group(function () {
+  Route::get('mycart', 'Mycart')->name('mycart');
+});
+// End cart all route

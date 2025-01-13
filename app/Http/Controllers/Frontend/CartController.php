@@ -75,4 +75,8 @@ class CartController extends Controller
     Cart::remove($rowId);
     return response()->json(['success' => 'Course Remove From Cart']);
   }
+  public function Mycart()
+  {
+    return view('frontend.mycart.view_mycart');
+  }
 }

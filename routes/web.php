@@ -121,4 +121,5 @@ Route::post('/add-to-wishlist/{course_id}', [WishListController::class, 'AddToWi
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
 Route::get('cart/data', [CartController::class, 'CartData']);
 Route::get('course/mini/cart', [CartController::class, 'AddMiniCart']);
+Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
 // End route acessable for all

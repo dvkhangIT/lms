@@ -18,7 +18,7 @@
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
-          timer: 6000
+          timer: 1000
         })
         if ($.isEmptyObject(data.error)) {
           Toast.fire({
@@ -97,7 +97,7 @@
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
-          timer: 6000
+          timer: 1000
         })
         if ($.isEmptyObject(data.error)) {
           Toast.fire({
@@ -133,12 +133,13 @@
       },
       url: "/cart/data/store/" + courseId,
       success: function(data) {
+        miniCart()
         // Start Message 
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
-          timer: 6000
+          timer: 1000
         })
         if ($.isEmptyObject(data.error)) {
           Toast.fire({
@@ -182,6 +183,7 @@
                 </h5>
                 <span class="d-block lh-18 py-1">Kamran Ahmed</span>
                 <p class="text-black font-weight-semi-bold lh-18">$${value.price}</p>
+                <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="la la-times"></i></a>
               </div>
             </li>
           `
@@ -191,5 +193,38 @@
     })
   }
   miniCart()
+  // mini cart remove
+  function miniCartRemove(rowId) {
+    $.ajax({
+      type: 'GET',
+      url: '/minicart/course/remove/' + rowId,
+      dataType: 'json',
+      success: function(data) {
+        miniCart()
+        // Start Message 
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000
+        })
+        if ($.isEmptyObject(data.error)) {
+          Toast.fire({
+            icon: 'success',
+            type: 'success',
+            title: data.success,
+          })
+        } else {
+          Toast.fire({
+            icon: 'error',
+            type: 'error',
+            title: data.error,
+          })
+        }
+        // End Message   
+      }
+    })
+  }
+  // end mini cart remove
 </script>
 {{-- end add mini cart --}}

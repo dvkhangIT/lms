@@ -637,7 +637,9 @@
                     <span class="text-color-3">4 days</span> left at this price!
                   </p>
                   <div class="buy-course-btn-box">
-                    <button type="button" class="mb-2 btn theme-btn w-100"><i
+                    <button type="button"
+                      onclick="addToCart({{ $course->id }},'{{ $course->course_name }}','{{ $course->instructor_id }}','{{ $course->course_name_slug }}')"
+                      class="mb-2 btn theme-btn w-100"><i
                         class="mr-1 la la-shopping-cart fs-18"></i> Add to
                       cart</button>
                     <button type="button"

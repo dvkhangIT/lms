@@ -58,7 +58,7 @@
                       <input class="form-check-input status-toggle"
                         style="transform: scale(1.5)" type="checkbox"
                         id="flexSwitchCheckCheckedDanger"
-                        data-user-id="{{ $item->id }}"
+                        data-course-id="{{ $item->id }}"
                         {{ $item->status ? "checked" : "" }}>
                     </div>
                   </td>
@@ -76,13 +76,13 @@
   <script>
     $(document).ready(function() {
       $('.status-toggle').on('change', function() {
-        var userId = $(this).data('user-id');
+        var courseId = $(this).data('course-id');
         var isChecked = $(this).is(':checked');
         $.ajax({
-          url: "{{ route("update.user.status") }}",
+          url: "{{ route("update.course.status") }}",
           type: "post",
           data: {
-            user_id: userId,
+            course_id: courseId,
             is_checked: isChecked ? 1 : 0,
             _token: "{{ csrf_token() }}"
           },

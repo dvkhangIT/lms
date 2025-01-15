@@ -146,4 +146,9 @@ class AdminController extends Controller
     }
     return response()->json(['message' => 'Course Status Updated Successfully']);
   }
+  public function AdminCourseDetail($id)
+  {
+    $course = Course::find($id);
+    return view('admin.backend.courses.course_details', compact('course'));
+  }
 }

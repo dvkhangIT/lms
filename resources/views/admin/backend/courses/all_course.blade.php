@@ -49,7 +49,7 @@
                   <td>{{ $item["category"]["category_name"] }}</td>
                   <td>{{ $item->selling_price }}</td>
                   <td>
-                    <a href="{{ route("edit.category", $item->id) }}"
+                    <a href="{{ route("admin.course.details", $item->id) }}"
                       class="text-white btn btn-info text-center"><i
                         class="lni lni-eye"></i></a>
                   </td>

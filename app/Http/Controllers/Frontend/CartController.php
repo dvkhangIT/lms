@@ -95,4 +95,5 @@ class CartController extends Controller
     Cart::remove($rowId);
     return response()->json(['success' => 'Coures Remove From Cart']);
   }
+  public function CouponApply(Request $request) {}
 }

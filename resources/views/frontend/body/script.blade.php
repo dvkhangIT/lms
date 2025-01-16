@@ -309,3 +309,41 @@
   // end my cart remove
 </script>
 {{-- end mycart --}}
+{{-- start apply coupon --}}
+<script>
+  function applyCoupon() {
+    var coupon_name = $('#coupon_name').val();
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        coupon_name: coupon_name
+      },
+      url: "/coupon-apply",
+      success: function(data) {
+        // Start Message 
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000
+        })
+        if ($.isEmptyObject(data.error)) {
+          Toast.fire({
+            icon: 'success',
+            type: 'success',
+            title: data.success,
+          })
+        } else {
+          Toast.fire({
+            icon: 'error',
+            type: 'error',
+            title: data.error,
+          })
+        }
+        // End Message  
+      }
+    })
+  }
+</script>
+{{-- end apply coupon --}}

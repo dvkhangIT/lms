@@ -34,12 +34,13 @@
         </table>
         <div
           class="d-flex flex-wrap align-items-center justify-content-between pt-4">
-          <form method="post">
+          <form method="#">
             <div class="input-group mb-2">
               <input class="form-control form--control pl-3" type="text"
-                name="search" placeholder="Coupon code">
+                name="search" placeholder="Coupon code" id="coupon_name">
               <div class="input-group-append">
-                <button class="btn theme-btn">Apply Code</button>
+                <button type="submit" onclick="applyCoupon()"
+                  class="btn theme-btn">Apply Code</button>
               </div>
             </div>
           </form>

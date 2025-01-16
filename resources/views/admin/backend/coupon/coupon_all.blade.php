@@ -15,7 +15,8 @@
       </div>
       <div class="ms-auto">
         <div class="btn-group">
-          <a href="{{ route("add.category") }}" class="px-5 btn btn-primary">Add
+          <a href="{{ route("admin.add.coupon") }}"
+            class="px-5 btn btn-primary">Add
             Coupon</a>
         </div>
       </div>
@@ -41,7 +42,7 @@
                 <tr>
                   <td>{{ $key + 1 }}</td>
                   <td>{{ $item->coupon_name }}</td>
-                  <td>{{ $item->coupon_discount }}</td>
+                  <td>{{ $item->coupon_discount }}%</td>
                   <td>
                     {{ Carbon\Carbon::parse($item->coupon_validity)->format("D, d F Y") }}
                   </td>

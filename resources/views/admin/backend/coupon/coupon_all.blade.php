@@ -54,9 +54,9 @@
                     @endif
                   </td>
                   <td>
-                    <a href="{{ route("edit.category", $item->id) }}"
+                    <a href="{{ route("admin.edit.coupon", $item->id) }}"
                       class="px-5 text-white btn btn-info">Edit</a>
-                    <a href="{{ route("delete.category", $item->id) }}"
+                    <a href="{{ route("admin.delete.coupon", $item->id) }}"
                       class="px-5 btn btn-danger" id="delete">Delete</a>
                   </td>
                 </tr>

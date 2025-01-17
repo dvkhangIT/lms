@@ -34,16 +34,20 @@
         </table>
         <div
           class="d-flex flex-wrap align-items-center justify-content-between pt-4">
-          <form method="#" id="couponField">
-            <div class="input-group mb-2">
-              <input class="form-control form--control pl-3" type="text"
-                name="search" placeholder="Coupon code" id="coupon_name">
-              <div class="input-group-append">
-                <a type="submit" onclick="applyCoupon()"
-                  class="btn theme-btn">Apply Code</a>
+          @if (Session::has("coupon"))
+          @else
+            {{-- <pre>{{ json_encode(Session::get("coupon"), JSON_PRETTY_PRINT) }}</pre> --}}
+            <form method="#">
+              <div class="input-group mb-2" id="couponField">
+                <input class="form-control form--control pl-3" type="text"
+                  name="search" placeholder="Coupon code" id="coupon_name">
+                <div class="input-group-append">
+                  <a type="submit" onclick="applyCoupon()"
+                    class="btn theme-btn">Apply Code</a>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          @endif
           <a href="#" class="btn theme-btn mb-2">Update Cart</a>
         </div>
       </div>

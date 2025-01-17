@@ -146,4 +146,5 @@ Route::controller(CartController::class)->group(function () {
   Route::get('/cart-remove/{rowId}', 'CartRemove');
 });
 Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+Route::post('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 // End cart all route

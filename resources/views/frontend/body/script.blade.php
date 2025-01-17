@@ -348,5 +348,14 @@
       }
     })
   }
+  // start coupon calculation method
+  function couponCalculation() {
+    $.ajax({
+      type: 'GET',
+      url: '/coupon-calculation',
+      dataType: 'json',
+    })
+  }
+  // end coupon calculation method
 </script>
 {{-- end apply coupon --}}

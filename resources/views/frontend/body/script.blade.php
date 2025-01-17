@@ -321,6 +321,7 @@
       },
       url: "/coupon-apply",
       success: function(data) {
+        couponCalculation()
         if (data.validity == true) {
           $('#couponField').hide()
         }
@@ -375,29 +376,32 @@
         } else {
           $('#couponCalField').html(
             `<h3 class="fs-18 font-weight-bold pb-3">Cart Totals</h3>
-                  <div class="divider"><span></span></div>
-                  <ul class="generic-list-item pb-4">
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-semi-bold">
-                      <span class="text-black">Subtotal:</span>
-                      <span">$${data.subtotal}</span>
-                    </li>
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-semi-bold">
-                      <span class="text-black">Coupon name:</span>
-                      <span">${data.coupon_name}</span>
-                    </li>
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-semi-bold">
-                      <span class="text-black">Coupon Discount:</span>
-                      <span">$${data.discount_amount}</span>
-                    </li> 
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-semi-bold">
-                      <span class="text-black">Grand Discount:</span>
-                      <span">$${data.total_amount}</span>
-                    </li>
-                  </ul>`
+            <div class="divider"><span></span></div>
+            <ul class="generic-list-item pb-4">
+              <li
+                class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                <span class="text-black">Subtotal:</span>
+                <span">$${data.subtotal}</span>
+              </li>
+              <li
+                class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                <span class="text-black">Coupon name:</span>
+                <span">${data.coupon_name} 
+                <button onclick="removeCoupon()" type="button" class="icon-element icon-element-xs shadow-sm border-0" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="la la-times"></i>
+                </button>
+                </span>
+              </li>
+              <li
+                class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                <span class="text-black">Coupon Discount:</span>
+                <span">$${data.discount_amount}</span>
+              </li> 
+              <li
+                class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                <span class="text-black">Grand Discount:</span>
+                <span">$${data.total_amount}</span>
+              </li>
+            </ul>`
           )
         }
       }
@@ -407,3 +411,39 @@
   // end coupon calculation method
 </script>
 {{-- end apply coupon --}}
+{{-- start remove coupon --}}
+<script>
+  function removeCoupon() {
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      url: '/coupon-remove',
+      success: function(data) {
+        couponCalculation()
+        $('#couponField').show()
+        // Start Message 
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000
+        })
+        if ($.isEmptyObject(data.error)) {
+          Toast.fire({
+            icon: 'success',
+            type: 'success',
+            title: data.success,
+          })
+        } else {
+          Toast.fire({
+            icon: 'error',
+            type: 'error',
+            title: data.error,
+          })
+        }
+        // End Message  
+      }
+    })
+  }
+</script>
+{{-- end remove coupon --}}

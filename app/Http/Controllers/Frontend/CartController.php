@@ -155,16 +155,16 @@ class CartController extends Controller
   {
     if (Auth::check()) {
       if (Cart::total() > 0) {
-        $cart = Cart::content();
+        $carts = Cart::content();
         $cartTotal = Cart::total();
         $cartQty = Cart::count();
-        return view('frontend.checkout.checkout_view', compact('cart', 'cartTotal', 'cartQty'));
+        return view('frontend.checkout.checkout_view', compact('carts', 'cartTotal', 'cartQty'));
       } else {
         $notification = array(
           'message' => 'Add At list One Course.',
           'alert-type' => 'error'
         );
-        return redirect()->route('/')->with($notification);
+        return redirect()->to('/')->with($notification);
       }
     } else {
       $notification = array(

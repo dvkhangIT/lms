@@ -48,14 +48,13 @@
               </div>
             </form>
           @endif
-          <a href="#" class="btn theme-btn mb-2">Update Cart</a>
         </div>
       </div>
       <div class="col-lg-4 ml-auto">
         <div class="bg-gray p-4 rounded-rounded mt-40px" id="couponCalField">
-          <a href="checkout.html" class="btn theme-btn w-100">Checkout <i
-              class="la la-arrow-right icon ml-1"></i></a>
         </div>
+        <a href="checkout.html" class="btn theme-btn w-100">Checkout <i
+            class="la la-arrow-right icon ml-1"></i></a>
       </div>
     </div><!-- end container -->
   </section>
@@ -131,8 +130,7 @@
               </div><!-- end rating-wrap -->
               <div class="d-flex justify-content-between align-items-center">
                 <p class="card-price text-black font-weight-bold">129.99</p>
-                <div
-                  class="icon-element icon-element-sm shadow-sm cursor-pointer"
+                <div class="icon-element icon-element-sm shadow-sm cursor-pointer"
                   title="Add to Wishlist"><i class="la la-heart-o"></i></div>
               </div>
             </div><!-- end card-body -->

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Course;
+use App\Models\Order;
 use App\Models\Payment;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -197,5 +198,33 @@ class CartController extends Controller
     $data->status = 'pending';
     $data->created_at = Carbon::now();
     $data->save();
+    foreach ($request->course_title as $key => $course_title) {
+      $exsitingOrder = Order::where('user_id', Auth::user()->id)->where('course_id', $request->course_id[$key])->first();
+      if ($exsitingOrder) {
+        $notification = array(
+          'message' => 'You Have already enrolled in this course.',
+          'alert-type' => 'error'
+        );
+        return redirect()->back()->with($notification);
+      }
+      $order = new Order();
+      $order->payment_id = $data->id;
+      $order->user_id = Auth::user()->id;
+      $order->course_id = $request->course_id[$key];
+      $order->instructor_id = $request->instructor_id[$key];
+      $order->course_title = $course_title;
+      $order->price = $request->price[$key];
+      $order->save();
+    }
+    $request->session()->forget('cart');
+    if ($request->cash_delivery === 'stripe') {
+      echo 'stripe';
+    } else {
+      $notification = array(
+        'message' => 'Cash Payment Submit Successfully',
+        'alert-type' => 'success'
+      );
+      return redirect()->route('index')->with($notification);
+    }
   }
 }

@@ -73,15 +73,15 @@
                 <div class="payment-option-wrap">
                   <div class="payment-tab">
                     <div class="payment-tab-toggle">
-                      <input checked="" id="handcash" type="radio"
+                      <input checked id="handcash" type="radio"
                         value="handcash" name="cash_delivery">
                       <label for="handcash">Direct Payment</label>
                     </div>
                   </div>
                   <div class="payment-tab">
                     <div class="payment-tab-toggle">
-                      <input checked="" id="stripe" type="radio"
-                        value="stripe" name="cash_delivery">
+                      <input id="stripe" type="radio" value="stripe"
+                        name="cash_delivery">
                       <label for="stripe">Stripe Payment</label>
                     </div>
                   </div><!-- end payment-tab -->

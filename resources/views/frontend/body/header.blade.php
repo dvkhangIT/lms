@@ -197,7 +197,7 @@
                       <li class="media media-card">
                         <div class="media-body fs-16">
                           <p class="text-black font-weight-semi-bold lh-18">
-                            Total: $<span class="cart-total"
+                            Total: <span class="cart-total"
                               id="cartSubTotal">$12.99</span></p>
                         </div>
                       </li>

@@ -217,6 +217,10 @@ class CartController extends Controller
       $order->save();
     }
     $request->session()->forget('cart');
+    $paymentId = $data->id;
+    // start send email to student
+
+    // end send email to student
     if ($request->cash_delivery === 'stripe') {
       echo 'stripe';
     } else {

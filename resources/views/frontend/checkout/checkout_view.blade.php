@@ -26,8 +26,9 @@
             <div class="card-body">
               <h3 class="card-title fs-22 pb-3">Billing Details</h3>
               <div class="divider"><span></span></div>
-              <form method="post" class="row" action=""
+              <form method="post" class="row" action="{{ route("payment") }}"
                 enctype="multipart/form-data">
+                @csrf
                 <div class="input-box col-lg-6">
                   <label class="label-text">First Name</label>
                   <div class="form-group">

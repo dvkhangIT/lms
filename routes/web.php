@@ -140,6 +140,7 @@ Route::get('subcategory/{id}/{slug}', [IndexController::class, 'SubCategoryCours
 Route::get('instructor/details/{id}', [IndexController::class, 'InStructorDetails'])->name('instructor.details');
 Route::post('/add-to-wishlist/{course_id}', [WishListController::class, 'AddToWishList']);
 Route::post('/cart/data/store/{id}', [CartController::class, 'AddToCart']);
+Route::post('/buy/data/store/{id}', [CartController::class, 'BuyToCart']);
 Route::get('cart/data', [CartController::class, 'CartData']);
 Route::get('course/mini/cart', [CartController::class, 'AddMiniCart']);
 Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);

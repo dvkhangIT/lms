@@ -643,6 +643,7 @@
                         class="mr-1 la la-shopping-cart fs-18"></i> Add to
                       cart</button>
                     <button type="button"
+                      onclick="buyCourse({{ $course->id }},'{{ $course->course_name }}','{{ $course->instructor_id }}','{{ $course->course_name_slug }}')"
                       class="mb-2 btn theme-btn w-100 theme-btn-white"><i
                         class="mr-1 la la-shopping-bag"></i> Buy this
                       course</button>

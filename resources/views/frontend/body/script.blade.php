@@ -448,3 +448,45 @@
   }
 </script>
 {{-- end remove coupon --}}
+{{-- start buy now button --}}
+<script>
+  function buyCourse(courseId, courseName, instructorId, slug) {
+    $.ajax({
+      type: "post",
+      dataType: 'json',
+      data: {
+        _token: '{{ csrf_token() }}',
+        course_name: courseName,
+        course_name_slug: slug,
+        instructor: instructorId
+      },
+      url: "/buy/data/store/" + courseId,
+      success: function(data) {
+        miniCart()
+        // Start Message 
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000
+        })
+        if ($.isEmptyObject(data.error)) {
+          Toast.fire({
+            icon: 'success',
+            type: 'success',
+            title: data.success,
+          })
+          window.location.href = '/checkout';
+        } else {
+          Toast.fire({
+            icon: 'error',
+            type: 'error',
+            title: data.error,
+          })
+        }
+        // End Message   
+      }
+    });
+  }
+</script>
+{{-- end buy now button --}}

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -96,6 +97,10 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
   Route::controller(SettingController::class)->group(function () {
     Route::get('/smtp/setting', 'SmtpSetting')->name('smtp.setting');
     Route::post('/smtp/update', 'SmtpUpdate')->name('update.smtp');
+  });
+  // Admin all order route
+  Route::controller(OrderController::class)->group(function () {
+    Route::get('/admin/pending/order', 'AdminPendingOrder')->name('admin.pending.order');
   });
 }); // End Admin Group Middleware
 

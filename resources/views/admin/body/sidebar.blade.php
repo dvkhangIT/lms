@@ -1,8 +1,8 @@
 <div class="sidebar-wrapper" data-simplebar="true">
   <div class="sidebar-header">
     <div>
-      <img src="{{ asset("backend/assets/images/logo-icon.png") }}" class="logo-icon"
-        alt="logo icon">
+      <img src="{{ asset("backend/assets/images/logo-icon.png") }}"
+        class="logo-icon" alt="logo icon">
     </div>
     <div>
       <h4 class="logo-text">Admin</h4>
@@ -26,21 +26,26 @@
         <div class="menu-title">Application</div>
       </a>
       <ul>
-        <li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>Email</a>
+        <li> <a href="app-emailbox.html"><i
+              class='bx bx-radio-circle'></i>Email</a>
         </li>
         <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat
             Box</a>
         </li>
-        <li> <a href="app-file-manager.html"><i class='bx bx-radio-circle'></i>File Manager</a>
+        <li> <a href="app-file-manager.html"><i
+              class='bx bx-radio-circle'></i>File Manager</a>
         </li>
-        <li> <a href="app-contact-list.html"><i class='bx bx-radio-circle'></i>Contatcs</a>
+        <li> <a href="app-contact-list.html"><i
+              class='bx bx-radio-circle'></i>Contatcs</a>
         </li>
         <li> <a href="app-to-do.html"><i class='bx bx-radio-circle'></i>Todo
             List</a>
         </li>
-        <li> <a href="app-invoice.html"><i class='bx bx-radio-circle'></i>Invoice</a>
+        <li> <a href="app-invoice.html"><i
+              class='bx bx-radio-circle'></i>Invoice</a>
         </li>
-        <li> <a href="app-fullcalender.html"><i class='bx bx-radio-circle'></i>Calendar</a>
+        <li> <a href="app-fullcalender.html"><i
+              class='bx bx-radio-circle'></i>Calendar</a>
         </li>
       </ul>
     </li>
@@ -52,10 +57,12 @@
         <div class="menu-title">Manage Category</div>
       </a>
       <ul>
-        <li> <a href="{{ route("all.category") }}"><i class='bx bx-radio-circle'></i>All
+        <li> <a href="{{ route("all.category") }}"><i
+              class='bx bx-radio-circle'></i>All
             Category</a>
         </li>
-        <li> <a href="{{ route("all.subcategory") }}"><i class='bx bx-radio-circle'></i>All
+        <li> <a href="{{ route("all.subcategory") }}"><i
+              class='bx bx-radio-circle'></i>All
             SubCategory</a>
         </li>
       </ul>
@@ -67,10 +74,12 @@
         <div class="menu-title">Manage Instructor</div>
       </a>
       <ul>
-        <li> <a href="{{ route("all.instructor") }}"><i class='bx bx-radio-circle'></i>All
+        <li> <a href="{{ route("all.instructor") }}"><i
+              class='bx bx-radio-circle'></i>All
             Instructor</a>
         </li>
-        <li> <a href="component-accordions.html"><i class='bx bx-radio-circle'></i>Accordions</a>
+        <li> <a href="component-accordions.html"><i
+              class='bx bx-radio-circle'></i>Accordions</a>
         </li>
       </ul>
     </li>
@@ -81,7 +90,8 @@
         <div class="menu-title">Manage Courses</div>
       </a>
       <ul>
-        <li> <a href="{{ route("admin.all.course") }}"><i class='bx bx-radio-circle'></i>All
+        <li> <a href="{{ route("admin.all.course") }}"><i
+              class='bx bx-radio-circle'></i>All
             Courses</a>
         </li>
       </ul>
@@ -93,7 +103,8 @@
         <div class="menu-title">Manage Coupon</div>
       </a>
       <ul>
-        <li> <a href="{{ route("admin.all.coupon") }}"><i class='bx bx-radio-circle'></i>All
+        <li> <a href="{{ route("admin.all.coupon") }}"><i
+              class='bx bx-radio-circle'></i>All
             Coupon</a>
         </li>
       </ul>
@@ -105,7 +116,23 @@
         <div class="menu-title">Manage Setting</div>
       </a>
       <ul>
-        <li> <a href="{{ route("smtp.setting") }}"><i class='bx bx-radio-circle'></i>Manage SMTP</a>
+        <li> <a href="{{ route("smtp.setting") }}"><i
+              class='bx bx-radio-circle'></i>Manage SMTP</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:;" class="has-arrow">
+        <div class="parent-icon"><i class='bx bx-cart'></i>
+        </div>
+        <div class="menu-title">Manage Orders</div>
+      </a>
+      <ul>
+        <li> <a href="{{ route("admin.pending.order") }}"><i
+              class='bx bx-radio-circle'></i>Pending Orders</a>
+        </li>
+        <li> <a href="{{ route("smtp.setting") }}"><i
+              class='bx bx-radio-circle'></i>Confirm Orders</a>
         </li>
       </ul>
     </li>
@@ -117,11 +144,14 @@
         <div class="menu-title">Charts</div>
       </a>
       <ul>
-        <li> <a href="charts-apex-chart.html"><i class='bx bx-radio-circle'></i>Apex</a>
+        <li> <a href="charts-apex-chart.html"><i
+              class='bx bx-radio-circle'></i>Apex</a>
         </li>
-        <li> <a href="charts-chartjs.html"><i class='bx bx-radio-circle'></i>Chartjs</a>
+        <li> <a href="charts-chartjs.html"><i
+              class='bx bx-radio-circle'></i>Chartjs</a>
         </li>
-        <li> <a href="charts-highcharts.html"><i class='bx bx-radio-circle'></i>Highcharts</a>
+        <li> <a href="charts-highcharts.html"><i
+              class='bx bx-radio-circle'></i>Highcharts</a>
         </li>
       </ul>
     </li>
@@ -132,9 +162,11 @@
         <div class="menu-title">Maps</div>
       </a>
       <ul>
-        <li> <a href="map-google-maps.html"><i class='bx bx-radio-circle'></i>Google Maps</a>
+        <li> <a href="map-google-maps.html"><i
+              class='bx bx-radio-circle'></i>Google Maps</a>
         </li>
-        <li> <a href="map-vector-maps.html"><i class='bx bx-radio-circle'></i>Vector Maps</a>
+        <li> <a href="map-vector-maps.html"><i
+              class='bx bx-radio-circle'></i>Vector Maps</a>
         </li>
       </ul>
     </li>

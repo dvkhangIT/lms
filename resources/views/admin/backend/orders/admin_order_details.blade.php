@@ -107,7 +107,8 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                     @if ($payment->status == 'pending')
-                      <a href="" class="btn btn-block btn-success">Confirm
+                      <a href="{{ route('pending-confirm', $payment->id) }}"
+                        id="confirm" class="btn btn-block btn-success">Confirm
                         Order</a>
                     @elseif ($payment->status == 'confirm')
                       <a href="" class="btn btn-block btn-success">Confirm
@@ -193,4 +194,7 @@
       </div>
     </div>
   </div>
+@endsection
+@section('customJs')
+  <script src="{{ asset('backend/assets/js/code.js') }}"></script>
 @endsection

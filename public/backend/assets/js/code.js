@@ -18,3 +18,24 @@ $(function () {
         });
     });
 });
+// confirm
+$(function () {
+    $(document).on("click", "#confirm", function (e) {
+        e.preventDefault();
+        var link = $(this).attr("href");
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Confirm This Data?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, confirm it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link;
+                Swal.fire("Confirm!", "Your file has been Confirm.", "success");
+            }
+        });
+    });
+});

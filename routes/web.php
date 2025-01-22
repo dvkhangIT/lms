@@ -102,6 +102,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
   Route::controller(OrderController::class)->group(function () {
     Route::get('/admin/pending/order', 'AdminPendingOrder')->name('admin.pending.order');
     Route::get('admin/order/details/{id}', 'AdminOrderDetails')->name('admin.order.details');
+    Route::get('pending-confirm/{id}', 'PendingToConfirm')->name('pending-confirm');
   });
 }); // End Admin Group Middleware
 

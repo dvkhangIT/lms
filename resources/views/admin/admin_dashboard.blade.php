@@ -6,56 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
     <link rel="icon"
-      href="{{ asset("backend/assets/images/favicon-32x32.png") }}"
+      href="{{ asset('backend/assets/images/favicon-32x32.png') }}"
       type="image/png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--tagsinput-->
     <link
-      href="{{ asset("backend/assets/plugins/input-tags/css/tagsinput.css") }}"
+      href="{{ asset('backend/assets/plugins/input-tags/css/tagsinput.css') }}"
       rel="stylesheet" />
     <!--tagsinput-->
 
     <!--plugins-->
     <link
-      href="{{ asset("backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css") }}"
+      href="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}"
       rel="stylesheet" />
     <link
-      href="{{ asset("backend/assets/plugins/simplebar/css/simplebar.css") }}"
+      href="{{ asset('backend/assets/plugins/simplebar/css/simplebar.css') }}"
       rel="stylesheet" />
     <link
-      href="{{ asset("backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css") }}"
+      href="{{ asset('backend/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css') }}"
       rel="stylesheet" />
     <link
-      href="{{ asset("backend/assets/plugins/metismenu/css/metisMenu.min.css") }}"
+      href="{{ asset('backend/assets/plugins/metismenu/css/metisMenu.min.css') }}"
       rel="stylesheet" />
     <!-- loader-->
-    <link href="{{ asset("backend/assets/css/pace.min.css") }}"
+    <link href="{{ asset('backend/assets/css/pace.min.css') }}"
       rel="stylesheet" />
-    <script src="{{ asset("backend/assets/js/pace.min.js") }}"></script>
+    <script src="{{ asset('backend/assets/js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
-    <link href="{{ asset("backend/assets/css/bootstrap.min.css") }}"
+    <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}"
       rel="stylesheet">
-    <link href="{{ asset("backend/assets/css/bootstrap-extended.css") }}"
+    <link href="{{ asset('backend/assets/css/bootstrap-extended.css') }}"
       rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet">
-    <link href="{{ asset("backend/assets/css/app.css") }}" rel="stylesheet">
-    <link href="{{ asset("backend/assets/css/icons.css") }}" rel="stylesheet">
+    <link href="{{ asset('backend/assets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('backend/assets/css/icons.css') }}" rel="stylesheet">
     <!-- Theme Style CSS -->
     <link rel="stylesheet"
-      href="{{ asset("backend/assets/css/dark-theme.css") }}" />
+      href="{{ asset('backend/assets/css/dark-theme.css') }}" />
     <link rel="stylesheet"
-      href="{{ asset("backend/assets/css/semi-dark.css") }}" />
+      href="{{ asset('backend/assets/css/semi-dark.css') }}" />
     <link rel="stylesheet"
-      href="{{ asset("backend/assets/css/header-colors.css") }}" />
+      href="{{ asset('backend/assets/css/header-colors.css') }}" />
     <!-- Datatable -->
     <link
-      href="{{ asset("backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css") }}"
+      href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}"
       rel="stylesheet" />
     <link rel="stylesheet"
-      href="{{ asset("backend/assets/plugins/datatable/js/jquery.dataTables.min.js") }}">
+      href="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}">
     <!-- End Datatable -->
     <link rel="stylesheet" type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
@@ -67,14 +67,14 @@
     <!--wrapper-->
     <div class="wrapper">
       <!--sidebar wrapper -->
-      @include("admin.body.sidebar")
+      @include('admin.body.sidebar')
       <!--end sidebar wrapper -->
       <!--start header -->
-      @include("admin.body.header")
+      @include('admin.body.header')
       <!--end header -->
       <!--start page wrapper -->
       <div class="page-wrapper">
-        @yield("admin")
+        @yield('admin')
       </div>
       <!--end page wrapper -->
       <!--start overlay-->
@@ -84,44 +84,44 @@
       <a href="javaScript:;" class="back-to-top"><i
           class='bx bxs-up-arrow-alt'></i></a>
       <!--End Back To Top Button-->
-      @include("admin.body.footer")
+      @include('admin.body.footer')
     </div>
     <!--end wrapper-->
 
     <!-- Bootstrap JS -->
-    <script src="{{ asset("backend/assets/js/bootstrap.bundle.min.js") }}">
+    <script src="{{ asset('backend/assets/js/bootstrap.bundle.min.js') }}">
     </script>
     <!--plugins-->
-    <script src="{{ asset("backend/assets/js/jquery.min.js") }}"></script>
+    <script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
     <script
-      src="{{ asset("backend/assets/plugins/simplebar/js/simplebar.min.js") }}">
-    </script>
-    <script
-      src="{{ asset("backend/assets/plugins/metismenu/js/metisMenu.min.js") }}">
+      src="{{ asset('backend/assets/plugins/simplebar/js/simplebar.min.js') }}">
     </script>
     <script
-      src="{{ asset("backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js") }}">
+      src="{{ asset('backend/assets/plugins/metismenu/js/metisMenu.min.js') }}">
     </script>
     <script
-      src="{{ asset("backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js") }}">
+      src="{{ asset('backend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}">
     </script>
     <script
-      src="{{ asset("backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js") }}">
+      src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}">
     </script>
-    <script src="{{ asset("backend/assets/plugins/chartjs/js/chart.js") }}">
+    <script
+      src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}">
     </script>
-    <script src="{{ asset("backend/assets/js/index.js") }}"></script>
+    <script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}">
+    </script>
+    <script src="{{ asset('backend/assets/js/index.js') }}"></script>
     <!--app JS-->
-    <script src="{{ asset("backend/assets/js/app.js") }}"></script>
-    <script src="{{ asset("backend/assets/js/validate.min.js") }}"></script>
+    <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
     <script>
       new PerfectScrollbar(".app-container");
     </script>
     <script
-      src="{{ asset("backend/assets/plugins/datatable/js/jquery.dataTables.min.js") }}">
+      src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}">
     </script>
     <script
-      src="{{ asset("backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js") }}">
+      src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}">
     </script>
     <script>
       $(document).ready(function() {
@@ -132,25 +132,25 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
     </script>
     <script>
-      @if (Session::has("message"))
-        var type = "{{ Session::get("alert-type", "info") }}"
+      @if (Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}"
         switch (type) {
           case 'info':
-            toastr.info(" {{ Session::get("message") }} ");
+            toastr.info(" {{ Session::get('message') }} ");
             break;
           case 'success':
-            toastr.success(" {{ Session::get("message") }} ");
+            toastr.success(" {{ Session::get('message') }} ");
             break;
           case 'warning':
-            toastr.warning(" {{ Session::get("message") }} ");
+            toastr.warning(" {{ Session::get('message') }} ");
             break;
           case 'error':
-            toastr.error(" {{ Session::get("message") }} ");
+            toastr.error(" {{ Session::get('message') }} ");
             break;
         }
       @endif
     </script>
-    @yield("customJs")
+    @yield('customJs')
   </body>
 
 </html>

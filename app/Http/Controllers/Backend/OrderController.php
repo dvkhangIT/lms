@@ -23,4 +23,13 @@ class OrderController extends Controller
       'orderItem'
     ));
   }
+  public function PendingToConfirm($payment_id)
+  {
+    Payment::find($payment_id)->update(['status' => 'confirm']);
+    $notification = array(
+      'message' => 'Order Confirm Successfully',
+      'alert-type' => 'success'
+    );
+    return redirect()->back()->with($notification);
+  }
 }

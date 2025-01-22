@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -12,5 +13,14 @@ class OrderController extends Controller
   {
     $payment = Payment::where('status', 'pending')->orderBy('id', 'DESC')->get();
     return view('admin.backend.orders.pending_orders', compact('payment'));
+  }
+  public function AdminOrderDetails($payment_id)
+  {
+    $payment = Payment::where('id', $payment_id)->first();
+    $order = Order::where('payment_id', $payment_id)->orderBy('id', 'DESC')->get();
+    return view('admin.backend.orders.admin_order_details', compact(
+      'payment',
+      'order'
+    ));
   }
 }

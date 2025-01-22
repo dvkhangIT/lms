@@ -1,5 +1,5 @@
-@extends("admin.admin_dashboard")
-@section("admin")
+@extends('admin.admin_dashboard')
+@section('admin')
   <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
@@ -50,7 +50,7 @@
                     </span>
                   </td>
                   <td>
-                    <a href="{{ route("edit.category", $item->id) }}"
+                    <a href="{{ route('admin.order.details', $item->id) }}"
                       class="px-5 text-white btn btn-info">Details</a>
                   </td>
                 </tr>
@@ -62,6 +62,6 @@
     </div>
   </div>
 @endsection
-@section("customJs")
-  <script src="{{ asset("backend/assets/js/code.js") }}"></script>
+@section('customJs')
+  <script src="{{ asset('backend/assets/js/code.js') }}"></script>
 @endsection

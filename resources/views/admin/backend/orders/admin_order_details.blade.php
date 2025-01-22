@@ -141,6 +141,9 @@
                           <label>Price</label>
                         </td>
                       </tr>
+                      @php
+                        $totalPrice = 0;
+                      @endphp
                       @foreach ($orderItem as $item)
                         <tr>
                           <td class="col-md-1">
@@ -170,7 +173,16 @@
                             </label>
                           </td>
                         </tr>
+                        @php
+                          $totalPrice += $item->price;
+                        @endphp
                       @endforeach
+                      <tr>
+                        <td colspan="4"></td>
+                        <td class="col-md-3">
+                          <strong>Total Price: ${{ $totalPrice }}</strong>
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>

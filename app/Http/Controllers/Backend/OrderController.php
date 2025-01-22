@@ -17,10 +17,10 @@ class OrderController extends Controller
   public function AdminOrderDetails($payment_id)
   {
     $payment = Payment::where('id', $payment_id)->first();
-    $order = Order::where('payment_id', $payment_id)->orderBy('id', 'DESC')->get();
+    $orderItem = Order::where('payment_id', $payment_id)->orderBy('id', 'DESC')->get();
     return view('admin.backend.orders.admin_order_details', compact(
       'payment',
-      'order'
+      'orderItem'
     ));
   }
 }

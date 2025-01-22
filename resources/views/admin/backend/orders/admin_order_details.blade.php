@@ -22,7 +22,6 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="card">
-              <h4>Payment Details</h4>
               <div class="card-body">
                 <div class="mb-3 row">
                   <div class="col-sm-3">
@@ -75,7 +74,7 @@
                     <h6 class="mb-0">Total Amount</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <strong>{{ $payment->total_amount }}$</strong>
+                    <strong>${{ $payment->total_amount }}</strong>
                   </div>
                 </div>
                 <div class="mb-3 row">
@@ -115,6 +114,65 @@
                         Order</a>
                     @endif
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card radius-10">
+            <div class="card-body">
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1 ms-3">
+                  <table class="table" style="font-weight: 600;">
+                    <tbody>
+                      <tr>
+                        <td class="col-md-1">
+                          <label>Image</label>
+                        </td>
+                        <td class="col-md-2">
+                          <label>Course Name</label>
+                        </td>
+                        <td class="col-md-2">
+                          <label>Category</label>
+                        </td>
+                        <td class="col-md-2">
+                          <label>Instructor</label>
+                        </td>
+                        <td class="col-md-2">
+                          <label>Price</label>
+                        </td>
+                      </tr>
+                      @foreach ($orderItem as $item)
+                        <tr>
+                          <td class="col-md-1">
+                            <label>
+                              <img src="{{ asset($item->course->course_image) }}"
+                                style="width: 50px;height: 50px">
+                            </label>
+                          </td>
+                          <td class="col-md-2">
+                            <label>
+                              {{ $item->course->course_name }}
+                            </label>
+                          </td>
+                          <td class="col-md-2">
+                            <label>
+                              {{ $item->course->category->category_name }}
+                            </label>
+                          </td>
+                          <td class="col-md-2">
+                            <label>
+                              {{ $item->instructor->name }}
+                            </label>
+                          </td>
+                          <td class="col-md-2">
+                            <label>
+                              ${{ $item->price }}
+                            </label>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

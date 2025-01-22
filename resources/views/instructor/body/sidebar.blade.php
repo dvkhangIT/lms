@@ -6,7 +6,8 @@
 <div class="sidebar-wrapper" data-simplebar="true">
   <div class="sidebar-header">
     <div>
-      <img src="{{ asset('backend/assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
+      <img src="{{ asset('backend/assets/images/logo-icon.png') }}"
+        class="logo-icon" alt="logo icon">
     </div>
     <div>
       <h4 class="logo-text">Instructor</h4>
@@ -31,19 +32,26 @@
           <div class="menu-title">Application</div>
         </a>
         <ul>
-          <li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>Email</a>
+          <li> <a href="app-emailbox.html"><i
+                class='bx bx-radio-circle'></i>Email</a>
           </li>
-          <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
+          <li> <a href="app-chat-box.html"><i
+                class='bx bx-radio-circle'></i>Chat Box</a>
           </li>
-          <li> <a href="app-file-manager.html"><i class='bx bx-radio-circle'></i>File Manager</a>
+          <li> <a href="app-file-manager.html"><i
+                class='bx bx-radio-circle'></i>File Manager</a>
           </li>
-          <li> <a href="app-contact-list.html"><i class='bx bx-radio-circle'></i>Contatcs</a>
+          <li> <a href="app-contact-list.html"><i
+                class='bx bx-radio-circle'></i>Contatcs</a>
           </li>
-          <li> <a href="app-to-do.html"><i class='bx bx-radio-circle'></i>Todo List</a>
+          <li> <a href="app-to-do.html"><i class='bx bx-radio-circle'></i>Todo
+              List</a>
           </li>
-          <li> <a href="app-invoice.html"><i class='bx bx-radio-circle'></i>Invoice</a>
+          <li> <a href="app-invoice.html"><i
+                class='bx bx-radio-circle'></i>Invoice</a>
           </li>
-          <li> <a href="app-fullcalender.html"><i class='bx bx-radio-circle'></i>Calendar</a>
+          <li> <a href="app-fullcalender.html"><i
+                class='bx bx-radio-circle'></i>Calendar</a>
           </li>
         </ul>
       </li>
@@ -55,9 +63,8 @@
           <div class="menu-title">Course Manage</div>
         </a>
         <ul>
-          <li> <a href="{{ route('all.course') }}"><i class='bx bx-radio-circle'></i>All Course</a>
-          </li>
-          <li> <a href="ecommerce-products-details.html"><i class='bx bx-radio-circle'></i>Product Details</a>
+          <li> <a href="{{ route('all.course') }}"><i
+                class='bx bx-radio-circle'></i>All Course</a>
           </li>
         </ul>
       </li>
@@ -65,12 +72,11 @@
         <a class="has-arrow" href="javascript:;">
           <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
           </div>
-          <div class="menu-title">Components</div>
+          <div class="menu-title">All Orders</div>
         </a>
         <ul>
-          <li> <a href="component-alerts.html"><i class='bx bx-radio-circle'></i>Alerts</a>
-          </li>
-          <li> <a href="component-accordions.html"><i class='bx bx-radio-circle'></i>Accordions</a>
+          <li> <a href="{{ route('instructor.all.order') }}"><i
+                class='bx bx-radio-circle'></i>All Orders</a>
           </li>
         </ul>
       </li>
@@ -82,11 +88,14 @@
           <div class="menu-title">Charts</div>
         </a>
         <ul>
-          <li> <a href="charts-apex-chart.html"><i class='bx bx-radio-circle'></i>Apex</a>
+          <li> <a href="charts-apex-chart.html"><i
+                class='bx bx-radio-circle'></i>Apex</a>
           </li>
-          <li> <a href="charts-chartjs.html"><i class='bx bx-radio-circle'></i>Chartjs</a>
+          <li> <a href="charts-chartjs.html"><i
+                class='bx bx-radio-circle'></i>Chartjs</a>
           </li>
-          <li> <a href="charts-highcharts.html"><i class='bx bx-radio-circle'></i>Highcharts</a>
+          <li> <a href="charts-highcharts.html"><i
+                class='bx bx-radio-circle'></i>Highcharts</a>
           </li>
         </ul>
       </li>
@@ -97,9 +106,11 @@
           <div class="menu-title">Maps</div>
         </a>
         <ul>
-          <li> <a href="map-google-maps.html"><i class='bx bx-radio-circle'></i>Google Maps</a>
+          <li> <a href="map-google-maps.html"><i
+                class='bx bx-radio-circle'></i>Google Maps</a>
           </li>
-          <li> <a href="map-vector-maps.html"><i class='bx bx-radio-circle'></i>Vector Maps</a>
+          <li> <a href="map-vector-maps.html"><i
+                class='bx bx-radio-circle'></i>Vector Maps</a>
           </li>
         </ul>
       </li>

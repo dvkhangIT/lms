@@ -140,6 +140,10 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::post('/update/course/lecture', 'UpdateCourseLecture')->name('update.course.lecture');
     Route::get('delete/lecture/{id}', 'DeleteLecture')->name('delete.lecture');
   });
+  // All order intructor route
+  Route::controller(OrderController::class)->group(function () {
+    Route::get('/instructor/all/order', 'InstructorAllOrder')->name('instructor.all.order');
+  });
 }); // End Instructor Group Middleware
 // Route acessable for all
 Route::get('course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);

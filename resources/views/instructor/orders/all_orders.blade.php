@@ -45,10 +45,10 @@
                     </span>
                   </td>
                   <td>
-                    <a href="{{ route('instructor.order.details', $item->payment_id) }}"
+                    <a href="{{ route('instructor.order.details', $item->payment->id) }}"
                       class="text-white btn btn-info"><i
                         class="lni lni-eye"></i></a>
-                    <a href="{{ route('delete.course', $item->id) }}"
+                    <a href="{{ route('instructor.order.invoice', $item->payment->id) }}"
                       class="btn btn-danger" title="Delete" id="delete"><i
                         class="lni lni-download"></i></a>
                   </td>

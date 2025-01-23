@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Payment;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,5 +53,15 @@ class OrderController extends Controller
       'payment',
       'orderItem'
     ));
+  }
+  public function InstructorOrderIncoice($payment_id)
+  {
+    $payment = Payment::where('id', $payment_id)->first();
+    $orderItem = Order::where('payment_id', $payment_id)->orderBy('id', 'DESC')->get();
+    $pdf = Pdf::loadView('instructor.orders.order_pdf', compact('payment', 'orderItem'))->setPaper('a4')->setOption([
+      'tempDir' => public_path(),
+      'chroot' => public_path(),
+    ]);
+    return $pdf->download('invoice.pdf');
   }
 }

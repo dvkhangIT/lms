@@ -45,9 +45,9 @@
                     </span>
                   </td>
                   <td>
-                    <a href="{{ route('edit.course', $item->id) }}"
-                      class="text-white btn btn-info"><i class="lni lni-eye"
-                        title="Edit"></i></a>
+                    <a href="{{ route('instructor.order.details', $item->payment_id) }}"
+                      class="text-white btn btn-info"><i
+                        class="lni lni-eye"></i></a>
                     <a href="{{ route('delete.course', $item->id) }}"
                       class="btn btn-danger" title="Delete" id="delete"><i
                         class="lni lni-download"></i></a>

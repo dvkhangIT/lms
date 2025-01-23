@@ -143,6 +143,7 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
   // All order intructor route
   Route::controller(OrderController::class)->group(function () {
     Route::get('/instructor/all/order', 'InstructorAllOrder')->name('instructor.all.order');
+    Route::get('/instructor/order/details/{payment_id}', 'InstructorOrderDetails')->name('instructor.order.details');
   });
 }); // End Instructor Group Middleware
 // Route acessable for all

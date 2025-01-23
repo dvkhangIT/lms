@@ -54,14 +54,17 @@ class OrderController extends Controller
       'orderItem'
     ));
   }
-  public function InstructorOrderIncoice($payment_id)
+  public function InstructorOrderInvoice($payment_id)
   {
     $payment = Payment::where('id', $payment_id)->first();
     $orderItem = Order::where('payment_id', $payment_id)->orderBy('id', 'DESC')->get();
-    $pdf = Pdf::loadView('instructor.orders.order_pdf', compact('payment', 'orderItem'))->setPaper('a4')->setOption([
-      'tempDir' => public_path(),
-      'chroot' => public_path(),
-    ]);
+
+    $pdf = Pdf::loadView('instructor.orders.order_pdf', compact('payment', 'orderItem'))
+      ->setPaper('a4')
+      ->setOption([
+        'tempDir' => public_path(),
+        'chroot' => public_path(),
+      ]);
     return $pdf->download('invoice.pdf');
   }
 }

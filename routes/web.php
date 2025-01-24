@@ -48,6 +48,7 @@ Route::middleware('auth')->group(function () {
   // User my course all router
   Route::controller(OrderController::class)->group(function () {
     Route::get('/my/course', 'MyCourse')->name('my.course');
+    Route::get('/course/view/{course_id', 'CourseView')->name('course.view');
   });
 });
 require __DIR__ . '/auth.php';

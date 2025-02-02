@@ -126,51 +126,15 @@
         <div class="course-dashboard-column">
           <div class="lecture-viewer-container">
             <div class="lecture-video-item">
-              <video controls crossorigin playsinline id="player">
-                <!-- Video files -->
-                <source
-                  src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4"
-                  type="video/mp4" />
-                <source
-                  src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4"
-                  type="video/mp4" />
-                <source
-                  src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4"
-                  type="video/mp4" />
-
-                <!-- Caption files -->
-                <track kind="captions" label="English" srclang="en"
-                  src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
-                  default />
-                <track kind="captions" label="Français" srclang="fr"
-                  src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt" />
-
-                <!-- Fallback for browsers that don't support the <video> element -->
-                <a href="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4"
-                  download>Download</a>
-              </video>
-            </div>
-            <div class="lecture-viewer-text-wrap">
-              <div class="lecture-viewer-text-content custom-scrollbar-styled">
-                <div class="lecture-viewer-text-body">
-                  <h2 class="fs-24 font-weight-semi-bold pb-4">Download your
-                    Footage for your Quick Start</h2>
-                  <div class="lecture-viewer-content-detail">
-                    <ul class="generic-list-item pb-4">
-                      <li>Hi</li>
-                      <li>Welcome to Motion Graphics in After Effects. </li>
-                      <li><strong class="font-weight-semi-bold">Download your
-                          footage Now, Click on the Link Below.</strong></li>
-                    </ul>
-                    <div class="btn-box">
-                      <h3 class="fs-18 font-weight-semi-bold pb-3">Resources
-                        for this lecture</h3>
-                      <a href="#"
-                        class="btn theme-btn theme-btn-transparent"><i
-                          class="la la-file-zip-o mr-1"></i>Quick-start.zip</a>
-                    </div>
-                  </div>
-                </div>
+              <iframe width="100%" height="500" id="videoContainer"
+                src=""
+                title="The Best Way to Learn With Videos and Online Classes I Video Notebook"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+              <div id="textLesson"
+                class="fs-24 font-weight-semi-bold pb-2 text-center mt-4">
+                <h3></h3>
               </div>
             </div>
           </div><!-- end lecture-viewer-container -->
@@ -1248,7 +1212,10 @@
                                     for="courseCheckbox"></label>
                                 </div><!-- end custom-control -->
                                 <div class="course-item-content">
-                                  <h4 class="fs-15">{{ $lec->lecture_title }}
+                                  <h4 class="fs-15 lecture-title"
+                                    data-video-url="{{ $lec->url }}"
+                                    data-content="{!! $lec->content !!}">
+                                    {{ $lec->lecture_title }}
                                   </h4>
                                   <div class="courser-item-meta-wrap">
                                     <p class="course-item-meta"><i
@@ -1495,6 +1462,57 @@
       </div><!-- end modal-content -->
     </div><!-- end modal-dialog -->
   </div><!-- end modal -->
+  <script type="text/javascript">
+    // Function to open the first lecture when the page loads
+    function openFirstLecture() {
+      const firstLecture = document.querySelector(
+        '.lecture-title'); // Get the first lecture element
+      if (firstLecture) {
+        firstLecture.click(); // Trigger the click event on the first lecture
+      }
+    }
+    // Function to handle lecture clicks and load content
+    function viewLesson(videoUrl, vimeoUrl, textContent) {
+      const video = document.getElementById("videoContainer");
+      const text = document.getElementById("textLesson");
+      const textContainer = document.createElement("div");
+
+      if (videoUrl && videoUrl.trim() !== "") {
+        video.classList.remove("d-none");
+        text.classList.add("d-none");
+        text.innerHTML = "";
+        video.setAttribute("src", videoUrl);
+      } else if (vimeoUrl && vimeoUrl.trim() !== "") {
+        video.classList.remove("d-none");
+        text.classList.add("d-none");
+        text.innerHTML = "";
+        video.setAttribute("src", vimeoUrl);
+      } else if (textContent && textContent.trim() !== "") {
+        video.classList.add("d-none");
+        text.classList.remove("d-none");
+        text.innerHTML = "";
+        textContainer.innerText = textContent;
+        textContainer.style.fontSize = "14px";
+        textContainer.style.textAlign = "left";
+        textContainer.style.paddingLeft = "40px";
+        textContainer.style.paddingRight = "40px";
+        text.appendChild(textContainer);
+      }
+    }
+    // Add a click event listener to all lecture elements
+    document.querySelectorAll('.lecture-title').forEach((lectureTitle) => {
+      lectureTitle.addEventListener('click', () => {
+        const videoUrl = lectureTitle.getAttribute('data-video-url');
+        const vimeoUrl = lectureTitle.getAttribute('data-vimeo-url');
+        const textContent = lectureTitle.getAttribute('data-content');
+        viewLesson(videoUrl, vimeoUrl, textContent);
+      });
+    });
+    // Open the first lecture when the page loads
+    window.addEventListener('load', () => {
+      openFirstLecture();
+    });
+  </script>
   @include('frontend.mycourses.body.footer')
 </body>
 

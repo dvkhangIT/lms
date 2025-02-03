@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -155,6 +156,10 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('/instructor/all/order', 'InstructorAllOrder')->name('instructor.all.order');
     Route::get('/instructor/order/details/{payment_id}', 'InstructorOrderDetails')->name('instructor.order.details');
     Route::get('/instructor/order/invoice/{payment_id}', 'InstructorOrderInvoice')->name('instructor.order.invoice');
+  });
+  // Question all route
+  Route::controller(QuestionController::class)->group(function () {
+    Route::get('/instructor/all/question', 'InstructorAllQuestion')->name('instructor.all.question');
   });
 }); // End Instructor Group Middleware
 // Route acessable for all

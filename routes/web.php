@@ -160,6 +160,7 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
   // Question all route
   Route::controller(QuestionController::class)->group(function () {
     Route::get('/instructor/all/question', 'InstructorAllQuestion')->name('instructor.all.question');
+    Route::get('/question/details/{id}', 'QuestionDetails')->name('question.details');
   });
 }); // End Instructor Group Middleware
 // Route acessable for all

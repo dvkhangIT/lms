@@ -34,4 +34,9 @@ class QuestionController extends Controller
     $question = Question::where('instructor_id', $id)->where('parent_id', null)->orderBy('id', 'DESC')->get();
     return view('instructor.question.all_question', compact('question'));
   }
+  public function QuestionDetails($id)
+  {
+    $question = Question::find($id);
+    return view('instructor.question.question_details', compact('question'));
+  }
 }

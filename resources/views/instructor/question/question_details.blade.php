@@ -120,22 +120,35 @@
             style="top: 103px; height: 235px;"></div>
         </div>
       </div>
-      <div class="chat-footer d-flex align-items-center">
-        <div class="flex-grow-1 pe-2">
-          <div class="input-group"> <span class="input-group-text"><i
-                class="bx bx-smile"></i></span>
-            <input type="text" class="form-control"
-              placeholder="Type a message">
+      <form action="{{ route('instructor.replay') }}" method="POST">
+        <input type="hidden" name="qid" value="{{ $question->id }}">
+        <input type="hidden" name="course_id"
+          value="{{ $question->course->id }}">
+        <input type="hidden" name="user_id"
+          value="{{ $question->user->id }}">
+        <input type="hidden" name="user_id"
+          value="{{ $question->user->id }}">
+        <input type="hidden" name="instructor_id"
+          value="{{ $profileData->id }}">
+        @csrf
+        <div class="chat-footer d-flex align-items-center">
+          <div class="flex-grow-1 pe-2">
+            <div class="input-group"> <span class="input-group-text"><i
+                  class="bx bx-smile"></i></span>
+              <input type="text" class="form-control" name="question"
+                placeholder="Type a message">
+            </div>
+          </div>
+          <div class="chat-footer-menu">
+            <button type="submit"><i class="lni lni-reply"></i> Send</button>
+            <a href="javascript:;"><i class="bx bx-file"></i></a>
+            <a href="javascript:;"><i class="bx bxs-contact"></i></a>
+            <a href="javascript:;"><i class="bx bx-microphone"></i></a>
+            <a href="javascript:;"><i class="bx bx-dots-horizontal-rounded"></i>
+            </a>
           </div>
         </div>
-        <div class="chat-footer-menu"> <a href="javascript:;"><i
-              class="bx bx-file"></i></a>
-          <a href="javascript:;"><i class="bx bxs-contact"></i></a>
-          <a href="javascript:;"><i class="bx bx-microphone"></i></a>
-          <a href="javascript:;"><i
-              class="bx bx-dots-horizontal-rounded"></i></a>
-        </div>
-      </div>
+      </form>
       <!--start chat overlay-->
       <div class="overlay chat-toggle-btn-mobile"></div>
       <!--end chat overlay-->

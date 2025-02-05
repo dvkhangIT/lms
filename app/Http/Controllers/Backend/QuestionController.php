@@ -39,4 +39,5 @@ class QuestionController extends Controller
     $question = Question::find($id);
     return view('instructor.question.question_details', compact('question'));
   }
+  public function InstructorReplay(Request $request) {}
 }

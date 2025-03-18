@@ -1,5 +1,55 @@
-@extends('frontend.master')
-@section('home')
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="author" content="TechyDevs">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Stripe Page </title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" sizes="16x16"
+      href="{{ asset('frontend/images/favicon.png') }}">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- inject:css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ asset('frontend/css/line-awesome.css') }}">
+    <link rel="stylesheet"
+      href="{{ asset('frontend/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet"
+      href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet"
+      href="{{ asset('frontend/css/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}">
+    <link rel="stylesheet"
+      href="{{ asset('frontend/css/tooltipster.bundle.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/plyr.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <!-- end inject -->
+
+
+
+    <link rel="stylesheet" type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+  </head>
   <style>
     .StripeElement {
       box-sizing: border-box;
@@ -99,16 +149,19 @@
                   <div class="p-40 border cart-cart-totals">
                     <div class="divider-2 mb-30">
                       <div class="table-responsive order_table checkout">
-                        <form action="" method="POST" id="payment-form">
+                        <form action="" method="post"
+                          id="payment-form">
                           @csrf
                           <div class="form-row">
-                            <label for="cart-element">Credit or Debit Cart</label>
-                            <div class="cart-element">
-                              {{-- inserted here --}}
+                            <label for="card-element"> Credit or Debit
+                              Cart</label>
+                            <div id="card-element">
+                              {{-- // stripe element will be inserted here --}}
                             </div>
-                            <div class="cart-errors" role="alert"></div>
+                            <div id="card-errors" role="alert"></div>
                           </div>
-                          <button class="btn btn-primary">Submit Payment</button>
+                          <button class="btn btn-primary">Submit
+                            Payment</button>
                         </form>
                       </div>
                     </div>
@@ -199,16 +252,18 @@
                   </ul>
                 @endif
                 <div class="pt-3 btn-box border-top border-top-gray">
-                  <p class="mb-2 fs-14 lh-22">Aduca is required by law to collect
-                    applicable transaction taxes for purchases made in certain tax
+                  <p class="mb-2 fs-14 lh-22">Aduca is required by law to
+                    collect
+                    applicable transaction taxes for purchases made in certain
+                    tax
                     jurisdictions.</p>
                   <p class="mb-3 fs-14 lh-22">By completing your purchase you
                     agree
                     to these <a href="#"
                       class="text-color hover-underline">Terms of Service.</a>
                   </p>
-                  <button type="submit" class="btn theme-btn w-100">Proceed <i
-                      class="ml-1 la la-arrow-right icon"></i></button>
+                  <button type="submit" class="btn theme-btn w-100">Proceed
+                    <i class="ml-1 la la-arrow-right icon"></i></button>
                 </div>
               </div><!-- end card-body -->
             </div><!-- end card -->
@@ -284,4 +339,54 @@
       form.submit();
     }
   </script>
-@endsection
+  @include('frontend.body.footer')
+  <!-- start scroll top -->
+  <div id="scroll-top">
+    <i class="la la-arrow-up" title="Go top"></i>
+  </div>
+  <!-- end scroll top -->
+  <!-- template js files -->
+  <script src="{{ asset('frontend/js/jquery-3.4.1.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/isotope.js') }}"></script>
+  <script src="{{ asset('frontend/js/waypoint.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/jquery.counterup.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/fancybox.js') }}"></script>
+  <script src="{{ asset('frontend/js/datedropper.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/emojionearea.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/tooltipster.bundle.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/jquery.lazy.min.js') }}"></script>
+  <script src="{{ asset('frontend/js/main.js') }}"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+  </script>
+  <script src="{{ asset('frontend/js/plyr.js') }}"></script>
+  <script>
+    var player = new Plyr('#player');
+  </script>
+  <script>
+    @if (Session::has('message'))
+      var type = "{{ Session::get('alert-type', 'info') }}"
+      switch (type) {
+        case 'info':
+          toastr.info(" {{ Session::get('message') }} ");
+          break;
+        case 'success':
+          toastr.success(" {{ Session::get('message') }} ");
+          break;
+        case 'warning':
+          toastr.warning(" {{ Session::get('message') }} ");
+          break;
+        case 'error':
+          toastr.error(" {{ Session::get('message') }} ");
+          break;
+      }
+    @endif
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  @include('frontend.body.script')
+  </body>
+
+</html>

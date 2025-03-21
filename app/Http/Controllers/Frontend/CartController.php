@@ -248,6 +248,37 @@ class CartController extends Controller
       return redirect()->route('index')->with($notification);
     }
   }
+  public function StripeOrder(Request $request)
+  {
+    if (Session::has('coupon')) {
+      $total_amount = Session::get('coupon')['total_amount'];
+    } else {
+      $total_amount = round(Cart::total());
+    }
+    \Stripe\Stripe::setApiKey('sk_test_51R3qDJPpXSN7zeujDDL0wjRtTApJsof2A6DHqjD1hebRlAVafZ5Ci6d2gkTchDqiaSQiHuf0GmCEoaNg06R7wAYu00181ZSkPq');
+    $token = $_POST['stripeToken'];
+    $chagre = \Stripe\Charge::create([
+      'amount' => $total_amount * 100,
+      'currency' => 'usd',
+      'description' => 'Lms',
+      'source' => $token,
+      'metadata' => ['order_id' => '3434']
+    ]);
+    $order_id = Payment::insertGetId([
+      'name' => $request->name,
+      'email' => $request->email,
+      'phone' => $request->phone,
+      'address' => $request->address,
+      'total_amount' => $total_amount,
+      'payment_type' => 'Stripe',
+      'invoice_no' => 'EOS' . mt_rand(10000000, 99999999),
+      'order_date' => Carbon::now()->format('d F Y'),
+      'order_month' => Carbon::now()->format('F'),
+      'order_year' => Carbon::now()->format('Y'),
+      'status' => 'pending',
+      'created_at' => Carbon::now(),
+    ]);
+  }
   public function BuyToCart(Request $request, $id)
   {
     $course = Course::find($id);

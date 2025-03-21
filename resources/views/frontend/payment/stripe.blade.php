@@ -149,8 +149,8 @@
                   <div class="p-40 border cart-cart-totals">
                     <div class="divider-2 mb-30">
                       <div class="table-responsive order_table checkout">
-                        <form action="" method="post"
-                          id="payment-form">
+                        <form action="{{ route('stripe_order') }}"
+                          method="post" id="payment-form">
                           @csrf
                           <div class="form-row">
                             <label for="card-element"> Credit or Debit
@@ -275,7 +275,7 @@
   <script type="text/javascript">
     // Create a Stripe client.
     var stripe = Stripe(
-      'pk_test_51IUTWzALc6pn5BvMAUegqRHV0AAokjG7ZuV6RWcj5rxB9KCAwamgtWpw9T4maGAe34WmDkD6LSn1Yge3nzex6gYk004pILHsNh'
+      'pk_test_51R3qDJPpXSN7zeujnjGB5UHYtIyA4UDoisWDcfbx3MhD8MeY8t4UwwAMsZSvN3K8T2O6eiT71l4kCnA1S6fbnhS0002pOTDxwa'
     );
     // Create an instance of Elements.
     var elements = stripe.elements();

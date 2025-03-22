@@ -95,182 +95,187 @@
   <section class="cart-area section--padding">
     {{-- <form method="post" class="row"> --}}
     <div class="container">
-      <form method="post" class="row" action="{{ route('payment') }}"
-        enctype="multipart/form-data">
-        @csrf
-        <div class="row">
-          <div class="col-lg-7">
-            <div class="card card-item">
-              <div class="card-body">
-                <h3 class="pb-3 card-title fs-22">Billing Details</h3>
-                <div class="divider"><span></span></div>
-                <div class="input-box col-lg-6">
-                  <label class="label-text">First Name</label>
-                  <div class="form-group">
-                    <input class="form-control form--control" type="text"
-                      name="name" placeholder="e.g. Alex"
-                      value="{{ Auth::user()->name }}">
-                    <span class="la la-user input-icon"></span>
-                  </div>
-                </div><!-- end input-box -->
-                <div class="input-box col-lg-6">
-                  <label class="label-text">Email</label>
-                  <div class="form-group">
-                    <input class="form-control form--control" type="email"
-                      name="email" placeholder="e.g. alexsmith@gmail.com"
-                      value="{{ Auth::user()->email }}">
-                    <span class="la la-envelope input-icon"></span>
-                  </div>
-                </div><!-- end input-box -->
-                <div class="input-box col-lg-12">
-                  <label class="label-text">Address</label>
-                  <div class="form-group">
-                    <input class="form-control form--control" type="text"
-                      name="address" value="{{ Auth::user()->address }}"
-                      placeholder="e.g. 12345 Little Baker St, Melbourne">
-                    <span class="la la-map-marker input-icon"></span>
-                  </div>
-                </div><!-- end input-box -->
-                <div class="input-box col-lg-12">
-                  <label class="label-text">Phone Number</label>
-                  <div class="form-group">
-                    <input id="phone" class="form-control form--control"
-                      type="tel" name="phone"
-                      value="{{ Auth::user()->phone }}">
-                  </div>
-                </div><!-- end input-box -->
-              </div><!-- end card-body -->
-            </div><!-- end card -->
-            <div class="card card-item">
-              <div class="card-body">
-                <h3 class="pb-3 card-title fs-22">Select Payment Method</h3>
-                <div class="divider"><span></span></div>
-                <div class="col-lg-12">
-                  <div class="p-40 border cart-cart-totals">
-                    <div class="divider-2 mb-30">
-                      <div class="table-responsive order_table checkout">
-                        <form action="{{ route('stripe_order') }}"
-                          method="post" id="payment-form">
-                          @csrf
-                          <div class="form-row">
-                            <label for="card-element"> Credit or Debit
-                              Cart</label>
-                            <div id="card-element">
-                              {{-- // stripe element will be inserted here --}}
-                            </div>
-                            <div id="card-errors" role="alert"></div>
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="card card-item">
+            <div class="card-body">
+              <h3 class="pb-3 card-title fs-22">Billing Details</h3>
+              <div class="divider"><span></span></div>
+              <div class="input-box col-lg-6">
+                <label class="label-text">First Name</label>
+                <div class="form-group">
+                  <input class="form-control form--control" type="text"
+                    name="name" placeholder="e.g. Alex"
+                    value="{{ Auth::user()->name }}">
+                  <span class="la la-user input-icon"></span>
+                </div>
+              </div><!-- end input-box -->
+              <div class="input-box col-lg-6">
+                <label class="label-text">Email</label>
+                <div class="form-group">
+                  <input class="form-control form--control" type="email"
+                    name="email" placeholder="e.g. alexsmith@gmail.com"
+                    value="{{ Auth::user()->email }}">
+                  <span class="la la-envelope input-icon"></span>
+                </div>
+              </div><!-- end input-box -->
+              <div class="input-box col-lg-12">
+                <label class="label-text">Address</label>
+                <div class="form-group">
+                  <input class="form-control form--control" type="text"
+                    name="address" value="{{ Auth::user()->address }}"
+                    placeholder="e.g. 12345 Little Baker St, Melbourne">
+                  <span class="la la-map-marker input-icon"></span>
+                </div>
+              </div><!-- end input-box -->
+              <div class="input-box col-lg-12">
+                <label class="label-text">Phone Number</label>
+                <div class="form-group">
+                  <input id="phone" class="form-control form--control"
+                    type="tel" name="phone"
+                    value="{{ Auth::user()->phone }}">
+                </div>
+              </div><!-- end input-box -->
+            </div><!-- end card-body -->
+          </div><!-- end card -->
+          <div class="card card-item">
+            <div class="card-body">
+              <h3 class="pb-3 card-title fs-22">Select Payment Method</h3>
+              <div class="divider"><span></span></div>
+              <div class="col-lg-12">
+                <div class="p-40 border cart-cart-totals">
+                  <div class="divider-2 mb-30">
+                    <div class="table-responsive order_table checkout">
+                      <form action="{{ route('stripe_order') }}"
+                        method="post" id="payment-form">
+                        @csrf
+                        <div class="form-row">
+                          <label for="card-element"> Credit or Debit
+                            Cart</label>
+                          <input type="hidden" name="name"
+                            value="{{ $data['name'] }}">
+                          <input type="hidden" name="email"
+                            value="{{ $data['email'] }}">
+                          <input type="hidden" name="phone"
+                            value="{{ $data['phone'] }}">
+                          <input type="hidden" name="address"
+                            value="{{ $data['address'] }}">
+                          <div id="card-element">
+                            {{-- // stripe element will be inserted here --}}
                           </div>
-                          <button class="btn btn-primary">Submit
-                            Payment</button>
-                        </form>
-                      </div>
+                          <div id="card-errors" role="alert"></div>
+                        </div>
+                        <button class="btn btn-primary">Submit
+                          Payment</button>
+                      </form>
                     </div>
                   </div>
                 </div>
-              </div><!-- end card-body -->
-            </div><!-- end card -->
-          </div><!-- end col-lg-7 -->
-          <div class="col-lg-5">
-            <div class="card card-item">
-              <div class="card-body">
-                <h3 class="pb-3 card-title fs-22">Order Details</h3>
-                <div class="divider"><span></span></div>
-                <div class="order-details-lists">
-                  @foreach ($carts as $item)
-                    <input type="hidden" name="slug[]"
-                      value="{{ $item->options->slug }}">
-                    <input type="hidden" name="course_id[]"
-                      value="{{ $item->id }}">
-                    <input type="hidden" name="course_title[]"
-                      value="{{ $item->name }}">
-                    <input type="hidden" name="price[]"
-                      value="{{ $item->price }}">
-                    <input type="hidden" name="instructor_id[]"
-                      value="{{ $item->options->instructor }}">
-                    <div
-                      class="pb-3 mb-3 media media-card border-bottom border-bottom-gray">
-                      <a href="course-details.html" class="media-img">
-                        <img src="{{ asset($item->options->image) }}"
-                          alt="Cart image">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="pb-2 fs-15">
-                          <a
-                            href="{{ url('course/details/' . $item->id . '/' . $item->options->slug) }}">{{ $item->name }}</a>
-                        </h5>
-                        <p class="text-black font-weight-semi-bold lh-18">
-                          ${{ $item->price }}
-                        </p>
-                      </div>
-                    </div><!-- end media -->
-                  @endforeach
-                </div><!-- end order-details-lists -->
-                <a href="{{ route('mycart') }}" class="btn-text"><i
-                    class="mr-1 la la-edit"></i>Edit</a>
-              </div><!-- end card-body -->
-            </div><!-- end card -->
-            <div class="card card-item">
-              <div class="card-body">
-                <h3 class="pb-3 card-title fs-22">Order Summary</h3>
-                <div class="divider"><span></span></div>
-                @if (Session::has('coupon'))
-                  <ul class="generic-list-item generic-list-item-flash fs-15">
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-semi-bold">
-                      <span class="text-black">SubTotal:</span>
-                      <span>${{ $cartTotal }}</span>
-                    </li>
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-semi-bold">
-                      <span class="text-black">Coupon name:</span>
-                      <span>{{ session()->get('coupon')['coupon_name'] }}
-                        ({{ session()->get('coupon')['coupon_discount'] }}%)</span>
-                    </li>
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-bold">
-                      <span class="text-black">Coupon Discount:</span>
-                      <span>-
-                        ${{ session()->get('coupon')['discount_amount'] }}</span>
-                    </li>
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-bold">
-                      <span class="text-black">Total:</span>
-                      <span>${{ session()->get('coupon')['total_amount'] }}</span>
-                    </li>
-                    <input type="hidden" name="total"
-                      value="{{ $cartTotal }}">
-                  </ul>
-                @else
-                  <ul class="generic-list-item generic-list-item-flash fs-15">
-                    <li
-                      class="d-flex align-items-center justify-content-between font-weight-bold">
-                      <span class="text-black">Total:</span>
-                      <span>${{ $cartTotal }}</span>
-                    </li>
-                    <input type="hidden" name="total"
-                      value="{{ $cartTotal }}">
-                  </ul>
-                @endif
-                <div class="pt-3 btn-box border-top border-top-gray">
-                  <p class="mb-2 fs-14 lh-22">Aduca is required by law to
-                    collect
-                    applicable transaction taxes for purchases made in certain
-                    tax
-                    jurisdictions.</p>
-                  <p class="mb-3 fs-14 lh-22">By completing your purchase you
-                    agree
-                    to these <a href="#"
-                      class="text-color hover-underline">Terms of Service.</a>
-                  </p>
-                  <button type="submit" class="btn theme-btn w-100">Proceed
-                    <i class="ml-1 la la-arrow-right icon"></i></button>
-                </div>
-              </div><!-- end card-body -->
-            </div><!-- end card -->
-          </div><!-- end col-lg-5 -->
-        </div><!-- end row -->
+              </div>
+            </div><!-- end card-body -->
+          </div><!-- end card -->
+        </div><!-- end col-lg-7 -->
+        <div class="col-lg-5">
+          <div class="card card-item">
+            <div class="card-body">
+              <h3 class="pb-3 card-title fs-22">Order Details</h3>
+              <div class="divider"><span></span></div>
+              <div class="order-details-lists">
+                @foreach ($carts as $item)
+                  <input type="hidden" name="slug[]"
+                    value="{{ $item->options->slug }}">
+                  <input type="hidden" name="course_id[]"
+                    value="{{ $item->id }}">
+                  <input type="hidden" name="course_title[]"
+                    value="{{ $item->name }}">
+                  <input type="hidden" name="price[]"
+                    value="{{ $item->price }}">
+                  <input type="hidden" name="instructor_id[]"
+                    value="{{ $item->options->instructor }}">
+                  <div
+                    class="pb-3 mb-3 media media-card border-bottom border-bottom-gray">
+                    <a href="course-details.html" class="media-img">
+                      <img src="{{ asset($item->options->image) }}"
+                        alt="Cart image">
+                    </a>
+                    <div class="media-body">
+                      <h5 class="pb-2 fs-15">
+                        <a
+                          href="{{ url('course/details/' . $item->id . '/' . $item->options->slug) }}">{{ $item->name }}</a>
+                      </h5>
+                      <p class="text-black font-weight-semi-bold lh-18">
+                        ${{ $item->price }}
+                      </p>
+                    </div>
+                  </div><!-- end media -->
+                @endforeach
+              </div><!-- end order-details-lists -->
+              <a href="{{ route('mycart') }}" class="btn-text"><i
+                  class="mr-1 la la-edit"></i>Edit</a>
+            </div><!-- end card-body -->
+          </div><!-- end card -->
+          <div class="card card-item">
+            <div class="card-body">
+              <h3 class="pb-3 card-title fs-22">Order Summary</h3>
+              <div class="divider"><span></span></div>
+              @if (Session::has('coupon'))
+                <ul class="generic-list-item generic-list-item-flash fs-15">
+                  <li
+                    class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                    <span class="text-black">SubTotal:</span>
+                    <span>${{ $cartTotal }}</span>
+                  </li>
+                  <li
+                    class="d-flex align-items-center justify-content-between font-weight-semi-bold">
+                    <span class="text-black">Coupon name:</span>
+                    <span>{{ session()->get('coupon')['coupon_name'] }}
+                      ({{ session()->get('coupon')['coupon_discount'] }}%)</span>
+                  </li>
+                  <li
+                    class="d-flex align-items-center justify-content-between font-weight-bold">
+                    <span class="text-black">Coupon Discount:</span>
+                    <span>-
+                      ${{ session()->get('coupon')['discount_amount'] }}</span>
+                  </li>
+                  <li
+                    class="d-flex align-items-center justify-content-between font-weight-bold">
+                    <span class="text-black">Total:</span>
+                    <span>${{ session()->get('coupon')['total_amount'] }}</span>
+                  </li>
+                  <input type="hidden" name="total"
+                    value="{{ $cartTotal }}">
+                </ul>
+              @else
+                <ul class="generic-list-item generic-list-item-flash fs-15">
+                  <li
+                    class="d-flex align-items-center justify-content-between font-weight-bold">
+                    <span class="text-black">Total:</span>
+                    <span>${{ $cartTotal }}</span>
+                  </li>
+                  <input type="hidden" name="total"
+                    value="{{ $cartTotal }}">
+                </ul>
+              @endif
+              <div class="pt-3 btn-box border-top border-top-gray">
+                <p class="mb-2 fs-14 lh-22">Aduca is required by law to
+                  collect
+                  applicable transaction taxes for purchases made in certain
+                  tax
+                  jurisdictions.</p>
+                <p class="mb-3 fs-14 lh-22">By completing your purchase you
+                  agree
+                  to these <a href="#"
+                    class="text-color hover-underline">Terms of Service.</a>
+                </p>
+                <button type="submit" class="btn theme-btn w-100">Proceed
+                  <i class="ml-1 la la-arrow-right icon"></i></button>
+              </div>
+            </div><!-- end card-body -->
+          </div><!-- end card -->
+        </div><!-- end col-lg-5 -->
+      </div><!-- end row -->
     </div><!-- end container -->
-    </from>
+
   </section>
   <script type="text/javascript">
     // Create a Stripe client.

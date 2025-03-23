@@ -38,7 +38,7 @@
             </form>
           </div>
           <div class="col-md-4">
-            <form id="myForm" action="{{ route('admin.store.coupon') }}"
+            <form id="myForm" action="{{ route('search.by.month') }}"
               method="post" class="row g-3" enctype="multipart/form-data">
               @csrf
               <div class="form-group col-md-12">
@@ -81,7 +81,7 @@
             </form>
           </div>
           <div class="col-md-4">
-            <form id="myForm" action="{{ route('admin.store.coupon') }}"
+            <form id="myForm" action="{{ route('search.by.year') }}"
               method="post" class="row g-3" enctype="multipart/form-data">
               @csrf
               <div class="form-group col-md-12">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CourseController;
 use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\QuestionController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -113,6 +114,10 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('admin/order/details/{id}', 'AdminOrderDetails')->name('admin.order.details');
     Route::get('pending-confirm/{id}', 'PendingToConfirm')->name('pending-confirm');
     Route::get('/admin/confirm/order', 'AdminConfirmOrder')->name('admin.confirm.order');
+  });
+  // Admin all report route
+  Route::controller(ReportController::class)->group(function () {
+    Route::get('/report/view', 'ReportView')->name('report.view');
   });
 }); // End Admin Group Middleware
 

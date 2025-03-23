@@ -118,6 +118,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
   // Admin all report route
   Route::controller(ReportController::class)->group(function () {
     Route::get('/report/view', 'ReportView')->name('report.view');
+    Route::post('search/by/date', 'SearchByDate')->name('search.by.date');
   });
 }); // End Admin Group Middleware
 

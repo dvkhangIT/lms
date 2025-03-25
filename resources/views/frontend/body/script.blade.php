@@ -60,14 +60,14 @@
             </a>
           </div><!-- end card-image -->
           <div class="card-body">
-            <h6 class="ribbon ribbon-blue-bg fs-14 mb-3">${value.course.label}</h6>
+            <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">${value.course.label}</h6>
             <h5 class="card-title"><a href="/course/details/${value.course.id}/${value.course.course_name_slug}">${value.course.course_name}</a></h5>
             <div class="d-flex justify-content-between align-items-center">
               ${value.course.discount_price ==null 
-              ? `<p class="card-price text-black font-weight-bold">$${value.course.selling_price}</p>`
-              : `<p class="card-price text-black font-weight-bold">$${value.course.discount_price} <span
+              ? `<p class="text-black card-price font-weight-bold">$${value.course.selling_price}</p>`
+              : `<p class="text-black card-price font-weight-bold">$${value.course.discount_price} <span
                   class="before-price font-weight-medium">$${value.course.selling_price}</span></p>`}
-              <div class="icon-element icon-element-sm shadow-sm cursor-pointer"
+              <div class="shadow-sm cursor-pointer icon-element icon-element-sm"
                 data-toggle="tooltip" data-placement="top" title=""data-original-title="Remove from Wishlist" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="la la-heart"></i></div>
             </div>
           </div>
@@ -181,7 +181,7 @@
               <div class="media-body">
                 <h5><a href="course/details/${value.id}/${value.options.slug}">${value.name}</a>
                 </h5>
-                <span class="d-block lh-18 py-1">Kamran Ahmed</span>
+                <span class="py-1 d-block lh-18">Kamran Ahmed</span>
                 <p class="text-black font-weight-semi-bold lh-18">$${value.price}</p>
                 <a type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="la la-times"></i></a>
               </div>
@@ -244,7 +244,7 @@
             <tr>
               <th scope="row">
                 <div class="media media-card">
-                  <a href="course/details/${value.id}/${value.options.slug}" class="media-img mr-0">
+                  <a href="course/details/${value.id}/${value.options.slug}" class="mr-0 media-img">
                     <img src="/${value.options.image}" alt="Cart image">
                   </a>
                 </div>
@@ -260,7 +260,7 @@
               </td>
               <td>
                 <button type="button"
-                  class="icon-element icon-element-xs shadow-sm border-0"
+                  class="border-0 shadow-sm icon-element icon-element-xs"
                   data-toggle="tooltip" data-placement="top" id="${value.rowId}" onclick="cartRemove(this.id)">
                   <i class="la la-times"></i>
                 </button>
@@ -359,9 +359,9 @@
       success: function(data) {
         if (data.total) {
           $('#couponCalField').html(
-            `<h3 class="fs-18 font-weight-bold pb-3">Cart Totals</h3>
+            `<h3 class="pb-3 fs-18 font-weight-bold">Cart Totals</h3>
                   <div class="divider"><span></span></div>
-                  <ul class="generic-list-item pb-4">
+                  <ul class="pb-4 generic-list-item">
                     <li
                       class="d-flex align-items-center justify-content-between font-weight-semi-bold">
                       <span class="text-black">Subtotal:</span>
@@ -376,9 +376,9 @@
           )
         } else {
           $('#couponCalField').html(
-            `<h3 class="fs-18 font-weight-bold pb-3">Cart Totals</h3>
+            `<h3 class="pb-3 fs-18 font-weight-bold">Cart Totals</h3>
             <div class="divider"><span></span></div>
-            <ul class="generic-list-item pb-4">
+            <ul class="pb-4 generic-list-item">
               <li
                 class="d-flex align-items-center justify-content-between font-weight-semi-bold">
                 <span class="text-black">Subtotal:</span>
@@ -388,7 +388,7 @@
                 class="d-flex align-items-center justify-content-between font-weight-semi-bold">
                 <span class="text-black">Coupon name:</span>
                 <span">${data.coupon_name} 
-                <button onclick="removeCoupon()" type="button" class="icon-element icon-element-xs shadow-sm border-0" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="la la-times"></i>
+                <button onclick="removeCoupon()" type="button" class="border-0 shadow-sm icon-element icon-element-xs" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="la la-times"></i>
                 </button>
                 </span>
               </li>
@@ -490,3 +490,48 @@
   }
 </script>
 {{-- end buy now button --}}
+
+<script>
+  function applyCoupon() {
+    var coupon_name = $('#coupon_name').val();
+    var course_id = $('#course_id').val();
+    var instructor_id = $('#instructor_id').val();
+    $.ajax({
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        coupon_name: coupon_name,
+        course_id: course_id,
+        instructor_id: instructor_id
+      },
+      url: "/inscoupon-apply",
+      success: function(data) {
+        couponCalculation()
+        if (data.validity == true) {
+          $('#couponField').hide()
+        }
+        // Start Message 
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 1000
+        })
+        if ($.isEmptyObject(data.error)) {
+          Toast.fire({
+            icon: 'success',
+            type: 'success',
+            title: data.success,
+          })
+        } else {
+          Toast.fire({
+            icon: 'error',
+            type: 'error',
+            title: data.error,
+          })
+        }
+        // End Message  
+      }
+    })
+  }
+</script>

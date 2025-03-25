@@ -134,6 +134,7 @@ class CartController extends Controller
       return response()->json(['error' => 'Invaild Coupon']);
     }
   }
+  public function InsCouponApply() {}
   public function CouponCalculation()
   {
     if (session::has('coupon')) {

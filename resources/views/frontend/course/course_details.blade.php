@@ -1,5 +1,5 @@
-@extends("frontend.master")
-@section("home")
+@extends('frontend.master')
+@section('home')
   <section class="bg-white breadcrumb-area pt-50px pb-50px pattern-bg">
     <div class="container">
       <div class="mr-auto col-lg-8">
@@ -8,10 +8,10 @@
             class="flex-wrap generic-list-item generic-list-item-arrow d-flex align-items-center">
             <li><a href="index.html">Home</a></li>
             <li><a
-                href="{{ $course["category"]["category_name"] }}">Development</a>
+                href="{{ $course['category']['category_name'] }}">Development</a>
             </li>
             <li><a
-                href="#">{{ $course["subcategory"]["subcategory_name"] }}</a>
+                href="#">{{ $course['subcategory']['subcategory_name'] }}</a>
             </li>
           </ul>
           <div class="section-heading">
@@ -38,7 +38,7 @@
             </div>
           </div><!-- end d-flex -->
           <p class="pt-2 pb-1">Created by <a href="teacher-detail.html"
-              class="text-color hover-underline">{{ $course["user"]["name"] }}</a>
+              class="text-color hover-underline">{{ $course['user']['name'] }}</a>
           </p>
           <div class="flex-wrap d-flex align-items-center">
             <p class="pr-3 d-flex align-items-center">
@@ -48,7 +48,7 @@
                   d="M23 12l-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-10 5h-2v-2h2v2zm0-4h-2V7h2v6z">
                 </path>
               </svg>
-              Last updated {{ $course->created_at->format("M d Y") }}
+              Last updated {{ $course->created_at->format('M d Y') }}
             </p>
             <p class="pr-3 d-flex align-items-center">
               <svg class="mr-1 svg-icon-color-gray" width="16px"
@@ -115,16 +115,16 @@
                 courses</p>
               <div class="pb-3">
                 <img width="85" class="mr-3"
-                  src="{{ asset("frontend/images/sponsor-img.png") }}"
+                  src="{{ asset('frontend/images/sponsor-img.png') }}"
                   alt="company logo">
                 <img width="80" class="mr-3"
-                  src="{{ asset("frontend/images/sponsor-img2.png") }}"
+                  src="{{ asset('frontend/images/sponsor-img2.png') }}"
                   alt="company logo">
                 <img width="80" class="mr-3"
-                  src="{{ asset("frontend/images/sponsor-img3.png") }}"
+                  src="{{ asset('frontend/images/sponsor-img3.png') }}"
                   alt="company logo">
                 <img width="70" class="mr-3"
-                  src="{{ asset("frontend/images/sponsor-img4.png") }}"
+                  src="{{ asset('frontend/images/sponsor-img4.png') }}"
                   alt="company logo">
               </div>
               <a href="for-business.html" class="btn theme-btn theme-btn-sm">Try
@@ -153,7 +153,7 @@
             </div><!-- end course-overview-card -->
             @php
               $lecture = App\Models\CourseLecture::where(
-                  "course_id",
+                  'course_id',
                   $course->id,
               )->get();
             @endphp
@@ -173,10 +173,10 @@
               </div>
               @php
                 $section = App\Models\CourseSection::where(
-                    "course_id",
+                    'course_id',
                     $course->id,
                 )
-                    ->orderBy("id", "ASC")
+                    ->orderBy('id', 'ASC')
                     ->get();
               @endphp
               <div class="curriculum-content">
@@ -184,7 +184,7 @@
                   @foreach ($section as $sec)
                     @php
                       $lecture = App\Models\CourseLecture::where(
-                          "section_id",
+                          'section_id',
                           $sec->id,
                       )->get();
                     @endphp
@@ -237,8 +237,8 @@
                   <div class="instructor-img">
                     <a href="teacher-detail.html" class="media-img d-block">
                       <img class="lazy"
-                        src="{{ !empty($course->user->photo) ? url("upload/instructor_images/" . $course->user->photo) : url("upload/no_image.jpg") }}"
-                        data-src="{{ !empty($course->user->photo) ? url("upload/instructor_images/" . $course->user->photo) : url("upload/no_image.jpg") }}"
+                        src="{{ !empty($course->user->photo) ? url('upload/instructor_images/' . $course->user->photo) : url('upload/no_image.jpg') }}"
+                        data-src="{{ !empty($course->user->photo) ? url('upload/instructor_images/' . $course->user->photo) : url('upload/no_image.jpg') }}"
                         alt="Avatar image">
                     </a>
                     <ul class="pt-3 generic-list-item">
@@ -255,12 +255,12 @@
                   </div><!-- end instructor-img -->
                   <div class="media-body">
                     <h5><a
-                        href="teacher-detail.html">{{ $course["user"]["name"] }}</a>
+                        href="teacher-detail.html">{{ $course['user']['name'] }}</a>
                     </h5>
                     <span class="pt-2 pb-3 d-block lh-18">Joined
                       {{ Carbon\Carbon::parse($course->user->created_at)->diffForHumans() }}</span>
                     <p class="pb-3 text-black lh-18">
-                      {{ $course["user"]["email"] }}</p>
+                      {{ $course['user']['email'] }}</p>
                     <p class="pb-3">Lorem Ipsum is simply dummy text of the
                       printing and typesetting
                       industry. Lorem
@@ -645,7 +645,22 @@
                       onclick="buyCourse({{ $course->id }},'{{ $course->course_name }}','{{ $course->instructor_id }}','{{ $course->course_name_slug }}')"
                       class="mb-2 btn theme-btn w-100 theme-btn-white"><i
                         class="mr-1 la la-shopping-bag"></i> Buy this
-                      course</button>
+                      course
+                    </button>
+                    <div class="mb-2 input-group" id="couponField">
+                      <input class="pl-3 form-control form--control"
+                        type="text" name="search" placeholder="Coupon code"
+                        id="coupon_name">
+                      <div class="input-group-append">
+                        <input type="hidden" value="{{ $course->id }}"
+                          name="course_id" id="course_id">
+                        <input type="hidden"
+                          value="{{ $course->instructor_id }}"
+                          name="instructor_id" id="instructor_id">
+                        <a type="submit" onclick="applyInsCoupon()"
+                          class="btn theme-btn">Apply Code</a>
+                      </div>
+                    </div>
                   </div>
                   <p class="pb-4 text-center fs-14">30-Day Money-Back Guarantee
                   </p>
@@ -747,7 +762,7 @@
                 <ul class="generic-list-item">
                   @foreach ($categories as $cat)
                     <li><a
-                        href="{{ url("category/" . $cat->id . "/" . $cat->category_slug) }}">{{ $cat->category_name }}</a>
+                        href="{{ url('category/' . $cat->id . '/' . $cat->category_slug) }}">{{ $cat->category_name }}</a>
                     </li>
                   @endforeach
                 </ul>
@@ -760,7 +775,7 @@
                 @foreach ($relatedCourses as $related)
                   <div
                     class="pb-4 mb-4 media media-card border-bottom border-bottom-gray">
-                    <a href="{{ url("course/details/" . $course->id . "/" . $course->course_name_slug) }}"
+                    <a href="{{ url('course/details/' . $course->id . '/' . $course->course_name_slug) }}"
                       class="media-img">
                       <img class="mr-3 lazy"
                         src="{{ asset($related->course_image) }}"
@@ -772,7 +787,7 @@
                           href="course-details.html">{{ $related->course_name }}</a>
                       </h5>
                       <span
-                        class="py-1 d-block lh-18 fs-14">{{ $related["user"]["name"] }}</span>
+                        class="py-1 d-block lh-18 fs-14">{{ $related['user']['name'] }}</span>
                       @if ($course->discount_price == null)
                         <p class="text-black font-weight-semi-bold lh-18 fs-15">
                           ${{ $related->selling_price }}</p>
@@ -801,7 +816,7 @@
       <div class="related-course-wrap">
         <h3 class="fs-28 font-weight-semi-bold pb-35px">More Courses by <a
             href="teacher-detail.html"
-            class="text-color hover-underline">{{ $course["user"]["name"] }}</a>
+            class="text-color hover-underline">{{ $course['user']['name'] }}</a>
         </h3>
         <div class="view-more-carousel-2 owl-action-styled">
           @foreach ($instructorCourses as $inscourse)
@@ -811,7 +826,7 @@
             @endphp
             <div class="card card-item">
               <div class="card-image">
-                <a href="{{ url("course/details/" . $course->id . "/" . $inscourse->course_name_slug) }}"
+                <a href="{{ url('course/details/' . $course->id . '/' . $inscourse->course_name_slug) }}"
                   class="d-block">
                   <img class="card-img-top"
                     src="{{ asset($inscourse->course_image) }}"
@@ -834,10 +849,10 @@
                 <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">
                   {{ $inscourse->label }}</h6>
                 <h5 class="card-title"><a
-                    href="{{ url("course/details/" . $course->id . "/" . $inscourse->course_name_slug) }}">{{ $inscourse->course_name }}</a>
+                    href="{{ url('course/details/' . $course->id . '/' . $inscourse->course_name_slug) }}">{{ $inscourse->course_name }}</a>
                 </h5>
                 <p class="card-text"><a
-                    href="teacher-detail.html">{{ $inscourse["user"]["name"] }}</a>
+                    href="teacher-detail.html">{{ $inscourse['user']['name'] }}</a>
                 </p>
                 <div class="py-2 rating-wrap d-flex align-items-center">
                   <div class="review-stars">
@@ -937,7 +952,7 @@
             <div class="input-group">
               <input type="text"
                 class="pl-3 form-control form--control copy-input"
-                value="{{ "http://127.0.0.1:8000/" . Request::path() }}">
+                value="{{ 'http://127.0.0.1:8000/' . Request::path() }}">
               <div class="input-group-append">
                 <button
                   class="shadow-none btn theme-btn theme-btn-sm copy-btn"><i

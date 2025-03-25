@@ -172,7 +172,8 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
   // Instructor Coupon All Route 
   Route::controller(CouponController::class)->group(function () {
     Route::get('/instructor/all/coupon', 'InstructorAllCoupon')->name('instructor.all.coupon');
-    Route::get('/instructor/all/coupon', 'InstructorAddCoupon')->name('instructor.add.coupon');
+    Route::get('/instructor/add/coupon', 'InstructorAddCoupon')->name('instructor.add.coupon');
+    Route::post('/instructor/store/coupon', 'InstructorStoreCoupon')->name('instructor.store.coupon');
   });
 }); // End Instructor Group Middleware
 // Route acessable for all

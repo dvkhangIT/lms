@@ -12,10 +12,10 @@
             <li class="breadcrumb-item active" aria-current="page">All Coupon</li>
           </ol>
         </nav>
-      </div>
+      </div>{{ }}
       <div class="ms-auto">
         <div class="btn-group">
-          <a href="{{ route('admin.add.coupon') }}"
+          <a href="{{ route('instructor.add.coupon') }}"
             class="px-5 btn btn-primary">Add Coupon </a>
         </div>
       </div>

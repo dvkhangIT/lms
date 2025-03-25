@@ -169,6 +169,10 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('/question/details/{id}', 'QuestionDetails')->name('question.details');
     Route::post('/instructor/replay', 'InstructorReplay')->name('instructor.replay');
   });
+  // Instructor Coupon All Route 
+  Route::controller(CouponController::class)->group(function () {
+    Route::get('/instructor/all/coupon', 'InstructorAllCoupon')->name('instructor.all.coupon');
+  });
 }); // End Instructor Group Middleware
 // Route acessable for all
 Route::get('course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);

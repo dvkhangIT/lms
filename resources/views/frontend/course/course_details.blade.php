@@ -24,17 +24,67 @@
             @else
               {{-- <h6 class="mr-2 text-white ribbon ribbon-lg bg-3">New</h6> --}}
             @endif
+            @php
+              $reviewCount = App\Models\Review::where('course_id', $course->id)
+                  ->where('status', 1)
+                  ->latest()
+                  ->get();
+              $avarage = App\Models\Review::where('course_id', $course->id)
+                  ->where('status', 1)
+                  ->avg('rating');
+            @endphp
             <div class="flex-wrap rating-wrap d-flex align-items-center">
               <div class="review-stars">
-                <span class="rating-number">4.4</span>
-                <span class="la la-star"></span>
-                <span class="la la-star"></span>
-                <span class="la la-star"></span>
-                <span class="la la-star"></span>
-                <span class="la la-star-o"></span>
+                <span class="rating-number">{{ round($avarage, 1) }}</span>
+                @if ($avarage == 0)
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                @elseif ($avarage == 1 || $avarage < 2)
+                  <span class="la la-star"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                @elseif ($avarage == 2 || $avarage < 3)
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                @elseif ($avarage == 3 || $avarage < 4)
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star-o"></span>
+                  <span class="la la-star-o"></span>
+                @elseif ($avarage == 4 || $avarage < 5)
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star-o"></span>
+                @elseif ($avarage == 5 || $avarage < 5)
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                  <span class="la la-star"></span>
+                @endif
               </div>
-              <span class="pl-1 rating-total">(20,230 ratings)</span>
-              <span class="pl-2 student-total">540,815 students</span>
+              <span class="pl-1 rating-total">({{ count($reviewCount) }}
+                ratings)</span>
+              @php
+                $enrollmentCount = App\Models\Order::where(
+                    'course_id',
+                    $course->id,
+                )->count();
+              @endphp
+              <span
+                class="pl-2 student-total">{{ number_format($enrollmentCount) }}
+                students</span>
             </div>
           </div><!-- end d-flex -->
           <p class="pt-2 pb-1">Created by <a href="teacher-detail.html"

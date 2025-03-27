@@ -123,6 +123,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::post('search/by/month', 'SearchByMonth')->name('search.by.month');
     Route::post('search/by/year', 'SearchByYear')->name('search.by.year');
   });
+  Route::controller(ReviewController::class)->group(function () {
+    Route::get('/admin/pending/review', 'AdminPendingRivew')->name('admin.pending.review');
+  });
 }); // End Admin Group Middleware
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);

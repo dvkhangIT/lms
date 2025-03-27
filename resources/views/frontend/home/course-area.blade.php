@@ -1,9 +1,9 @@
 @php
-  $courses = App\Models\Course::where("status", 1)
-      ->orderBy("id", "ASC")
+  $courses = App\Models\Course::where('status', 1)
+      ->orderBy('id', 'ASC')
       ->limit(6)
       ->get();
-  $categories = App\Models\Category::orderBy("category_name", "ASC")->get();
+  $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
 @endphp
 <section class="course-area pb-120px">
   <div class="container">
@@ -41,7 +41,7 @@
                 <div class="card card-item card-preview"
                   data-tooltip-content="#tooltip_content_1{{ $course->id }}">
                   <div class="card-image">
-                    <a href="{{ url("course/details/" . $course->id . "/" . $course->course_name_slug) }}"
+                    <a href="{{ url('course/details/' . $course->id . '/' . $course->course_name_slug) }}"
                       class="d-block">
                       <img class="card-img-top lazy"
                         src="{{ asset($course->course_image) }}"
@@ -70,25 +70,74 @@
                       @endif
                     </div>
                   </div><!-- end card-image -->
+                  @php
+                    $reviewCount = App\Models\Review::where(
+                        'course_id',
+                        $course->id,
+                    )
+                        ->where('status', 1)
+                        ->latest()
+                        ->get();
+                    $avarage = App\Models\Review::where(
+                        'course_id',
+                        $course->id,
+                    )
+                        ->where('status', 1)
+                        ->avg('rating');
+                  @endphp
                   <div class="card-body">
                     <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">
                       {{ $course->label }}</h6>
                     <h5 class="card-title"><a
-                        href="{{ url("course/details/" . $course->id . "/" . $course->course_name_slug) }}">{{ $course->course_name }}</a>
+                        href="{{ url('course/details/' . $course->id . '/' . $course->course_name_slug) }}">{{ $course->course_name }}</a>
                     </h5>
                     <p class="card-text"><a
-                        href="{{ route("instructor.details", $course->instructor_id) }}">{{ $course["user"]["name"] }}</a>
+                        href="{{ route('instructor.details', $course->instructor_id) }}">{{ $course['user']['name'] }}</a>
                     </p>
                     <div class="py-2 rating-wrap d-flex align-items-center">
                       <div class="review-stars">
-                        <span class="rating-number">4.4</span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star"></span>
-                        <span class="la la-star-o"></span>
+                        <span
+                          class="rating-number">{{ round($avarage, 1) }}</span>
+                        @if ($avarage == 0)
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                        @elseif ($avarage == 1 || $avarage < 2)
+                          <span class="la la-star"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                        @elseif ($avarage == 2 || $avarage < 3)
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                        @elseif ($avarage == 3 || $avarage < 4)
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star-o"></span>
+                          <span class="la la-star-o"></span>
+                        @elseif ($avarage == 4 || $avarage < 5)
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star-o"></span>
+                        @elseif ($avarage == 5 || $avarage < 5)
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                          <span class="la la-star"></span>
+                        @endif
                       </div>
-                      <span class="pl-1 rating-total">(20,230)</span>
+                      <span
+                        class="pl-1 rating-total">({{ count($reviewCount) }})</span>
                     </div><!-- end rating-wrap -->
                     <div
                       class="d-flex justify-content-between align-items-center">
@@ -121,11 +170,11 @@
             <div class="row">
               @php
                 $catWiseCourse = App\Models\Course::where(
-                    "category_id",
+                    'category_id',
                     $category->id,
                 )
-                    ->where("status", 1)
-                    ->orderBy("id", "DESC")
+                    ->where('status', 1)
+                    ->orderBy('id', 'DESC')
                     ->get();
               @endphp
               @forelse ($catWiseCourse as $course)
@@ -141,14 +190,15 @@
                       </a>
                     </div><!-- end card-image -->
                     <div class="card-body">
-                      <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">Beginner</h6>
+                      <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">Beginner
+                      </h6>
                       <h6 class="mb-3 ribbon ribbon-blue-bg fs-14">
                         {{ $course->label }}</h6>
                       <h5 class="card-title"><a
                           href="course-details.html">{{ $course->course_name }}</a>
                       </h5>
                       <p class="card-text"><a
-                          href="{{ route("instructor.details", $course->instructor_id) }}">{{ $course["user"]["name"] }}</a>
+                          href="{{ route('instructor.details', $course->instructor_id) }}">{{ $course['user']['name'] }}</a>
                       </p>
                       <div class="py-2 rating-wrap d-flex align-items-center">
                         <div class="review-stars">
@@ -203,10 +253,10 @@
       <div class="card card-item">
         <div class="card-body">
           <p class="pb-2 card-text">By <a
-              href="{{ route("instructor.details", $course->instructor_id) }}">{{ $item["user"]["name"] }}</a>
+              href="{{ route('instructor.details', $course->instructor_id) }}">{{ $item['user']['name'] }}</a>
           </p>
           <h5 class="pb-1 card-title"><a
-              href="{{ url("course/details/" . $item->id . "/" . $item->course_name_slug) }}">{{ $item->course_name }}</a>
+              href="{{ url('course/details/' . $item->id . '/' . $item->course_name_slug) }}">{{ $item->course_name }}</a>
           </h5>
           <div class="pb-1 d-flex align-items-center">
             @if ($item->bestseller == 1)
@@ -215,7 +265,7 @@
               <h6 class="mr-2 ribbon fs-14">New</h6>
             @endif
             <p class="text-success fs-14 font-weight-medium">Updated<span
-                class="pl-1 font-weight-bold">{{ $item->created_at->format("M d Y") }}</span>
+                class="pl-1 font-weight-bold">{{ $item->created_at->format('M d Y') }}</span>
             </p>
           </div>
           <ul
@@ -225,8 +275,8 @@
           </ul>
           <p class="pt-1 card-text fs-14 lh-22">{{ $item->prerequisites }}</p>
           @php
-            $goals = App\Models\Course_goal::where("course_id", $item->id)
-                ->orderBy("id", "DESC")
+            $goals = App\Models\Course_goal::where('course_id', $item->id)
+                ->orderBy('id', 'DESC')
                 ->get();
           @endphp
           <ul class="py-3 generic-list-item fs-14">

@@ -170,10 +170,10 @@
         <div class="menu-title">Manage All User</div>
       </a>
       <ul>
-        <li> <a href="{{ route('admin.all.user') }}"><i
+        <li> <a href="{{ route('all.user') }}"><i
               class='bx bx-radio-circle'></i>All User</a>
         </li>
-        <li> <a href="{{ route('admin.active.review') }}"><i
+        <li> <a href="{{ route('all.instructor') }}"><i
               class='bx bx-radio-circle'></i>All Instructor</a>
         </li>
       </ul>

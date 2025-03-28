@@ -130,7 +130,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::post('/update/review/status', 'UpdateRivewStatus')->name('update.review.stauts');
   });
   Route::controller(ActiveUserController::class)->group(function () {
-    Route::get('/admin/all/user', 'AllUser')->name('admin.all.user');
+    Route::get('/all/user', 'AllUser')->name('all.user');
+    Route::get('/all/instructor', 'AllInstructor')->name('all.instructor');
   });
 }); // End Admin Group Middleware
 

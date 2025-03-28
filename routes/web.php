@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\ActiveUserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CourseController;
@@ -128,13 +129,16 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/admin/active/review', 'AdminActiveRivew')->name('admin.active.review');
     Route::post('/update/review/status', 'UpdateRivewStatus')->name('update.review.stauts');
   });
+  Route::controller(ActiveUserController::class)->group(function () {
+    Route::get('/admin/all/user', 'AllUser')->name('admin.all.user');
+  });
 }); // End Admin Group Middleware
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');
 Route::post('/instructor/register', [AdminController::class, 'InstructorRegister'])->name('instructor.register');
-///// End Instructor Group Middleware
+///// Instructor Group Middleware
 Route::middleware(['auth', 'roles:instructor'])->group(function () {
   Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
   Route::get('/instructor/logout', [InstructorController::class, 'InstructorLogout'])->name('instructor.logout');

@@ -52,4 +52,10 @@ class ReviewController extends Controller
     $review = Review::where('status', 1)->orderBy('id', 'desc')->get();
     return view('admin.backend.review.active_review', compact('review'));
   }
+  public function InstructorAllReview()
+  {
+    $id = Auth::user()->id;
+    $review = Review::where('instructor_id', $id)->where('status', 1)->orderBy('id', 'desc')->get();
+    return view('instructor.review.active_review', compact('review'));
+  }
 }

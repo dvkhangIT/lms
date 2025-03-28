@@ -184,6 +184,9 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::post('/instructor/update/coupon', 'InstructorUpdateCoupon')->name('instructor.update.coupon');
     Route::get('/instructor/delete/coupon/{id}', 'InstructorDeleteCoupon')->name('instructor.delete.coupon');
   });
+  Route::controller(ReviewController::class)->group(function () {
+    Route::get('instructor/all/review', 'InstructorAllReview')->name('instructor.all.review');
+  });
 }); // End Instructor Group Middleware
 // Route acessable for all
 Route::get('course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);

@@ -1,15 +1,16 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\backend\ActiveUserController;
+use App\Http\Controllers\Backend\ActiveUserController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CourseController;
-use App\Http\Controllers\backend\OrderController;
-use App\Http\Controllers\backend\QuestionController;
+use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\QuestionController;
 use App\Http\Controllers\Backend\ReportController;
-use App\Http\Controllers\backend\ReviewController;
-use App\Http\Controllers\backend\SettingController;
+use App\Http\Controllers\Backend\ReviewController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
@@ -132,6 +133,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
   Route::controller(ActiveUserController::class)->group(function () {
     Route::get('/all/user', 'AllUser')->name('all.user');
     Route::get('/all/instructor', 'AllInstructor')->name('all.instructor');
+  });
+  Route::controller(BlogController::class)->group(function () {
+    Route::get('/blog/category', 'AllBlogCategory')->name('blog.category');
   });
 }); // End Admin Group Middleware
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
+use App\Models\BlogPost;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -51,5 +52,10 @@ class BlogController extends Controller
       'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);
+  }
+  public function BlogPost()
+  {
+    $post = BlogPost::latest()->get();
+    return view('admin.backend.post.all_post', compact('post'));
   }
 }

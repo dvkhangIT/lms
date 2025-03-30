@@ -1,5 +1,6 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -46,7 +47,7 @@
                       id="{{ $item->id }}" class="btn btn-info px-5"
                       data-bs-toggle="modal"
                       data-bs-target="#category">Edit</button>
-                    <a href="{{ route('delete.category', $item->id) }}"
+                    <a href="{{ route('delete.blog.category', $item->id) }}"
                       class="btn btn-danger px-5" id="delete">Delete </a>
                   </td>
                 </tr>
@@ -91,7 +92,7 @@
           <h5 class="modal-title" id="exampleModalLabel">Blog Category</h5>
         </div>
         <div class="modal-body">
-          <form action="{{ route('blog.category.store') }}" method="post">
+          <form action="{{ route('blog.category.update') }}" method="post">
             @csrf
             <input type="hidden" name="cat_id" id="cat_id">
             <div class="form-group col-md-12">
@@ -112,7 +113,7 @@
     function categoryEdit(id) {
       $.ajax({
         type: "GET",
-        url: "/blog/edit/category/" + id,
+        url: "/edit/blog/category/" + id,
         dataType: "json",
         success: function(data) {
           $("#cat").val(data.category_name)

@@ -10,6 +10,7 @@
       type="image/png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <!--tagsinput-->
     <link
       href="{{ asset('backend/assets/plugins/input-tags/css/tagsinput.css') }}"
@@ -110,6 +111,10 @@
     <script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}">
     </script>
     <script src="{{ asset('backend/assets/js/index.js') }}"></script>
+    <!--tagsinput-->
+    <script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}">
+    </script>
+    <!--tagsinput-->
     <!--app JS-->
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
     <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>

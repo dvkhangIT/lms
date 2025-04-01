@@ -144,9 +144,11 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
   });
   // Blog Post All Route 
   Route::controller(BlogController::class)->group(function () {
-    Route::get('/blog/post', 'BlogPost')->name('blog.post');
+    Route::get('blog/post', 'BlogPost')->name('blog.post');
     Route::get('add/blog/post', 'AddBlogPost')->name('add.blog.post');
     Route::post('store/blog/post', 'StoreBlogPost')->name('store.blog.post');
+    Route::get('edit/blog/post/{id}', 'EditBlogPost')->name('edit.post');
+    Route::post('update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
   });
 }); // End Admin Group Middleware
 

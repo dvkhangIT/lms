@@ -5,7 +5,9 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class BlogController extends Controller
 {
@@ -62,5 +64,27 @@ class BlogController extends Controller
   {
     $blogcat = BlogCategory::latest()->get();
     return view('admin.backend.post.add_post', compact('blogcat'));
+  }
+  public function StoreBlogPost(Request $request)
+  {
+    $image = $request->file('post_image');
+    $image_gen = hexdec(uniqid()) . "." . $image->getClientOriginalExtension();
+    Image::make($image)->resize(370, 247)->save('upload/post/' . $image_gen);
+    $save_url = 'upload/post/' . $image_gen;
+    BlogPost::insert([
+      'blogcat_id' => $request->blogcat_id,
+      'post_title' => $request->post_title,
+      'post_slug' => strtolower(str_replace(' ', '-', $request->post_title)),
+      'post_image' => $request->$save_url,
+      'long_descp' => $request->long_descp,
+      'post_tags' => $request->post_tags,
+      'post_image' => $save_url,
+      'created_at' => Carbon::now(),
+    ]);
+    $notification = array(
+      'message' => 'Blog Post Inserted Successfully',
+      'alert-type' => 'success'
+    );
+    return redirect()->route('blog.post')->with($notification);
   }
 }

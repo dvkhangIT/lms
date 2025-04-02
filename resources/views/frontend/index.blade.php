@@ -4,6 +4,7 @@
   @include('frontend.home.feature-area')
   @include('frontend.home.category-area')
   @include('frontend.home.course-area')
+  @include('frontend.home.blog-area')
   @include('frontend.home.course-area-two')
   @include('frontend.home.funfact-area')
   @include('frontend.home.cta-area')

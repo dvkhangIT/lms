@@ -23,11 +23,13 @@
           </div><!-- end card-image -->
           <div class="card-body">
             <h5 class="card-title"><a
-                href="blog-single.html">{{ $item->post_title }}</a></h5>
+                href="{{ url('blog/details/' . $item->post_slug) }}">{{ $item->post_title }}</a>
+            </h5>
             <ul
               class="generic-list-item generic-list-item-bullet generic-list-item--bullet d-flex align-items-center fs-14 flex-wrap pt-2">
               <li class="d-flex align-items-center">By<a
-                  href="#">{{ $item->post_tags }}</a></li>
+                  href="">{{ $item->post_tags }}</a>
+              </li>
               <li class="d-flex align-items-center"><a href="#">4
                   Comments</a></li>
               <li class="d-flex align-items-center"><a href="#">130

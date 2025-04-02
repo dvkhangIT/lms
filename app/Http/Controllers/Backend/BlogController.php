@@ -7,6 +7,7 @@ use App\Models\BlogCategory;
 use App\Models\BlogPost;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Composer;
 use Intervention\Image\Facades\Image;
 
 class BlogController extends Controller
@@ -145,5 +146,10 @@ class BlogController extends Controller
       'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);
+  }
+  public function BlogDetails($slug)
+  {
+    $blog = BlogPost::where('post_slug', $slug)->first();
+    return view('frontend.blog.blog_details', compact('blog'));
   }
 }

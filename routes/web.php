@@ -223,6 +223,7 @@ Route::get('cart/data', [CartController::class, 'CartData']);
 Route::get('course/mini/cart', [CartController::class, 'AddMiniCart']);
 Route::get('/minicart/course/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
 Route::get('blog/details/{slug}', [BlogController::class, 'BlogDetails']);
+Route::get('blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
 // End route acessable for all
 // Cart all route
 Route::controller(CartController::class)->group(function () {

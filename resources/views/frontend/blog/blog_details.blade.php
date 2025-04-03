@@ -228,8 +228,10 @@
                 <h3 class="card-title fs-18 pb-2">Blog Category</h3>
                 <div class="divider"><span></span></div>
                 <ul class="generic-list-item">
-                  @foreach ($blogcat as $item)
-                    <li><a href="#">{{ $item->category_name }}</a></li>
+                  @foreach ($blogcat as $cat)
+                    <li><a
+                        href="{{ url('blog/cat/list/' . $cat->id) }}">{{ $cat->category_name }}</a>
+                    </li>
                   @endforeach
                 </ul>
               </div>

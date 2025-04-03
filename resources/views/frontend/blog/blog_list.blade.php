@@ -22,8 +22,6 @@
       <div class="row">
         <div class="col-lg-8 mb-5">
           <div class="row">
-
-
             @foreach ($blog as $item)
               <div class="col-lg-6">
                 <div class="card card-item">
@@ -78,36 +76,11 @@
                 </div><!-- end card -->
               </div><!-- end col-lg-6 -->
             @endforeach
-
-
-
           </div><!-- end row -->
           <div class="text-center pt-3">
             <nav aria-label="Page navigation example" class="pagination-box">
-              <ul class="pagination justify-content-center">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true"><i
-                        class="la la-arrow-left"></i></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active"><a class="page-link"
-                    href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true"><i
-                        class="la la-arrow-right"></i></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
+              {{ $blog->links('vendor.pagination.custom') }}
             </nav>
-            <p class="fs-14 pt-2">Showing 1-10 of 56 results</p>
           </div>
         </div><!-- end col-lg-8 -->
         <div class="col-lg-4">
@@ -150,9 +123,8 @@
                 @endforeach
 
                 <div class="view-all-course-btn-box">
-                  <a href="blog-no-sidebar.html"
-                    class="btn theme-btn w-100">View All Posts <i
-                      class="la la-arrow-right icon ml-1"></i></a>
+                  <a href="blog-no-sidebar.html" class="btn theme-btn w-100">View
+                    All Posts <i class="la la-arrow-right icon ml-1"></i></a>
                 </div>
               </div>
             </div><!-- end card -->

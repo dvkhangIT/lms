@@ -211,6 +211,7 @@ Route::middleware(['auth', 'roles:instructor'])->group(function () {
     Route::get('instructor/all/review', 'InstructorAllReview')->name('instructor.all.review');
   });
 }); // End Instructor Group Middleware
+
 // Route acessable for all
 Route::get('course/details/{id}/{slug}', [IndexController::class, 'CourseDetails']);
 Route::get('category/{id}/{slug}', [IndexController::class, 'CategoryCourse']);
@@ -226,6 +227,7 @@ Route::get('blog/details/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
 Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog');
 // End route acessable for all
+
 // Cart all route
 Route::controller(CartController::class)->group(function () {
   Route::get('mycart', 'Mycart')->name('mycart');

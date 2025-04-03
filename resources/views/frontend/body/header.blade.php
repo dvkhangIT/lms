@@ -60,20 +60,20 @@
                 <li
                   class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray">
                   <i class="mr-1 la la-sign-in"></i><a
-                    href="{{ route("dashboard") }}"> Dashboard</a>
+                    href="{{ route('dashboard') }}"> Dashboard</a>
                 </li>
                 <li class="d-flex align-items-center"><i
                     class="mr-1 la la-user"></i><a
-                    href="{{ route("user.logout") }}">
+                    href="{{ route('user.logout') }}">
                     Logout</a></li>
               @else
                 <li
                   class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray">
                   <i class="mr-1 la la-sign-in"></i><a
-                    href="{{ route("login") }}"> Login</a>
+                    href="{{ route('login') }}"> Login</a>
                 </li>
                 <li class="d-flex align-items-center"><i
-                    class="mr-1 la la-user"></i><a href="{{ route("register") }}">
+                    class="mr-1 la la-user"></i><a href="{{ route('register') }}">
                     Register</a></li>
 
               @endauth
@@ -95,8 +95,8 @@
         <div class="row align-items-center">
           <div class="col-lg-2">
             <div class="logo-box">
-              <a href="{{ route("index") }}" class="logo"><img
-                  src="{{ asset("frontend/images/logo.png") }}"
+              <a href="{{ route('index') }}" class="logo"><img
+                  src="{{ asset('frontend/images/logo.png') }}"
                   alt="logo"></a>
               <div class="user-btn-action">
                 <div
@@ -120,7 +120,7 @@
             </div>
           </div><!-- end col-lg-2 -->
           @php
-            $categories = App\Models\Category::orderBy("id", "ASC")->get();
+            $categories = App\Models\Category::orderBy('id', 'ASC')->get();
           @endphp
           <div class="col-lg-10">
             <div class="menu-wrapper">
@@ -133,20 +133,20 @@
                       @foreach ($categories as $cat)
                         @php
                           $subCategories = App\Models\SubCategory::where(
-                              "category_id",
+                              'category_id',
                               $cat->id,
                           )
-                              ->orderBy("id", "ASC")
+                              ->orderBy('id', 'ASC')
                               ->get();
                         @endphp
                         <li>
                           <a
-                            href="{{ url("category/" . $cat->id . "/" . $cat->category_slug) }}">{{ $cat->category_name }}
+                            href="{{ url('category/' . $cat->id . '/' . $cat->category_slug) }}">{{ $cat->category_name }}
                             <i class="la la-angle-right"></i></a>
                           <ul class="sub-menu">
                             @foreach ($subCategories as $subcat)
                               <li><a
-                                  href="{{ url("subcategory/" . $subcat->id . "/" . $subcat->subcategory_slug) }}">{{ $subcat->subcategory_name }}</a>
+                                  href="{{ url('subcategory/' . $subcat->id . '/' . $subcat->subcategory_slug) }}">{{ $subcat->subcategory_name }}</a>
                               </li>
                             @endforeach
                           </ul>
@@ -167,7 +167,7 @@
               <nav class="main-menu">
                 <ul>
                   <li>
-                    <a href="{{ url("/") }}">Home </a>
+                    <a href="{{ url('/') }}">Home </a>
                   </li>
                   <li>
                     <a href="#">courses <i
@@ -179,7 +179,7 @@
                     </ul>
                   </li>
                   <li>
-                    <a href="#">blog </a>
+                    <a href="{{ route('blog') }}">blog </a>
 
                   </li>
                 </ul><!-- end ul -->
@@ -202,7 +202,7 @@
                         </div>
                       </li>
                       <li>
-                        <a href="{{ route("mycart") }}"
+                        <a href="{{ route('mycart') }}"
                           class="btn theme-btn w-100">Got to cart <i
                             class="la la-arrow-right icon ml-1"></i></a>
                       </li>

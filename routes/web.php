@@ -227,7 +227,7 @@ Route::get('blog/details/{slug}', [BlogController::class, 'BlogDetails']);
 Route::get('blog/cat/list/{id}', [BlogController::class, 'BlogCatList']);
 Route::get('/blog', [BlogController::class, 'BlogList'])->name('blog');
 // End route acessable for all
-
+Route::post('mark-notification-as-read/{notification}', [CartController::class, 'MarkAsRead']);
 // Cart all route
 Route::controller(CartController::class)->group(function () {
   Route::get('mycart', 'Mycart')->name('mycart');

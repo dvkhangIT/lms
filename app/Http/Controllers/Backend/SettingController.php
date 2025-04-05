@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\SiteSetting;
 use App\Models\SmtpSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Composer;
 
 class SettingController extends Controller
 {
@@ -30,5 +32,10 @@ class SettingController extends Controller
       'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);
+  }
+  public function SiteSetting()
+  {
+    $site = SiteSetting::find(1);
+    return view('admin.backend.site.site_update', compact('site'));
   }
 }

@@ -1,3 +1,6 @@
+@php
+  $setting = App\Models\SiteSetting::find(1);
+@endphp
 <header class="bg-white header-menu-area">
   <div
     class="py-1 header-top pr-150px pl-150px border-bottom border-bottom-gray">
@@ -9,12 +12,13 @@
               class="flex-wrap generic-list-item d-flex align-items-center fs-14">
               <li
                 class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray">
-                <i class="mr-1 la la-phone"></i><a href="tel:00123456789"> (00)
-                  123 456 789</a>
+                <i class="mr-1 la la-phone"></i><a href="tel:00123456789">
+                  {{ $setting->phone }}</a>
               </li>
               <li class="d-flex align-items-center"><i
                   class="mr-1 la la-envelope-o"></i><a
-                  href="mailto:contact@aduca.com"> contact@aduca.com</a></li>
+                  href="mailto:{{ $setting->email }}"> {{ $setting->email }}</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -55,7 +59,6 @@
             </div>
             <ul
               class="flex-wrap pl-3 ml-3 generic-list-item d-flex align-items-center fs-14 border-left border-left-gray">
-
               @auth
                 <li
                   class="pr-3 mr-3 d-flex align-items-center border-right border-right-gray">
@@ -75,12 +78,7 @@
                 <li class="d-flex align-items-center"><i
                     class="mr-1 la la-user"></i><a href="{{ route('register') }}">
                     Register</a></li>
-
               @endauth
-
-
-
-
             </ul>
           </div><!-- end header-widget -->
         </div><!-- end col-lg-6 -->
@@ -96,8 +94,7 @@
           <div class="col-lg-2">
             <div class="logo-box">
               <a href="{{ route('index') }}" class="logo"><img
-                  src="{{ asset('frontend/images/logo.png') }}"
-                  alt="logo"></a>
+                  src="{{ asset($setting->logo) }}" alt="logo"></a>
               <div class="user-btn-action">
                 <div
                   class="mr-2 shadow-sm search-menu-toggle icon-element icon-element-sm"
@@ -175,12 +172,10 @@
                     <ul class="dropdown-menu-item">
                       <li><a href="course-grid.html">course grid</a></li>
                       <li><a href="course-list.html">course list</a></li>
-
                     </ul>
                   </li>
                   <li>
                     <a href="{{ route('blog') }}">blog </a>
-
                   </li>
                 </ul><!-- end ul -->
               </nav><!-- end main-menu -->

@@ -15,10 +15,9 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishListController;
 use App\Http\Controllers\InstructorController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -154,6 +153,10 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('edit/blog/post/{id}', 'EditBlogPost')->name('edit.post');
     Route::post('update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
     Route::get('delete/blog/{id}', 'DeleteBlogPost')->name('delete.post');
+  });
+  // Permission All Route 
+  Route::controller(RoleController::class)->group(function () {
+    Route::get('all/permission', 'AllPermission')->name('all.permission');
   });
 }); // End Admin Group Middleware
 

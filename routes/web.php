@@ -157,6 +157,8 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
   // Permission All Route 
   Route::controller(RoleController::class)->group(function () {
     Route::get('all/permission', 'AllPermission')->name('all.permission');
+    Route::get('add/permission', 'AddPermission')->name('add.permission');
+    Route::post('store/permission', 'StorePermission')->name('store.permission');
   });
 }); // End Admin Group Middleware
 

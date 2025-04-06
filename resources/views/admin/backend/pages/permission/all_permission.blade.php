@@ -42,9 +42,9 @@
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->group_name }}</td>
                   <td>
-                    <a href="{{ route('edit.category', $item->id) }}"
+                    <a href="{{ route('edit.permission', $item->id) }}"
                       class="px-5 text-white btn btn-info">Edit</a>
-                    <a href="{{ route('delete.category', $item->id) }}"
+                    <a href="{{ route('delete.permission', $item->id) }}"
                       class="px-5 btn btn-danger" id="delete">Delete</a>
                   </td>
                 </tr>

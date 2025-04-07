@@ -56,4 +56,8 @@ class RoleController extends Controller
     );
     return redirect()->back()->with($notification);
   }
+  public function ImportPermission()
+  {
+    return view('admin.backend.pages.permission.import_permission');
+  }
 }

@@ -162,9 +162,9 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('edit/permission/{id}', 'EditPermission')->name('edit.permission');
     Route::post('update/permission', 'UpdatePermission')->name('update.permission');
     Route::get('delete/permission/{id}', 'DeletePermission')->name('delete.permission');
+    Route::get('import/permission', 'ImportPermission')->name('import.permission');
   });
 }); // End Admin Group Middleware
-
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/become/instructor', [AdminController::class, 'BecomeInstructor'])->name('become.instructor');

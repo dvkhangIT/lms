@@ -164,6 +164,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('delete/permission/{id}', 'DeletePermission')->name('delete.permission');
     Route::get('import/permission', 'ImportPermission')->name('import.permission');
     Route::get('/export', 'Export')->name('export');
+    Route::post('/import', 'Import')->name('import');
   });
 }); // End Admin Group Middleware
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);

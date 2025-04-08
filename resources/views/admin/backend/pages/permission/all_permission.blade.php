@@ -16,10 +16,12 @@
       </div>
       <div class="ms-auto">
         <div class="btn-group">
-          <a href="{{ route('add.permission') }}" class="px-5 btn btn-primary">Add
+          <a href="{{ route('add.permission') }}" class="btn btn-primary">Add
             Permission</a>&nbsp;&nbsp;
           <a href="{{ route('import.permission') }}"
-            class="px-5 btn btn-warning">Import</a>
+            class="btn btn-warning">Import</a>
+          &nbsp;&nbsp;
+          <a href="{{ route('export') }}" class="btn btn-danger">Export</a>
         </div>
       </div>
     </div>

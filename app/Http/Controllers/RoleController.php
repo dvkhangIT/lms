@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PermissionExport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -59,5 +61,9 @@ class RoleController extends Controller
   public function ImportPermission()
   {
     return view('admin.backend.pages.permission.import_permission');
+  }
+  public function Export()
+  {
+    return Excel::download(new PermissionExport, 'permission.xlsx');
   }
 }

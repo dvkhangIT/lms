@@ -7,6 +7,7 @@ use App\Imports\PermissionImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -75,5 +76,25 @@ class RoleController extends Controller
       'alert-type' => 'success'
     );
     return redirect()->back()->with($notification);
+  }
+  public function AllRoles()
+  {
+    $roles = Role::all();
+    return view('admin.backend.pages.roles.all_roles', compact('roles'));
+  }
+  public function AddRoles()
+  {
+    return view('admin.backend.pages.roles.add_roles');
+  }
+  public function StoreRoles(Request $request)
+  {
+    Role::create([
+      'name' => $request->name,
+    ]);
+    $notification = array(
+      'message' => 'Role Created Successfully',
+      'alert-type' => 'success'
+    );
+    return redirect()->route('all.roles')->with($notification);
   }
 }

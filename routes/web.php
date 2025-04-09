@@ -166,6 +166,11 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::get('/export', 'Export')->name('export');
     Route::post('/import', 'Import')->name('import');
   });
+  Route::controller(RoleController::class)->group(function () {
+    Route::get('/all/roles', 'AllRoles')->name('all.roles');
+    Route::get('/add/roles', 'AddRoles')->name('add.roles');
+    Route::post('store/roles', 'StoreRoles')->name('store.roles');
+  });
 }); // End Admin Group Middleware
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login')->middleware(RedirectIfAuthenticated::class);
 Route::get('/instructor/login', [InstructorController::class, 'InstructorLogin'])->name('instructor.login')->middleware(RedirectIfAuthenticated::class);

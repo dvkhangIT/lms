@@ -128,6 +128,7 @@ class RoleController extends Controller
   {
     $roles = Role::all();
     $permission_groups = User::getpermissionGroups();
-    return view('admin.backend.pages.rolesetup.add_roles_permission', compact('roles', 'permission_groups'));
+    $permissions = Permission::all();
+    return view('admin.backend.pages.rolesetup.add_roles_permission', compact('roles', 'permission_groups', 'permissions'));
   }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\PermissionExport;
 use App\Imports\PermissionImport;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\Permission\Models\Permission;
@@ -126,6 +127,7 @@ class RoleController extends Controller
   public function AddRolesPermission()
   {
     $roles = Role::all();
-    return view('admin.backend.pages.rolesetup.add_roles_permission', compact('roles'));
+    $permission_groups = User::getpermissionGroups();
+    return view('admin.backend.pages.rolesetup.add_roles_permission', compact('roles', 'permission_groups'));
   }
 }
